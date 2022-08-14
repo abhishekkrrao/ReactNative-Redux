@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet, Text, View, Image, Pressable } from "react-native";
-import { data, mapDispatchToProps, mapStateToProps } from "../../../../Util";
+import { data, mapDispatchToProps, mapStateToProps, record } from "../../../../Util";
 import { ScrollView } from "react-native-gesture-handler";
 import { Header } from "../../../Component";
 import { connect } from 'react-redux';
 function SceenA(props) {
     const [allData, setAllRecord] = useState([]);
     useEffect(() => {
-        setAllRecord(data);
+        setAllRecord(record.output.category);
     }, []);
     const _OnlistContentShown = (items, index) => {
         return (
             <View
                 key={items?.id}
-                style={styles.gridIngredients}>
+                style={[styles.gridIngredients, { padding: 20, marginTop: 15 }]}>
                 <Pressable
                     onPress={() => {
                         props.navigation.navigate("SceenB");
@@ -22,11 +22,11 @@ function SceenA(props) {
                     <Image
                         style={styles.ingredientImage}
                         resizeMode="contain"
-                        source={{ uri: items.image_url }}
+                        source={{ uri: items.thumb }}
                     />
                     <Text
                         numberOfLines={1}
-                        style={styles.ingredientsText}>{items.description}</Text>
+                        style={styles.ingredientsText}>{items.meta_title}</Text>
                 </Pressable>
             </View>
         );
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: "#FFF", padding: 20 },
     containerChild: { flex: 1 },
     ingredientsText: {
-        fontSize: 12, color: 'black', padding: 5, top: 0
+        fontSize: 12, color: 'black', paddingTop: 5, top: 0
     },
     gridIngredients: {
         width: '45.5%', flexDirection: "column", backgroundColor: '#CCC', borderRadius: 8,

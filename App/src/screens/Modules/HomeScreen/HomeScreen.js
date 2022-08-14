@@ -5,12 +5,13 @@ import { ListItem } from "../../../CustomModules";
 import { ScrollView } from "react-native-gesture-handler";
 import { Header } from "../../../Component";
 import { connect } from 'react-redux';
-import { mapStateToProps, mapDispatchToProps,data } from "../../../../Util";
+import { mapStateToProps, mapDispatchToProps, data, record } from "../../../../Util";
 
 function HomeScreen(props) {
     const [allData, setAllRecord] = useState([]);
     useEffect(() => {
-        setAllRecord(data);
+        setAllRecord([]);
+        setAllRecord(record.output.category);
     }, []);
 
 
@@ -38,16 +39,23 @@ function HomeScreen(props) {
         return (
             <View
                 key={(items?.id + getRandomInt(parseInt(items?.id))).toString()}
-                style={styles.hIngredients}>
+                style={[styles.hIngredients, {
+                    flexDirection: "column", borderRadius: 0,
+                    backgroundColor: "#FFF",justifyContent:"center",
+                    alignItems:"center",marginStart:10
+                }]}>
                 <Pressable
                     onPress={() => { props.navigation.navigate("SceenA"); }}
                     style={{ flex: 1 }}>
                     <Image
-                        style={styles.hImage}
+                        style={[styles.hImage, { height: 96, width: 96, borderRadius: 96 }]}
                         resizeMode="contain"
-                        source={{ uri: items.image_url }}
+                        source={{ uri: items.thumb }}
                     />
                 </Pressable>
+                <Text
+                    numberOfLines={1}
+                    style={[styles.ingredientsText]}>{items.meta_title}</Text>
             </View>
         );
     }
@@ -58,7 +66,7 @@ function HomeScreen(props) {
     const _OnlistContentShown = (items, index) => {
         return (
             <ListItem
-                cStyle={styles.gridIngredients}
+                cStyle={[styles.gridIngredients, { padding: 20, marginTop: 10 }]}
                 items={items}
                 props={props}
                 iStyle={styles.ingredientImage}
@@ -82,7 +90,7 @@ function HomeScreen(props) {
 
 
                 <View style={{ width: "100%", paddingTop: 10, paddingBottom: 10, paddingLeft: 10 }}>
-                    <Text style={{ fontSize: 21 }}>{"Joolkart Items"}</Text>
+                    <Text style={{ fontSize: 21 }}>{"Categories"}</Text>
                 </View>
 
                 <ScrollView
@@ -124,7 +132,7 @@ const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: "#FFF", padding: 20 },
     containerChild: { flex: 1 },
     ingredientsText: {
-        fontSize: 12, color: 'black', padding: 5
+        fontSize: 14, color: 'black', paddingTop: 5
     },
     gridIngredients: {
         width: '45.5%', flexDirection: "column", backgroundColor: '#CCC', borderRadius: 8,
@@ -135,8 +143,7 @@ const styles = StyleSheet.create({
         width: 136, height: 136
     },
     hIngredients: {
-        width: 96, flexDirection: "row", backgroundColor: '#CCC', borderRadius: 96,
-        margin: 5, overflow: "hidden", justifyContent: "center", alignItems: "center"
+        width: 96, overflow: "hidden", alignItems: "flex-start"
     },
     hImage: {
         width: 96, height: 96, top: 0

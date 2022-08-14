@@ -28,11 +28,11 @@ function ListItem({ cStyle, items, props, iStyle, tStyle }) {
                 <Image
                     style={iStyle}
                     resizeMode="contain"
-                    source={{ uri: items.image_url }}
+                    source={{ uri: items?.thumb }}
                 />
                 <Text
                     numberOfLines={1}
-                    style={tStyle}>{items.description}</Text>
+                    style={tStyle}>{items.meta_title}</Text>
             </Pressable>
         </View>
     );
