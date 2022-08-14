@@ -33,7 +33,7 @@ function SceenA(props) {
     }
     return (<SafeAreaView style={styles.container}>
         <View style={[styles.containerChild]}>
-            <Header style={{ width: "100%" }} navigation={props} />
+            <Header style={{ width: "100%" }} props={props} />
             <ScrollView
                 style={[styles.containerChild]}>
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>

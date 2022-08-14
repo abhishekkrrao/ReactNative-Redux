@@ -21,7 +21,7 @@ function SceenB(props) {
     const letterCount = useMemo(() => computeLetterCount(word), [word, wordIndex]);
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#FFF" }}>
-            <Header style={{ width: "100%" }} navigation={props} />
+            <Header style={{ width: "100%" }} props={props} />
             <View style={{ padding: 15, flex: 1 }}>
 
                 <Text style={style.txt}>{"Compute number of letters (slow 🐌)"}</Text>

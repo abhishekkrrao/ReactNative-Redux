@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { LocalStorage, mapStateToProps, mapDispatchToProps } from '../../../Util';
 import { connect } from 'react-redux';
 
-function Header({ navigation, style, home }) {
+function Header({ props, style, home }) {
     useEffect(() => {
     }, []);
 
@@ -11,8 +11,8 @@ function Header({ navigation, style, home }) {
         LocalStorage.localStorageInstance.clearAll()
             .then(() => {
                 const value = { islogin: false };
-                navigation?.signIn(value);
-                navigation?.setLoggedIn(false);
+                props?.signIn(value);
+                props?.setLoggedIn(false);
             });
     }
     return (
@@ -24,7 +24,7 @@ function Header({ navigation, style, home }) {
             <View style={{ flex: 1, padding: 20, flexDirection: "row" }}>
                 {!home && <Pressable
                     style={{ flex: 1, alignSelf: "flex-start" }}
-                    onPress={() => navigation.navigation.pop()}>
+                    onPress={() => props.navigation.pop()}>
                     <Text style={{ fontSize: 16, paddingTop: 40 }}>{"Back"}</Text>
                 </Pressable>}
 

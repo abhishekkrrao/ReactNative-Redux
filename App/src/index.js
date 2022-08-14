@@ -1,5 +1,5 @@
 import { LoginPage,RegisterPage } from "./screens/Auth"
-import { HomeScreen,SceenA,SceenB } from "./screens/Modules"
+import { HomeScreen,SceenA,SceenB,SplashPage } from "./screens/Modules"
 export {
-    LoginPage,RegisterPage,HomeScreen,SceenA,SceenB
+    LoginPage,RegisterPage,HomeScreen,SceenA,SceenB,SplashPage
 }

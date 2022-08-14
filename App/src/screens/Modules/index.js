@@ -1,4 +1,5 @@
 import SceenA from "./ScreenA/ScreenA";
 import SceenB from "./ScreenB/ScreenB";
 import HomeScreen from "./HomeScreen/HomeScreen";
-export  { SceenA, SceenB, HomeScreen };
+import SplashPage from "./SplashScreen/SplashPage";
+export  { SceenA, SceenB, HomeScreen,SplashPage };

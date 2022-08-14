@@ -75,7 +75,7 @@ function HomeScreen(props) {
     }
     return (<SafeAreaView style={styles.container}>
         <View testID={"homescreen"} style={[styles.containerChild]}>
-            <Header home={true} style={{ width: "100%" }} navigation={props} />
+            <Header home={true} style={{ width: "100%" }} props={props} />
             <ScrollView
                 style={[styles.containerChild, { padding: 10 }]}>
 
