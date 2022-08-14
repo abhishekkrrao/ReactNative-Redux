@@ -41,8 +41,8 @@ function HomeScreen(props) {
                 key={(items?.id + getRandomInt(parseInt(items?.id))).toString()}
                 style={[styles.hIngredients, {
                     flexDirection: "column", borderRadius: 0,
-                    backgroundColor: "#FFF",justifyContent:"center",
-                    alignItems:"center",marginStart:10
+                    backgroundColor: "#FFF", justifyContent: "center",
+                    alignItems: "center", marginStart: 10
                 }]}>
                 <Pressable
                     onPress={() => { props.navigation.navigate("SceenA"); }}
@@ -55,7 +55,7 @@ function HomeScreen(props) {
                 </Pressable>
                 <Text
                     numberOfLines={1}
-                    style={[styles.ingredientsText]}>{items.meta_title}</Text>
+                    style={[styles.ingredientsText, { textTransform: "capitalize" }]}>{(items.meta_title)}</Text>
             </View>
         );
     }
@@ -66,14 +66,15 @@ function HomeScreen(props) {
     const _OnlistContentShown = (items, index) => {
         return (
             <ListItem
-                cStyle={[styles.gridIngredients, { padding: 20, marginTop: 10 }]}
+                screen={"SceenA"}
+                cStyle={[styles.gridIngredients, { padding: 10, marginTop: 10 }]}
                 items={items}
                 props={props}
                 iStyle={styles.ingredientImage}
                 tStyle={styles.ingredientsText}></ListItem>
         );
     }
-    return (<SafeAreaView style={styles.container}>
+    return (<SafeAreaView style={[styles.container]}>
         <View testID={"homescreen"} style={[styles.containerChild]}>
             <Header home={true} style={{ width: "100%" }} props={props} />
             <ScrollView
@@ -89,21 +90,21 @@ function HomeScreen(props) {
                 </ScrollView> */}
 
 
-                <View style={{ width: "100%", paddingTop: 10, paddingBottom: 10, paddingLeft: 10 }}>
-                    <Text style={{ fontSize: 21 }}>{"Categories"}</Text>
+                <View style={{ width: "100%" }}>
+                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 10 }}>{"Categories"}</Text>
                 </View>
 
                 <ScrollView
                     horizontal={true}>
-                    <View style={{ flexDirection: 'row', flexWrap: "nowrap" }}>
+                    <View style={{ flexDirection: 'row', flexWrap: "nowrap", marginTop: 10 }}>
                         {allData.map((value, index) => {
                             return _OnHorizontalContentShown(value, index);
                         })}
                     </View>
                 </ScrollView>
 
-                <View style={{ width: "100%", paddingTop: 10, paddingBottom: 10, paddingLeft: 10 }}>
-                    <Text style={{ fontSize: 21 }}>{"Featured Items"}</Text>
+                <View style={{ width: "100%", paddingTop: 10 }}>
+                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 10 }}>{"Featured Items"}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -112,8 +113,8 @@ function HomeScreen(props) {
                     })}
                 </View>
 
-                <View style={{ width: "100%", paddingTop: 10, paddingBottom: 10, paddingLeft: 10 }}>
-                    <Text style={{ fontSize: 21 }}>{"Recent Items"}</Text>
+                <View style={{ width: "100%", paddingTop: 10 }}>
+                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 15 }}>{"Recent Items"}</Text>
                 </View>
 
 
@@ -123,21 +124,23 @@ function HomeScreen(props) {
                         return _OnlistContentShown(value, index);
                     })}
                 </View>
+
+                <View style={{height:30,width:"100%"}}></View>
             </ScrollView>
         </View>
     </SafeAreaView>);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: "#FFF", padding: 20 },
+    container: { flex: 1, backgroundColor: "#FFF" },
     containerChild: { flex: 1 },
     ingredientsText: {
-        fontSize: 14, color: 'black', paddingTop: 5
+        fontSize: 14, color: 'black', paddingTop: 5, paddingStart: 5
     },
     gridIngredients: {
-        width: '45.5%', flexDirection: "column", backgroundColor: '#CCC', borderRadius: 8,
-        marginLeft: 10, marginEnd: 5, marginTop: 5, overflow: "hidden",
-        justifyContent: "center", alignItems: "center"
+        width: '47.3%', flexDirection: "column", borderRadius: 8,
+        overflow: "hidden", justifyContent: "center", alignItems: "center",
+        marginLeft: 8
     },
     ingredientImage: {
         width: 136, height: 136

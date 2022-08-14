@@ -1,10 +1,14 @@
-import React, { useEffect, useState, memo } from "react";
-import { SafeAreaView, View, TextInput, Text,StyleSheet } from "react-native";
-import { CustomButton } from '../../../CustomModules/index';
+import React, { useEffect, useState } from "react";
+import { SafeAreaView, View, TextInput, Text, StyleSheet } from "react-native";
+import { CustomButton } from '../../../CustomModules';
+import { connect } from "react-redux";
+import { mapDispatchToProps, mapStateToProps } from '../../../../Util';
+
 function RegisterPage(props) {
     const [uID, setUID] = useState("");
     const [password, setPassword] = useState("");
 
+    useEffect(() => { }, []);
 
 
 
@@ -35,13 +39,11 @@ function RegisterPage(props) {
 
 
                 <View style={{ width: "100%" }}>
-                    <CustomButton textStyle={{ fontSize: 16, fontWeight: "900" }} value={"Go->"} btnStyle={{ marginTop: 20, width: 200, alignSelf: "flex-end" }} onPress={() => { }}></CustomButton>
+                    <CustomButton textStyle={{ fontSize: 16, fontWeight: "900" }} value={"Go->"} btnStyle={{ marginTop: 20, width: 200, alignSelf: "flex-end" }}
+                        onPress={() => { props.navigation.navigate(""); }}></CustomButton>
                 </View>
             </View>
         </SafeAreaView>
     )
 }
-export default memo(RegisterPage, function comparator(prevProps, nextProps){
-    console.log(prevProps)
-    console.log(nextProps)
-});
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);

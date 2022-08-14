@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { LocalStorage, mapStateToProps, mapDispatchToProps } from '../../../Util';
 import { connect } from 'react-redux';
 
-function Header({ props, style, home }) {
+function Header({ props, style, home, issearch }) {
     useEffect(() => {
     }, []);
 
@@ -16,26 +16,25 @@ function Header({ props, style, home }) {
             });
     }
     return (
-        <View style={[{
-            width: "100%", height: Platform.OS == "ios" ? 96 : 55, backgroundColor: "#CCC", flexDirection: "row",
-            marginTop: Platform.OS == "ios" ? -50 : 0
-        }, style]}>
+        <View style={[{ width: "100%", backgroundColor: "#e64a19", height: Platform.OS == "ios" ? 96 : 70, marginTop: Platform.OS == "ios" ? -50 : 0 }]}>
 
-            <View style={{ flex: 1, padding: 20, flexDirection: "row" }}>
-                {!home && <Pressable
-                    style={{ flex: 1, alignSelf: "flex-start" }}
-                    onPress={() => props.navigation.pop()}>
-                    <Text style={{ fontSize: 16, paddingTop: 40 }}>{"Back"}</Text>
-                </Pressable>}
+            {!issearch && <View style={{ flex: 1, flexDirection: "row" }}>
+                {!home && <View
+                    style={{ width: 200, height: Platform.OS == "ios" ? 126 : 66, justifyContent: "center" }}>
+                    <Text
+                        onPress={() => props.navigation.pop()}
+                        style={{ fontSize: 21, padding: 16, fontWeight: "bold", color: "#FFF" }}>{"Back"}</Text>
+                </View>}
 
 
-                <Pressable
-                    style={{ flex: 1, alignSelf: "flex-end", alignItems: "flex-end" }}
-                    onPress={() => logOut()}>
-                    <Text style={{ fontSize: 21, color: "red", fontWeight: "900" }}>{"Logout"}</Text>
-                </Pressable>
+                <View
+                    style={{ width: home ? "100%" : 200, height: 66, alignSelf: "flex-end", justifyContent: "center" }}>
+                    <Text
+                        onPress={() => logOut()}
+                        style={{ fontSize: 21, padding: 16, textAlign: "right", fontWeight: "bold", color: "#FFF" }}>{"Logout"}</Text>
+                </View>
 
-            </View>
+            </View>}
         </View>
     );
 }
