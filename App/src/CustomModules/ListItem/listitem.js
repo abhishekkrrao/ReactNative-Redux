@@ -4,10 +4,7 @@ import { mapStateToProps, mapDispatchToProps } from '../../../Util';
 import { connect } from 'react-redux';
 
 const shadowAndroidStyle = {
-    shadowColor: "#000",
-    shadowOffset: { height: 1, width: 0 },
-    shadowOpacity: .20, shadowRadius: 6,
-    overflow: "hidden", elevation: 6
+    overflow: "hidden", elevation: 4
 }
 const shadowIOSStyle = {
     shadowColor: "#000", shadowOffset: { height: 1.5, width: 0 },

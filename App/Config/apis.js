@@ -8,9 +8,7 @@ export const AppInfo = {
    serviceTimeOut: 20000,
  };
  function createUrl(actionName, isSeller = true) {
-   return `${AppInfo.baseUrlAPI}/${
-     isSeller ? AppInfo.apiVersion : AppInfo.apiVersionBuyer
-   }/${actionName}`;
+   return `${AppInfo.baseUrlAPI}/${  isSeller ? AppInfo.apiVersion : AppInfo.apiVersionBuyer }/${actionName}`;
  }
  export const apis = {
    getRequest: 'GET',
