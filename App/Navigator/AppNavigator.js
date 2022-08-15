@@ -6,9 +6,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { mapDispatchToProps, mapStateToProps, LocalStorage } from "../Util";
 import { connect } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { screenOptionStyle } from './style'
+import { screenOptionStyle } from './style';
 
-
+/***
+ * 
+ * Auth routes @param
+ * 
+ */
 
 const Auth = createStackNavigator();
 const AuthStack = () => (
@@ -17,6 +21,13 @@ const AuthStack = () => (
         <Auth.Screen name="RegisterPage" component={RegisterPage} />
     </Auth.Navigator>
 );
+
+/***
+ * 
+ * Modules routes
+ * 
+ */
+
 const ModuleStack = createStackNavigator();
 const ModuleRoute = () => (
     <ModuleStack.Navigator screenOptions={screenOptionStyle} initialRouteName="HomeScreen">
@@ -25,6 +36,14 @@ const ModuleRoute = () => (
         <ModuleStack.Screen name="SceenB" component={SceenB} />
     </ModuleStack.Navigator>
 );
+
+
+/***
+ * 
+ * Application routes
+ * 
+ */
+
 const RootStack = createStackNavigator();
 function AppNavigator() {
 
@@ -56,7 +75,7 @@ function AppNavigator() {
     if (isloading) {
         return (
             <SplashPage></SplashPage>
-        )
+        );
     }
 
     return (
