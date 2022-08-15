@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { SceenA, SceenB, HomeScreen, LoginPage, RegisterPage, SplashPage } from '../src';
+import { SceenA, SceenB, HomeScreen, LoginPage, RegisterPage, SplashPage,ScreenTest } from '../src';
 import { createStackNavigator } from '@react-navigation/stack';
 import { mapDispatchToProps, mapStateToProps, LocalStorage } from "../Util";
 import { connect } from 'react-redux';
@@ -34,6 +34,7 @@ const ModuleRoute = () => (
         <ModuleStack.Screen name="HomeScreen" component={HomeScreen} />
         <ModuleStack.Screen name="SceenA" component={SceenA} />
         <ModuleStack.Screen name="SceenB" component={SceenB} />
+        <ModuleStack.Screen name="ScreenTest" component={ScreenTest} />
     </ModuleStack.Navigator>
 );
 

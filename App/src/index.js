@@ -1,5 +1,5 @@
 import { LoginPage, RegisterPage } from "./Screens/Auth";
-import { HomeScreen, SceenA, SceenB, SplashPage } from "./Screens/Modules";
+import { HomeScreen, SceenA, SceenB, SplashPage,ScreenTest } from "./Screens/Modules";
 export {
-    LoginPage, RegisterPage, HomeScreen, SceenA, SceenB, SplashPage
+    LoginPage, RegisterPage, HomeScreen, SceenA, SceenB, SplashPage,ScreenTest
 };

@@ -18,7 +18,7 @@ function HomeScreen(props) {
     const _OnSliderContentShown = (items, index) => {
         return (
             <View
-                key={items?.id}
+                key={(index + 901)}
                 style={styles.hIngredients}>
                 <Pressable
                     onPress={() => {
@@ -38,24 +38,25 @@ function HomeScreen(props) {
     const _OnHorizontalContentShown = (items, index) => {
         return (
             <View
-                key={(items?.id + getRandomInt(parseInt(items?.id))).toString()}
+                key={(index + 911)}
                 style={[styles.hIngredients, {
                     flexDirection: "column", borderRadius: 0,
                     backgroundColor: "#FFF", justifyContent: "center",
-                    alignItems: "center", marginStart: 10
+                    alignItems: "center", marginStart: 10,width:72,marginBottom:10,
+                    padding:10
                 }]}>
                 <Pressable
                     onPress={() => { props.navigation.navigate("SceenA"); }}
                     style={{ flex: 1 }}>
                     <Image
-                        style={[styles.hImage, { height: 96, width: 96, borderRadius: 96 }]}
+                        style={[styles.hImage, { height: 66, width: 66, borderRadius: 96 }]}
                         resizeMode="contain"
                         source={{ uri: items.thumb }}
                     />
                 </Pressable>
                 <Text
                     numberOfLines={1}
-                    style={[styles.ingredientsText, { textTransform: "capitalize" }]}>{(items.meta_title)}</Text>
+                    style={[styles.ingredientsText, { textTransform: "capitalize",fontSize:11,paddingStart:0}]}>{(items.meta_title)}</Text>
             </View>
         );
     }
@@ -66,7 +67,8 @@ function HomeScreen(props) {
     const _OnlistContentShown = (items, index) => {
         return (
             <ListItem
-                screen={"SceenA"}
+                key={(index + 900)}
+                screen={"ScreenTest"}
                 cStyle={[styles.gridIngredients, { padding: 10, marginTop: 10 }]}
                 items={items}
                 props={props}
@@ -91,7 +93,7 @@ function HomeScreen(props) {
 
 
                 <View style={{ width: "100%" }}>
-                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 10 }}>{"Categories"}</Text>
+                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 10,fontFamily:"Cochin-bold" }}>{"Categories"}</Text>
                 </View>
 
                 <ScrollView
@@ -104,7 +106,7 @@ function HomeScreen(props) {
                 </ScrollView>
 
                 <View style={{ width: "100%", paddingTop: 10 }}>
-                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 10 }}>{"Featured Items"}</Text>
+                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 10,fontFamily:"Cochin-bold" }}>{"Featured Items"}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -114,7 +116,7 @@ function HomeScreen(props) {
                 </View>
 
                 <View style={{ width: "100%", paddingTop: 10 }}>
-                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 15 }}>{"Recent Items"}</Text>
+                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 15,fontFamily:"Cochin-bold" }}>{"Recent Items"}</Text>
                 </View>
 
 
@@ -125,7 +127,7 @@ function HomeScreen(props) {
                     })}
                 </View>
 
-                <View style={{height:30,width:"100%"}}></View>
+                <View style={{ height: 30, width: "100%" }}></View>
             </ScrollView>
         </View>
     </SafeAreaView>);

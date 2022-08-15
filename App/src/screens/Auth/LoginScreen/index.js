@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, View, TextInput, Text, StyleSheet, KeyboardAvoidingView } from "react-native";
 import { CustomButton } from '../../../CustomModules/index';
 import { LocalStorage, mapStateToProps, mapDispatchToProps } from "../../../../Util";
@@ -52,6 +52,11 @@ const LoginPage = (props) => {
                 <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle]}>{"UserID*"}</Text>
 
                 <TextInput
+                    autoCapitalize={"none"}
+                    autoCorrect={false}
+                    autoFocus={true}
+                    maxLength={15}
+                    placeholder={"UserID*"}
                     style={[CommonStyle.txtInput, { borderColor: (uidError) ? "red" : appColor.grey }]}
                     onChangeText={(value) => {
                         setUID(value);
@@ -67,11 +72,15 @@ const LoginPage = (props) => {
                 <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle]}>{"Password*"}</Text>
 
                 <TextInput
+                    autoCapitalize={"none"}
+                    autoCorrect={false}
+                    maxLength={15}
                     style={[CommonStyle.txtInput, { borderColor: (passError) ? "red" : appColor.grey }]}
                     onChangeText={(value) => {
                         setPassword(value);
                         setPassError("");
                     }}
+                    placeholder={"Password*"}
                     value={password}>
                 </TextInput>
 

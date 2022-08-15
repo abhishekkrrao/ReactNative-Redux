@@ -31,7 +31,7 @@ function Header({ props, style, home, issearch }) {
                     style={{ width: home ? "100%" : 200, height: 66, alignSelf: "flex-end", justifyContent: "center" }}>
                     <Text
                         onPress={() => logOut()}
-                        style={{ fontSize: 21, padding: 16, textAlign: "right", fontWeight: "bold", color: "#FFF" }}>{"Logout"}</Text>
+                        style={{ fontSize: 21, padding: 16, textAlign: "right", fontWeight: "bold", color: "#FFF",fontFamily:"Cochin-bold" }}>{"Logout"}</Text>
                 </View>
 
             </View>}

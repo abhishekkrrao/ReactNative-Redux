@@ -11,7 +11,7 @@ const shadowIOSStyle = {
     shadowOpacity: 0.15, overflow: "hidden", borderWidth: 1, borderColor: "#FFF"
 }
 
-function ListItem({ cStyle, items, props, iStyle, tStyle, screen }) {
+function ListItem({ cStyle, items, props, iStyle, tStyle, screen,key }) {
     function getRandomInt() {
         return Math.floor(Math.random() * 100) + 1;
     }
@@ -19,7 +19,7 @@ function ListItem({ cStyle, items, props, iStyle, tStyle, screen }) {
     const _navigate = (props) => { props.navigation.navigate(screen); }
     return (
         <View
-            key={(items?.id + getRandomInt()).toString()}
+            key={key}
             style={[cStyle, Platform.OS == "android" ? shadowAndroidStyle : shadowIOSStyle]}>
             <View style={{
                 width: "100%", height: "auto",

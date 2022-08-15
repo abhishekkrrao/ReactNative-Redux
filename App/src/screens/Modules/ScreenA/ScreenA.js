@@ -38,7 +38,7 @@ function SceenA(props) {
     const _OnHorizontalContentShown = (items, index) => {
         return (
             <View
-                key={(items?.id + getRandomInt(parseInt(items?.id))).toString()}
+                key={(index+911)}
                 style={[styles.hIngredients, {
                     flexDirection: "column", borderRadius: 0,
                     backgroundColor: "#FFF", justifyContent: "center",
@@ -66,6 +66,7 @@ function SceenA(props) {
     const _OnlistContentShown = (items, index) => {
         return (
             <ListItem
+                key={(index + 900)}
                 screen={"SceenB"}
                 cStyle={[styles.gridIngredients, { padding: 10, marginTop: 10 }]}
                 items={items}
@@ -125,7 +126,7 @@ function SceenA(props) {
                     })}
                 </View>
 
-                <View style={{height:30,width:"100%"}}></View>
+                <View style={{ height: 30, width: "100%" }}></View>
             </ScrollView>
         </View>
     </SafeAreaView>);
