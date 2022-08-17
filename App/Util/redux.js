@@ -1,5 +1,5 @@
 import { bindActionCreators } from 'redux';
-import * as Actions from '../Redux/Action/index';
+import * as Actions from '../Redux/Action';
 export function mapStateToProps(state) {
     return {
         ...state

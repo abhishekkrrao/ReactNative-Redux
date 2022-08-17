@@ -9,6 +9,18 @@ export default StyleSheet.create({
     headStyle: { fontSize: appDimension.pixel18, width: "100%", fontFamily: "Cochin-Bold" },
     hintStyle: { fontSize: appDimension.pixel11, width: "100%", color: "red", fontFamily: "Cochin" },
     container: { flex: 1, backgroundColor: appColor.white },
-    btnTxt: { fontSize: appDimension.pixel18, fontFamily: "Cochin-Bold", letterSpacing: 2 }
-
+    btnTxt: { fontSize: appDimension.pixel18, fontFamily: "Cochin-Bold", letterSpacing: 2 },
+    shadowIOSStyle: {
+        shadowColor: "#000", shadowOffset: { height: 1.5, width: 0 },
+        shadowOpacity: 0.15, overflow: "hidden", borderWidth: 1, borderColor: "#FFF"
+    },
+    iosShadow:{
+        shadowColor:"#000",
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        shadowOffset: {
+            height: 0,
+            width: 0
+        }
+    }
 })

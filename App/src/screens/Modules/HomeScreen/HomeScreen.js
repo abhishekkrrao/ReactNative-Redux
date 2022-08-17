@@ -6,7 +6,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { Header } from "../../../Component";
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps, data, record } from "../../../../Util";
-
+import { CommonStyle } from "../../../../Styles";
 function HomeScreen(props) {
     const [allData, setAllRecord] = useState([]);
     useEffect(() => {
@@ -19,16 +19,14 @@ function HomeScreen(props) {
         return (
             <View
                 key={(index + 901)}
-                style={styles.hIngredients}>
+                style={[styles.hIngredients, { width: 200, height: 200, zIndex: 1 }]}>
                 <Pressable
-                    onPress={() => {
-                        props.navigation.navigate("SceenA");
-                    }}
-                    style={{ flex: 1 }}>
+                    onPress={() => { props.navigation.navigate("SceenA"); }}
+                    style={{ flex: 1, marginTop: 5, marginStart: (index == 0) ? 0 : 10 }}>
                     <Image
-                        style={styles.hImage}
+                        style={[styles.hImage, { width: 195, height: 195, borderRadius: 15 },CommonStyle.shadowIOSStyle]}
                         resizeMode="contain"
-                        source={{ uri: items.image_url }}
+                        source={{ uri: items.thumb }}
                     />
                 </Pressable>
             </View>
@@ -42,8 +40,8 @@ function HomeScreen(props) {
                 style={[styles.hIngredients, {
                     flexDirection: "column", borderRadius: 0,
                     backgroundColor: "#FFF", justifyContent: "center",
-                    alignItems: "center", marginStart: 10,width:72,marginBottom:10,
-                    padding:10
+                    alignItems: "center", marginStart: 10, width: 72, marginBottom: 10,
+                    padding: 10
                 }]}>
                 <Pressable
                     onPress={() => { props.navigation.navigate("SceenA"); }}
@@ -56,7 +54,7 @@ function HomeScreen(props) {
                 </Pressable>
                 <Text
                     numberOfLines={1}
-                    style={[styles.ingredientsText, { textTransform: "capitalize",fontSize:11,paddingStart:0}]}>{(items.meta_title)}</Text>
+                    style={[styles.ingredientsText, { textTransform: "capitalize", fontSize: 11, paddingStart: 0 }]}>{(items.meta_title)}</Text>
             </View>
         );
     }
@@ -82,18 +80,19 @@ function HomeScreen(props) {
             <ScrollView
                 style={[styles.containerChild, { padding: 10 }]}>
 
-                {/* <ScrollView
+                <ScrollView
+                    style={{ padding: 10 }}
                     pagingEnabled={true}
                     horizontal={true}
                     scrollEventThrottle={6}>
                     {allData.map((value, index) => {
                         return _OnSliderContentShown(value, index);
                     })}
-                </ScrollView> */}
+                </ScrollView>
 
 
                 <View style={{ width: "100%" }}>
-                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 10,fontFamily:"Cochin-bold" }}>{"Categories"}</Text>
+                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 10, fontFamily: "Cochin-bold" }}>{"Categories"}</Text>
                 </View>
 
                 <ScrollView
@@ -106,7 +105,7 @@ function HomeScreen(props) {
                 </ScrollView>
 
                 <View style={{ width: "100%", paddingTop: 10 }}>
-                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 10,fontFamily:"Cochin-bold" }}>{"Featured Items"}</Text>
+                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 10, fontFamily: "Cochin-bold" }}>{"Featured Items"}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -116,7 +115,7 @@ function HomeScreen(props) {
                 </View>
 
                 <View style={{ width: "100%", paddingTop: 10 }}>
-                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 15,fontFamily:"Cochin-bold" }}>{"Recent Items"}</Text>
+                    <Text style={{ fontSize: 21, fontWeight: "900", paddingLeft: 15, fontFamily: "Cochin-bold" }}>{"Recent Items"}</Text>
                 </View>
 
 
