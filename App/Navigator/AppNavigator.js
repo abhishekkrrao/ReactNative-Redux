@@ -8,7 +8,7 @@ import { mapDispatchToProps, mapStateToProps, LocalStorage } from "../Util";
 import { connect } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { screenOptionStyle } from './style';
-import MaterialIcons from "react-native-vector-icons/dist/Ionicons";
+// import MaterialIcons from "react-native-vector-icons/dist/Ionicons";
 
 
 /***
@@ -69,7 +69,7 @@ function AppNavigator({signIn=()=>null}) {
 
 
     useEffect(()=>{
-        MaterialIcons.loadFont().then(()=>{}).catch(()=>{})
+        // MaterialIcons.loadFont().then(()=>{}).catch(()=>{})
     })
 
     useEffect(() => {

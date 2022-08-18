@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
     SafeAreaView, View, Text, Image, Platform, Pressable, ScrollView,
-    StyleSheet,
-    FlatList,
-    Dimensions, Animated
+    StyleSheet, FlatList, Dimensions, Animated
 } from "react-native";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps, record } from "../../../../Util";
 import { CommonStyle } from "../../../../Styles";
-import MaterialIcons from "react-native-vector-icons/Ionicons";
+
 
 const MaximumValue = 800;
 const MaximumDuration = 100;
@@ -21,7 +19,7 @@ function MainPage(props) {
     const [state, setState] = useState({});
     const [allData, setAllRecord] = useState([]);
     const [clist, setAllCList] = useState([]);
-    const [value,setAnimValue] = useState(new Animated.Value(0))
+    const [value, setAnimValue] = useState(new Animated.Value(0))
 
 
     /**
@@ -35,7 +33,7 @@ function MainPage(props) {
         setAllCList(record.output.category);
     }, []);
 
-    const startAnimation=()=>{
+    const startAnimation = () => {
         Animated.timing(value, {
             // toValue: 0,
             duration: MaximumValue,
@@ -122,11 +120,11 @@ function MainPage(props) {
                     justifyContent: "center", alignItems: "center", borderTopEndRadius: 16,
                     borderTopLeftRadius: 16
                 }}>
-                    <MaterialIcons name="nutrition-outline" color={"#ffc400"} size={96} />
+                    {/* <MaterialIcons name="nutrition-outline" color={"#ffc400"} size={96} /> */}
                 </View>
                 <View style={{ width: "100%", flexDirection: "column", padding: 10 }}>
-                    <Text style={{ color: "#9e9e9e", fontSize: 11, lineHeight: 15, fontFamily: "Roboto-Regular" }}>{"Bunch"}</Text>
-                    <Text style={{ color: "#111", fontSize: 13, fontFamily: "Roboto-Bold" }}>{"Organic Banana"}</Text>
+                    <Text style={{ color: "#9e9e9e", fontSize: 11, lineHeight: 15 }}>{"Bunch"}</Text>
+                    <Text style={{ color: "#111", fontSize: 13 }}>{"Organic Banana"}</Text>
                     <View style={{ flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                         <Text style={{ color: "#111", fontSize: 14, flex: 1, paddingTop: 5, fontWeight: "700" }}>{"$1"}</Text>
                         <Text style={{ color: "#ffab00", fontSize: 8, flex: 1, paddingTop: 5, fontWeight: "700" }}>{"Cart " + (item?.count ? item?.count : 0)}</Text>
@@ -167,12 +165,11 @@ function MainPage(props) {
                         setAnimValue(new Animated.Value(0));
                         const result = clist;
                         setAllCList(result);
-                      
                     }}
                     style={{ backgroundColor: items?.isCheck ? "red" : "#e2f1f8", padding: 20, borderRadius: 15 }}>
-                    <MaterialIcons name="nutrition-outline" color={(items?.isCheck ? "#FFF" : "#000")} size={24} />
+                    {/* <MaterialIcons name="nutrition-outline" color={(items?.isCheck ? "#FFF" : "#000")} size={24} /> */}
                 </Pressable>
-                <Text style={{ padding: 5, fontFamily: "Roboto-Light", fontSize: 11 }}>{"Mango"}</Text>
+                <Text style={{ padding: 5, fontSize: 11 }}>{"Mango"}</Text>
             </View>
         );
     }
@@ -189,18 +186,19 @@ function MainPage(props) {
                 nestedScrollEnabled={true}
                 style={{ flex: 1, padding: 10 }}>
 
+                {/* Montserrat-Bold */}
 
                 <View style={{ width: "100%", flexDirection: "row" }}>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: 21, fontFamily: "Roboto-Regular" }}>{"Good for you"}</Text>
-                        <Text style={{ fontSize: 21, paddingTop: 2, fontFamily: "Roboto-Regular" }}>{"Great for life"}</Text>
+                        <Text style={{ fontSize: 24,fontFamily:"Montserrat-Regular" }}>{"Good for you"}</Text>
+                        <Text style={{ fontSize: 24, paddingTop: 2,fontFamily:"Montserrat-Regular" }}>{"Great for life"}</Text>
                     </View>
                     <View style={{ flex: 1, alignItems: "flex-end", justifyContent: "center" }}>
-                        <MaterialIcons name="notifications-outline" color={"#000"} size={24} />
+                        {/* <MaterialIcons name="notifications-outline" color={"#000"} size={24} /> */}
                     </View>
                 </View>
 
-                <Text style={{ fontSize: 21, fontFamily: "Roboto-Medium" }}>{"Categories"}</Text>
+                <Text style={{ fontSize: 21,fontFamily:"Montserrat-Medium" }}>{"Categories"}</Text>
 
 
                 <View style={{ width: "100%", height: 126 }}>
