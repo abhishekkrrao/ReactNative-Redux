@@ -5,7 +5,7 @@ function CustomButton({ btnStyle, textStyle, onPress, value = "Submit" }) {
         <Pressable
             onPress={onPress}>
             <View style={[styles.buttonStyle, btnStyle]}>
-                <Text style={[styles.TextStyle, textStyle]}>{value}</Text>
+                <Text style={[styles.TextStyle, textStyle, { fontFamily: "Montserrat-Medium" }]}>{value}</Text>
             </View>
         </Pressable>
     );

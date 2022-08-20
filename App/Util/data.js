@@ -1050,6 +1050,7 @@ const record = {
       "category": [
         {
           "id": 1,
+          price:"24",
           "meta_title": "Earrings",
           "meta_description": "Earrings in joolkart.com",
           "business_id": 1,
@@ -1232,6 +1233,7 @@ const record = {
         },
         {
           "id": 2,
+          price:"37",
           "meta_title": "Necklaces",
           "meta_description": "Necklaces in joolkart.com",
           "business_id": 1,
@@ -1314,6 +1316,7 @@ const record = {
         },
         {
           "id": 3,
+          price:"18",
           "meta_title": "Rings",
           "meta_description": "Rings in joolkart.com",
           "business_id": 1,
@@ -1356,6 +1359,7 @@ const record = {
         },
         {
           "id": 4,
+          price:"126",
           "meta_title": "Bangles",
           "meta_description": "Bangles in joolkart.com",
           "business_id": 1,
@@ -1434,98 +1438,6 @@ const record = {
               "slug": "bracelets",
               "position": 3
             }
-          ]
-        },
-        {
-          "id": 5,
-          "meta_title": "Sets",
-          "meta_description": "Sets in joolkart.com",
-          "business_id": 1,
-          "status": 1,
-          "name": "Sets",
-          "short_code": "Sets",
-          "parent_id": 0,
-          "thumb": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765886jewellery-sets.jpg_250X250.jpg",
-          "icon": "https://dev-api.joolkart.com/uploads/img/category/default.png",
-          "banner": "https://dev-api.joolkart.com/uploads/img/category/default.png",
-          "description": "Description",
-          "created_by": 1,
-          "deleted_at": null,
-          "created_at": "2022-07-25T21:48:06.000000Z",
-          "updated_at": "2022-07-25T21:48:06.000000Z",
-          "slug": "sets",
-          "position": 5,
-          "children": [
-            
-          ]
-        },
-        {
-          "id": 6,
-          "meta_title": "wedding collection",
-          "meta_description": "Wedding Collection in joolkart.com",
-          "business_id": 1,
-          "status": 1,
-          "name": "Wedding Collection",
-          "short_code": "wedding collection",
-          "parent_id": 0,
-          "thumb": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765950party-wear.jpg_250X250.jpg",
-          "icon": "https://dev-api.joolkart.com/uploads/img/category/default.png",
-          "banner": "https://dev-api.joolkart.com/uploads/img/category/default.png",
-          "description": "Description",
-          "created_by": 1,
-          "deleted_at": null,
-          "created_at": "2022-07-25T21:49:10.000000Z",
-          "updated_at": "2022-07-25T21:49:10.000000Z",
-          "slug": "wedding-collection",
-          "position": 6,
-          "children": [
-            
-          ]
-        },
-        {
-          "id": 7,
-          "meta_title": "Kids",
-          "meta_description": "Kids in joolkart.com",
-          "business_id": 1,
-          "status": 1,
-          "name": "Kids",
-          "short_code": "kids",
-          "parent_id": 0,
-          "thumb": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765988kids.jpg_250X250.jpg",
-          "icon": "https://dev-api.joolkart.com/uploads/img/category/default.png",
-          "banner": "https://dev-api.joolkart.com/uploads/img/category/default.png",
-          "description": "Description",
-          "created_by": 1,
-          "deleted_at": null,
-          "created_at": "2022-07-25T21:49:48.000000Z",
-          "updated_at": "2022-07-25T21:49:48.000000Z",
-          "slug": "kids",
-          "position": 7,
-          "children": [
-            
-          ]
-        },
-        {
-          "id": 8,
-          "meta_title": "mens",
-          "meta_description": "Mens in joolkart.com",
-          "business_id": 1,
-          "status": 1,
-          "name": "Mens",
-          "short_code": "mens",
-          "parent_id": 0,
-          "thumb": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658766017mens-jewellery.jpg_250X250.jpg",
-          "icon": "https://dev-api.joolkart.com/uploads/img/category/default.png",
-          "banner": "https://dev-api.joolkart.com/uploads/img/category/default.png",
-          "description": "description",
-          "created_by": 1,
-          "deleted_at": null,
-          "created_at": "2022-07-25T21:50:18.000000Z",
-          "updated_at": "2022-07-25T21:50:32.000000Z",
-          "slug": "mens",
-          "position": 8,
-          "children": [
-            
           ]
         }
       ],

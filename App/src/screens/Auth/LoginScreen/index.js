@@ -49,7 +49,7 @@ const LoginPage = (props) => {
         <SafeAreaView style={[CommonStyle.container, { backgroundColor: appColor.backGround }]}>
             <KeyboardAvoidingView behavior={"padding"} style={[styles.v1]}>
 
-                <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle]}>{"UserID*"}</Text>
+                <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"UserID*"}</Text>
 
                 <TextInput
                     autoCapitalize={"none"}
@@ -69,7 +69,7 @@ const LoginPage = (props) => {
 
 
 
-                <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle]}>{"Password*"}</Text>
+                <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"Password*"}</Text>
 
                 <TextInput
                     autoCapitalize={"none"}

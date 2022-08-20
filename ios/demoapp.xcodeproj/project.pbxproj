@@ -32,6 +32,20 @@
 		AA4FBDB928AE21FF0063BB1D /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDA728AE21FF0063BB1D /* Montserrat-Regular.ttf */; };
 		AA4FBDBA28AE21FF0063BB1D /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDA828AE21FF0063BB1D /* Montserrat-Light.ttf */; };
 		AA4FBDBB28AE21FF0063BB1D /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDA928AE21FF0063BB1D /* Montserrat-BoldItalic.ttf */; };
+		AA9D019828AE2A210089CCF5 /* AntDesign.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDBD28AE22530063BB1D /* AntDesign.js */; };
+		AA9D019928AE2A210089CCF5 /* Entypo.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC628AE22530063BB1D /* Entypo.js */; };
+		AA9D019A28AE2A210089CCF5 /* EvilIcons.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC428AE22530063BB1D /* EvilIcons.js */; };
+		AA9D019B28AE2A210089CCF5 /* Feather.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC828AE22530063BB1D /* Feather.js */; };
+		AA9D019C28AE2A210089CCF5 /* FontAwesome.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDBC28AE22530063BB1D /* FontAwesome.js */; };
+		AA9D019D28AE2A210089CCF5 /* FontAwesome5.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC528AE22530063BB1D /* FontAwesome5.js */; };
+		AA9D019E28AE2A210089CCF5 /* FontAwesome5Pro.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC028AE22530063BB1D /* FontAwesome5Pro.js */; };
+		AA9D019F28AE2A210089CCF5 /* Fontisto.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC928AE22530063BB1D /* Fontisto.js */; };
+		AA9D01A028AE2A210089CCF5 /* Foundation.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC728AE22530063BB1D /* Foundation.js */; };
+		AA9D01A128AE2A210089CCF5 /* Ionicons.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC128AE22530063BB1D /* Ionicons.js */; };
+		AA9D01A228AE2A210089CCF5 /* MaterialCommunityIcons.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDBF28AE22530063BB1D /* MaterialCommunityIcons.js */; };
+		AA9D01A328AE2A210089CCF5 /* MaterialIcons.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDBE28AE22530063BB1D /* MaterialIcons.js */; };
+		AA9D01A428AE2A210089CCF5 /* Octicons.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC228AE22530063BB1D /* Octicons.js */; };
+		AA9D01A528AE2A210089CCF5 /* Zocial.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC328AE22530063BB1D /* Zocial.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -386,6 +400,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA9D019828AE2A210089CCF5 /* AntDesign.js in Resources */,
+				AA9D019928AE2A210089CCF5 /* Entypo.js in Resources */,
+				AA9D019A28AE2A210089CCF5 /* EvilIcons.js in Resources */,
+				AA9D019B28AE2A210089CCF5 /* Feather.js in Resources */,
+				AA9D019C28AE2A210089CCF5 /* FontAwesome.js in Resources */,
+				AA9D019D28AE2A210089CCF5 /* FontAwesome5.js in Resources */,
+				AA9D019E28AE2A210089CCF5 /* FontAwesome5Pro.js in Resources */,
+				AA9D019F28AE2A210089CCF5 /* Fontisto.js in Resources */,
+				AA9D01A028AE2A210089CCF5 /* Foundation.js in Resources */,
+				AA9D01A128AE2A210089CCF5 /* Ionicons.js in Resources */,
+				AA9D01A228AE2A210089CCF5 /* MaterialCommunityIcons.js in Resources */,
+				AA9D01A328AE2A210089CCF5 /* MaterialIcons.js in Resources */,
+				AA9D01A428AE2A210089CCF5 /* Octicons.js in Resources */,
+				AA9D01A528AE2A210089CCF5 /* Zocial.js in Resources */,
 				AA4FBDAA28AE21FF0063BB1D /* Montserrat-ThinItalic.ttf in Resources */,
 				AA4FBDAB28AE21FF0063BB1D /* Montserrat-Bold.ttf in Resources */,
 				AA4FBDAC28AE21FF0063BB1D /* Montserrat-ExtraLightItalic.ttf in Resources */,
@@ -508,7 +536,7 @@
 		};
 		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -518,7 +546,7 @@
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-demoapp/Pods-demoapp-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-demoapp/Pods-demoapp-resources.sh\"\n";
 			showEnvVarsInLog = 0;

@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { SceenA, SceenB, HomeScreen, LoginPage, RegisterPage, SplashPage,ScreenTest,
-    MainPage } from '../src';
+    MainPage,DetailPage,SearchPage,ProfilePage,WishlistPage,
+    TrendingPage } from '../src';
 import { createStackNavigator } from '@react-navigation/stack';
 import { mapDispatchToProps, mapStateToProps, LocalStorage } from "../Util";
 import { connect } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { screenOptionStyle } from './style';
-// import MaterialIcons from "react-native-vector-icons/dist/Ionicons";
+import TabNavigator from './TabNavigator';
 
 
 /***
@@ -33,12 +34,15 @@ const AuthStack = () => (
 
 const ModuleStack = createStackNavigator();
 const ModuleRoute = () => (
-    <ModuleStack.Navigator screenOptions={screenOptionStyle} initialRouteName="MainPage">
-        <ModuleStack.Screen name="MainPage" component={MainPage} />
+    <ModuleStack.Navigator screenOptions={screenOptionStyle} initialRouteName="TabNavigator">
+        <ModuleStack.Screen name="TabNavigator" component={TabNavigator} />
+        <ModuleStack.Screen name="DetailPage" component={DetailPage} />
         <ModuleStack.Screen name="HomeScreen" component={HomeScreen} />
         <ModuleStack.Screen name="SceenA" component={SceenA} />
         <ModuleStack.Screen name="SceenB" component={SceenB} />
         <ModuleStack.Screen name="ScreenTest" component={ScreenTest} />
+        <ModuleStack.Screen name="SearchPage" component={SearchPage} />
+        <ModuleStack.Screen name="TrendingPage" component={TrendingPage} />
     </ModuleStack.Navigator>
 );
 
@@ -67,10 +71,7 @@ function AppNavigator({signIn=()=>null}) {
             })
     }
 
-
-    useEffect(()=>{
-        // MaterialIcons.loadFont().then(()=>{}).catch(()=>{})
-    })
+ 
 
     useEffect(() => {
         setTimeout(() => {

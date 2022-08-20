@@ -4,4 +4,10 @@ import HomeScreen from "./HomeScreen/HomeScreen";
 import SplashPage from "./SplashScreen/SplashPage";
 import ScreenTest from "./Test/ScreenTest";
 import MainPage from "./MainPage/MainPage";
-export  { SceenA, SceenB, HomeScreen,SplashPage,ScreenTest,MainPage };
+import DetailPage from "./DetailPage/DetailPage";
+import SearchPage from "./SearchPage/SearchPage";
+import ProfilePage from "./ProfilePage/ProfilePage";
+import WishlistPage from "./WishlistPage/WishlistPage";
+import TrendingPage from "./Trendings/TrendingPage";
+export  { SceenA, SceenB, HomeScreen,SplashPage,ScreenTest,MainPage,DetailPage,SearchPage,
+ProfilePage,WishlistPage,TrendingPage };

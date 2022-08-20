@@ -1,2 +1,3 @@
 import Header from './Header/Header';
-export { Header };
+import { GridView } from './GridView/GridView';
+export { Header,GridView };

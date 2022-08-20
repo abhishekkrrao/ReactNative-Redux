@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -8,8 +8,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer } from './Redux/Store';
 import AppNavigator from './Navigator/AppNavigator';
 import { authSaga } from './Redux/Saga';
-import { connect } from 'react-redux';
-import { mapDispatchToProps, mapStateToProps } from './Util';
+// import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+
 const middleware = [];
 const enhancers = [];
 const sagaMiddleware = createSagaMiddleware();
@@ -20,6 +21,16 @@ export const store = createAppropriateStore(rootReducer, composeWithDevTools(...
 sagaMiddleware.run(authSaga);
 
 function App() {
+
+    // useEffect(()=>{
+
+    //     MaterialCommunityIcon.loadFont().then(()=>{}).catch((res)=>{
+    //         console.log(res)
+    //     }); 
+
+
+    // },[])
+
     return (
         <Provider store={store}>
             <SafeAreaProvider>
