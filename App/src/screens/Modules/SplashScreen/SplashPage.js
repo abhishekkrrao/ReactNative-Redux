@@ -1,11 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
-import { AnimatedSVGPath } from "react-native-svg-animations";
-import d from './d';
+// import { AnimatedSVGPath } from "react-native-svg-animations";
+// import d from './d';
 function SplashPage() {
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <AnimatedSVGPath
+            {/* <AnimatedSVGPath
                 strokeColor={"green"}
                 duration={3000}
                 strokeWidth={10}
@@ -16,7 +16,7 @@ function SplashPage() {
                 delay={1000}
                 loop={false}
                 d={d}
-            />
+            /> */}
         </View>
     );
 }

@@ -46,6 +46,7 @@
 		AA9D01A328AE2A210089CCF5 /* MaterialIcons.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDBE28AE22530063BB1D /* MaterialIcons.js */; };
 		AA9D01A428AE2A210089CCF5 /* Octicons.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC228AE22530063BB1D /* Octicons.js */; };
 		AA9D01A528AE2A210089CCF5 /* Zocial.js in Resources */ = {isa = PBXBuildFile; fileRef = AA4FBDC328AE22530063BB1D /* Zocial.js */; };
+		AAD4A81E28B0BEDD0064B20E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD4A81D28B0BEDD0064B20E /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		AA4FBDC728AE22530063BB1D /* Foundation.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = Foundation.js; path = "../node_modules/react-native-vector-icons/Foundation.js"; sourceTree = "<group>"; };
 		AA4FBDC828AE22530063BB1D /* Feather.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = Feather.js; path = "../node_modules/react-native-vector-icons/Feather.js"; sourceTree = "<group>"; };
 		AA4FBDC928AE22530063BB1D /* Fontisto.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = Fontisto.js; path = "../node_modules/react-native-vector-icons/Fontisto.js"; sourceTree = "<group>"; };
+		AAD4A81D28B0BEDD0064B20E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AEEE9769B80D4E9891F6B02C /* Roboto-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Black.ttf"; path = "../App/Constant/fonts/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		CA6BADCFE7464A3EADCBDDDE /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../App/Constant/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
 		DADAB8A9BA7E4FE9B2B46141 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../App/Constant/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD4A81E28B0BEDD0064B20E /* MapKit.framework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-demoapp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,6 +193,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAD4A81D28B0BEDD0064B20E /* MapKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-demoapp.a */,
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-demoapp-demoappTests.a */,

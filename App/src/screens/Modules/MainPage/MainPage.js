@@ -87,13 +87,7 @@ function MainPage(props) {
         });
         setAllCList(result);
     }
-    /**
-     * 
-     * GridView Layout
-     * @param {*} item 
-     * @param {*} index 
-     * @returns 
-     */
+   
 
     const mm = (value) => {
         {
@@ -114,53 +108,7 @@ function MainPage(props) {
         }
     }
 
-    const _GridLayout = (item, index) => {
-        return (
-            <View
-                key={(index + 919)}
-                style={[{
-                    width: ((Dimensions.get("screen").width / 2) - 20), height: "auto",
-                    backgroundColor: "#FFF",
-                    marginBottom: 5, marginTop: 10, marginLeft: (index % 2 == 0) ? 5 : 10,
-                    flexDirection: "column", borderRadius: 16
-                }, { elevation: 1 }]}>
-                {/* , fontFamily: "Montserrat-Regular */}
-                <View style={{
-                    width: "100%", height: 120, backgroundColor: "#eeeeee",
-                    justifyContent: "center", alignItems: "center", borderTopEndRadius: 16,
-                    borderTopLeftRadius: 16
-                }}>
-                    <Pressable
-                        onPress={() => {
-                            console.log(props)
-                            props.navigation.navigate("DetailPage", item);
-                        }}>
-                        <Image
-                            source={{ uri: item?.thumb }}
-                            style={{ width: 96, height: 96, borderRadius: 6 }}></Image>
-                        {/* <Icon name="food-turkey" color={"#ffc400"} size={96} /> */}
-                    </Pressable>
-                </View>
-                <View style={{ width: "100%", flexDirection: "column", padding: 10 }}>
-                    {/* <Text style={{ color: "#000", fontSize: 11, lineHeight: 15, fontFamily: "Montserrat-Thin" }}>{"Bunch"}</Text> */}
-                    <Text style={{ color: "#111", fontSize: 16, fontFamily: "Montserrat-Medium" }}>{item?.name}</Text>
-                    <View style={{ flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-                        <Text style={{ color: "#111", fontSize: 14, flex: 1, paddingTop: 5, fontWeight: "700" }}>{"$" + item.price}</Text>
-                        <Text style={{ color: "#ffab00", fontSize: 11, flex: 1, paddingTop: 5, fontWeight: "700" }}>{"Cart " + (item?.count ? item?.count : 0)}</Text>
-                        <View style={{ flex: 1, flexDirection: "row", alignItems: "flex-end", justifyContent: "flex-end" }}>
-                            {(item?.count > 0) && <Text
-                                onPress={() => removeItem(item)}
-                                style={{ color: "#111", fontSize: 28, fontFamily: "Montserrat-Bold", paddingEnd: 20 }}>{"-"}</Text>}
-                            <Text
-                                onPress={() => addItem(item)}
-                                style={{ color: "#111", fontSize: 28, fontFamily: "Montserrat-Bold", fontWeight: "bold" }}>{"+"}</Text>
-                        </View>
-                    </View>
-                </View>
-            </View>
-        );
-    }
-
+ 
     /**
      * 
      * Horizontal Layout
@@ -239,12 +187,16 @@ function MainPage(props) {
                         <Text style={{ fontSize: 16, fontFamily: "Montserrat-Medium" }}>{"What do you want to buy today ?"}</Text>
                         {/* <Text style={{ fontSize: 24, paddingTop: 2, fontFamily: "Montserrat-Regular" }}>{"Great for life"}</Text> */}
                     </View>
-                    <View style={{
+                    <Pressable
+                    onPress={()=>{
+                        props.navigation.navigate("ExploreScreen")
+                    }}
+                    style={{
                         flex: 1, alignItems: "flex-end", justifyContent: "center",
                         paddingEnd: 15
                     }}>
                         <Ionicons name="person-circle-sharp" size={45} color="#000" />
-                    </View>
+                    </Pressable>
                 </View>
 
 

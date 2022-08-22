@@ -11,7 +11,7 @@ const GridView = ({ item, index, props, removeItem = () => null, addItem = () =>
     
     return (
         <View
-            key={(index + 919)}
+            key={(index + (919*34))}
             style={[{
                 width: ((Dimensions.get("screen").width / 2) - 20), height: "auto",
                 backgroundColor: "#FFF",
