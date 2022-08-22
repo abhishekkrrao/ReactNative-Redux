@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Image, View, Text, LogBox, Pressable, Platform, } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, MainPage, DetailPage, SceenA,WishlistPage,ProfilePage } from '../src';
+import { HomeScreen, MainPage, DetailPage, SceenA, WishlistPage, ProfilePage } from '../src';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";

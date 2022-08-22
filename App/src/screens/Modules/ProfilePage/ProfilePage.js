@@ -17,7 +17,6 @@ function ProfilePage(props) {
 
 
     return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
-        <StatusBar hidden={false} />
         <View style={{ flex: 1 }}>
 
             <View style={{ width: "100%", height: 120, backgroundColor: "#CCC" }}>
@@ -43,7 +42,7 @@ function ProfilePage(props) {
                 }}>{"Gurgaon,Haryana"}</Text>
                 <Pressable
                     style={{
-                        width: 156, height: 36, backgroundColor: "#FFF",
+                        width: 156, height: 'auto', backgroundColor: "#FFF",
                         justifyContent: "center", alignItems: "center", borderWidth: 1, borderColor: "#CCC", padding: 10,
                         marginLeft: 30, marginTop: 5
                     }}>

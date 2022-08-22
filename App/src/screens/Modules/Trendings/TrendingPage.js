@@ -63,7 +63,6 @@ function TrendingPage(props) {
 
 
     return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
-        <StatusBar hidden={true} />
         <Header issearch={false} props={props}></Header>
         <View style={{ flex: 1, padding: 10 }}>
             <FlatList

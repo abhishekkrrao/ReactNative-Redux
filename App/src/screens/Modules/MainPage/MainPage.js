@@ -171,11 +171,6 @@ function MainPage(props) {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
 
-            <StatusBar
-                hidden={true}
-            />
-
-
             <ScrollView
 
                 style={{ flex: 1, padding: 10 }}>

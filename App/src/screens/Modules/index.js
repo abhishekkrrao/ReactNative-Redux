@@ -9,5 +9,8 @@ import SearchPage from "./SearchPage/SearchPage";
 import ProfilePage from "./ProfilePage/ProfilePage";
 import WishlistPage from "./WishlistPage/WishlistPage";
 import TrendingPage from "./Trendings/TrendingPage";
-export  { SceenA, SceenB, HomeScreen,SplashPage,ScreenTest,MainPage,DetailPage,SearchPage,
-ProfilePage,WishlistPage,TrendingPage };
+import ExploreScreen from "./ExploreScreen/ExploreScreen";
+export {
+    SceenA, SceenB, HomeScreen, SplashPage, ScreenTest, MainPage, DetailPage, SearchPage,
+    ProfilePage, WishlistPage, TrendingPage, ExploreScreen
+};

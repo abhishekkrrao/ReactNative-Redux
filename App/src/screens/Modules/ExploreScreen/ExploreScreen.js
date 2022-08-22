@@ -98,7 +98,7 @@ const ExploreScreen = (props) => {
 
     const onMarkerPress = (mapEventData) => {
         const markerID = mapEventData._targetInst.return.key;
-
+        console.log(markerID)
         let x = (markerID * CARD_WIDTH) + (markerID * 20);
         if (Platform.OS === 'ios') {
             x = x - SPACING_FOR_CARD_INSET;
@@ -112,20 +112,18 @@ const ExploreScreen = (props) => {
     return (
         <View style={styles.container}>
             <MapView
+                zoomEnabled={true}
+                mapType={"standard"}
                 ref={_map}
                 initialRegion={state.region}
                 style={styles.container}
+                showsUserLocation={true}
+                showsScale={true}
+                tintColor={"#000"}
                 customMapStyle={mapStandardStyle}>
 
-                <MapView.Marker
-                    coordinate={{
-                        latitude: markers[0].coordinate.latitude,
-                        longitude: markers[0].coordinate.longitude
-                    }}
-                    title={"title"}
-                    description={"description"}
-                />
-                {/* {state.markers.map((marker, index) => {
+
+                {state.markers.map((marker, index) => {
                     const scaleStyle = {
                         transform: [
                             {
@@ -133,22 +131,25 @@ const ExploreScreen = (props) => {
                             },
                         ],
                     };
-                    <MapView.Marker
-                        key={index}
-                        coordinate={marker.coordinate}
-                        onPress={(e) => onMarkerPress(e)}>
-                        <Animated.View
-                            style={[styles.markerWrap]}>
-                            <Animated.Image
-                                source={require('../../../../../assets/map_marker.png')}
-                                style={[styles.marker, scaleStyle]}
-                                resizeMode="cover"
-                            />
-                        </Animated.View>
-                    </MapView.Marker>
-                })} */}
+                    return (
+                        <Marker key={index} coordinate={marker.coordinate} onPress={(e) => onMarkerPress(e)}>
+                            <Animated.View style={[styles.markerWrap]}>
+                                <Animated.Image
+                                    source={require('../../../../../assets/map_marker.png')}
+                                    style={[styles.marker, scaleStyle]}
+                                    resizeMode="cover"
+                                />
+                            </Animated.View>
+                        </Marker>
+                    );
+                })}
             </MapView>
 
+            <Pressable
+            onPress={()=>{props.navigation.pop()}}
+            style={[styles.btn,{justifyContent:"center",alignItems:"center"}]}>
+                <MaterialCommunityIcons name="keyboard-backspace" style={styles.chipsIcon} size={36} />
+            </Pressable>
             <View style={styles.searchBox}>
 
                 <TextInput
@@ -248,9 +249,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    btn: {
+        width: 76, height: 76, backgroundColor: "#FFF",
+        borderRadius: 76, position: "absolute", top: 46, left: 26
+    },
     searchBox: {
         position: 'absolute',
-        marginTop: Platform.OS === 'ios' ? 40 : 20,
+        marginTop: Platform.OS === 'ios' ? 140 : 20,
         flexDirection: "row",
         backgroundColor: '#fff',
         width: '90%',
@@ -262,11 +267,13 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.5,
         shadowRadius: 5,
         elevation: 10,
+        display: "none"
     },
     chipsScrollView: {
         position: 'absolute',
-        top: Platform.OS === 'ios' ? 90 : 80,
-        paddingHorizontal: 10
+        top: Platform.OS === 'ios' ? 190 : 80,
+        paddingHorizontal: 10,
+        display: "none"
     },
     chipsIcon: {
         marginRight: 5,
