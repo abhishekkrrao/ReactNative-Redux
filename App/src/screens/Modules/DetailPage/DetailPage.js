@@ -26,16 +26,17 @@ function DetailPage(props) {
 
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9", marginTop: -46 }}>
             <ScrollView
                 nestedScrollEnabled={true}
-                style={{ flex: 1, position: "relative" }}>
+                contentContainerStyle={{ flex: 1 }}
+                style={{ flex: 1 }}>
 
                 <Pressable
                     onPress={() => { props.navigation.pop() }}
                     style={[{
                         width: 56, height: 56, backgroundColor: "#40241a",
-                        borderRadius: 56, position: "absolute", top: 16, left: 16
+                        borderRadius: 56, position: "absolute", top: 40, left: 16
                     }, { justifyContent: "center", alignItems: "center", zIndex: 1 }]}>
                     <MaterialCommunityIcons name="keyboard-backspace" color={"#FFF"} size={36} />
                 </Pressable>
@@ -53,7 +54,17 @@ function DetailPage(props) {
                     flex: 1, backgroundColor: "#FFF", borderTopEndRadius: 36, borderTopLeftRadius: 36, marginTop: -36,
                     padding: 10, height: 900
                 }]}>
-                    <Text style={{ padding: 5, fontSize: 19, fontFamily: "Montserrat-Bold" }}>{"Amazing Food Place"}</Text>
+                    <View style={{ width: "100%", flexDirection: "row",justifyContent:"center" }}>
+                        <Text
+                            style={{
+                                padding: 5, fontSize: 19,
+                                fontFamily: "Montserrat-Bold", flex: 3
+                            }}>{"Necklace"}</Text>
+                        <Text
+                            style={{
+                                flex: 1, padding: 5, fontSize: 14, fontFamily: "Montserrat-Bold"
+                            }}>{"₹499"}</Text>
+                    </View>
                     <Text style={{
                         padding: 5, fontSize: 14, fontFamily: "Montserrat-Regular",
                         lineHeight: 17
@@ -61,58 +72,12 @@ function DetailPage(props) {
         Pellentesque condimentum ut libero id blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`}</Text>
 
 
-                    <Text style={{ padding: 5, fontSize: 14, fontFamily: "Montserrat-Bold" }}>{"₹499"}</Text>
-                    <Text style={{ padding: 5, fontSize: 14, fontFamily: "Montserrat-Regular", color: "#40241a" }}>{"Black"}</Text>
+
+                    <Text style={{ padding: 5, fontSize: 14, fontFamily: "Montserrat-Bold" }}>{"Available Color - Black, Green"}</Text>
                     <Text style={{ padding: 5, fontSize: 14, fontFamily: "Montserrat-Regular" }}>{"FREE delivery Friday, August 26 if you spend ₹499 on items shipped by Amazon."}</Text>
 
 
-                    {/* <View style={{ width: "100%", flexDirection: "row", alignItems: "flex-end", justifyContent: "flex-end" }}>
-                        <Text
-                            onPress={() => { }}
-                            style={{ color: "#111", fontSize: 28, fontFamily: "Montserrat-Bold", paddingEnd: 20 }}>{"-"}</Text>
-                        <Text
-                            onPress={() => { }}
-                            style={{ color: "#111", fontSize: 28, fontFamily: "Montserrat-Bold", fontWeight: "bold", paddingEnd: 20 }}>{"2"}</Text>
-                        <Text
-                            onPress={() => { }}
-                            style={{ color: "#111", fontSize: 28, fontFamily: "Montserrat-Bold", fontWeight: "bold" }}>{"+"}</Text>
-                    </View> */}
-
-
-
-                    {/* <View
-                        style={{ width: "100%", flexDirection: "row", padding: 20 }}>
-
-                        <CustomButton
-                            textStyle={{ fontFamily: "Montserrat-Medium" }}
-                            value={"  Add To Cart   "}
-                            onPress={() => { console.log("olacab") }}
-                            btnStyle={{ backgroundColor: "#40241a" }}>
-
-                        </CustomButton>
-
-
-                        <CustomButton
-                            textStyle={{ fontFamily: "Montserrat-Medium" }}
-                            value={"   Buy Now       "}
-                            onPress={() => { console.log("olacab") }}
-                            btnStyle={{ backgroundColor: "#40241a", marginLeft: 5 }}>
-
-                        </CustomButton>
-                    </View> */}
                 </View>
-                {/* <BottomSheet ref={ref}>
-<View style={{ flex: 1, backgroundColor: '#FFF',marginBottom:-200 }}>
-<Pressable
-    style={{ flex: 1, padding: 20 }}
-    onPress={() => { }}>
-    <Text
-        onPress={() => { ref?.current?.scrollTo(0); }}
-        style={{ fontSize: 21, color: "#000" }}>{"Click to close"}</Text>
-</Pressable>
-</View>
-</BottomSheet> */}
-
             </ScrollView>
         </SafeAreaView >);
 }
