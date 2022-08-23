@@ -94,7 +94,6 @@ const TabNavigator = () => {
     return (
         <Tab.Navigator
             screenOptions={screenOptionStyle}
-            tabBarOptions={() => { }}
             tabBar={props => <MyTabBar {...props} />}>
             <Tab.Screen
                 name="Home"

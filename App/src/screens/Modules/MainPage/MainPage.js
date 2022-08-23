@@ -87,7 +87,7 @@ function MainPage(props) {
         });
         setAllCList(result);
     }
-   
+
 
     const mm = (value) => {
         {
@@ -108,7 +108,7 @@ function MainPage(props) {
         }
     }
 
- 
+
     /**
      * 
      * Horizontal Layout
@@ -183,13 +183,13 @@ function MainPage(props) {
                         {/* <Text style={{ fontSize: 24, paddingTop: 2, fontFamily: "Montserrat-Regular" }}>{"Great for life"}</Text> */}
                     </View>
                     <Pressable
-                    onPress={()=>{
-                        props.navigation.navigate("ExploreScreen")
-                    }}
-                    style={{
-                        flex: 1, alignItems: "flex-end", justifyContent: "center",
-                        paddingEnd: 15
-                    }}>
+                        onPress={() => {
+                            props.navigation.navigate("ExploreScreen")
+                        }}
+                        style={{
+                            flex: 1, alignItems: "flex-end", justifyContent: "center",
+                            paddingEnd: 15
+                        }}>
                         <Ionicons name="person-circle-sharp" size={45} color="#000" />
                     </Pressable>
                 </View>
@@ -250,32 +250,24 @@ function MainPage(props) {
                         paddingLeft: 10, marginBottom: 5
                     }}>{"Trending jewelleries"}</Text>
                     <Text
-                    onPress={()=>{props.navigation.navigate("TrendingPage")}}
-                    style={{
-                        fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10,
-                        marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10,
-                        color: "#524c00"
-                    }}>{"Show all"}</Text>
-                </View>
-
-                <View
-                    style={{ width: "100%", height: 'auto' }}>
-                    <ScrollView
-                        horizontal={false}>
-                        <View style={{
-                            width: "100%", flexDirection: 'row', flexWrap: "wrap"
-                        }}>
-                            {clist.map((value, index) => <GridView
-                                item={value}
-                                props={props}
-                                index={index}
-                                removeItem={removeItem}
-                                addItem={addItem}></GridView>)}
-                        </View>
-                    </ScrollView>
+                        onPress={() => { props.navigation.navigate("TrendingPage") }}
+                        style={{
+                            fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10,
+                            marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10,
+                            color: "#524c00"
+                        }}>{"Show all"}</Text>
                 </View>
 
 
+
+                <View style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap" }}>
+                    {clist.map((value, index) => <GridView
+                        item={value}
+                        props={props}
+                        index={(parseInt(index) + 77)}
+                        removeItem={removeItem}
+                        addItem={addItem}></GridView>)}
+                </View>
 
 
                 <View style={{
@@ -287,31 +279,25 @@ function MainPage(props) {
                         paddingLeft: 10, marginBottom: 5
                     }}>{"Your Recent jewelleries"}</Text>
                     <Text
-                     onPress={()=>{props.navigation.navigate("TrendingPage")}}
-                    style={{
-                        fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10,
-                        marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10,
-                        color: "#524c00"
-                    }}>{"Show all"}</Text>
+                        onPress={() => { props.navigation.navigate("TrendingPage") }}
+                        style={{
+                            fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10,
+                            marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10,
+                            color: "#524c00"
+                        }}>{"Show all"}</Text>
                 </View>
 
-
-                <View
-                    style={{ flex: 1 }}>
-                    <ScrollView
-                        horizontal={false}>
-                        <View style={{
-                            width: "100%", flexDirection: 'row', flexWrap: "wrap"
-                        }}>
-                            {clist.map((value, index) => <GridView
-                                item={value}
-                                props={props}
-                                index={index}
-                                removeItem={removeItem}
-                                addItem={addItem}></GridView>)}
-                        </View>
-                    </ScrollView>
+                <View style={{
+                    width: "100%", flexDirection: 'row', flexWrap: "wrap"
+                }}>
+                    {clist.map((value, index) => <GridView
+                        item={value}
+                        props={props}
+                        index={(parseInt(index) + 99)}
+                        removeItem={removeItem}
+                        addItem={addItem}></GridView>)}
                 </View>
+
 
 
                 <View style={{ width: "100%", height: 50 }}></View>

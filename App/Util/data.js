@@ -2321,11 +2321,17 @@ const record = {
 }
 
 const Images = [
-    { image: require("../../assets/banners/food-banner1.jpeg") },
-    { image: require("../../assets/banners/food-banner2.jpeg") },
-    { image: require("../../assets/banners/food-banner3.jpeg") },
-    { image: require("../../assets/banners/food-banner4.jpeg") }
+    { image: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765611earring.jpg_250X250.jpg" },
+    { image: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765694necklace.jpg_250X250.jpg" },
+    { image:  "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765752rings.jpg_250X250.jpg" },
+    { image: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765796bangles.jpg_250X250.jpg" }
 ];
+// const Images = [
+//     { image: require("../../assets/banners/food-banner1.jpeg") },
+//     { image: require("../../assets/banners/food-banner2.jpeg") },
+//     { image: require("../../assets/banners/food-banner3.jpeg") },
+//     { image: require("../../assets/banners/food-banner4.jpeg") }
+// ];
 
 
  const mapList = [
@@ -2493,6 +2499,29 @@ const Images = [
       rating: 4,
       reviews: 178,
     },
+    {
+        coordinate: {
+          latitude: 22.6290057,
+          longitude: 88.440081,
+        },
+        title: "Fifth Amazing Food Place",
+        description: "This is the fifth best food place",
+        image: "",
+        rating: 4,
+        reviews: 178,
+      },
+      ,
+    {
+        coordinate: {
+          latitude: 22.6298857,
+          longitude: 88.445381,
+        },
+        title: "Fifth Amazing Food Place",
+        description: "This is the fifth best food place",
+        image: "",
+        rating: 4,
+        reviews: 178,
+      }
 ];
 
 

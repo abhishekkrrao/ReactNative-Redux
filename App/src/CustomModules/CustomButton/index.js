@@ -12,7 +12,8 @@ function CustomButton({ btnStyle, textStyle, onPress, value = "Submit" }) {
 }
 const styles = StyleSheet.create({
     buttonStyle: {
-        width: "100%", height: 48, borderRadius: 25, padding: 5, justifyContent: "center", alignItems: "center",
+        width: "100%", height: 48, borderRadius: 25, padding: 5,
+        justifyContent: "center", alignItems: "center",
         backgroundColor: "#000"
     },
     TextStyle: {

@@ -5,9 +5,9 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps, record } from "../../../../Util";
-import { Header,GridView } from "../../../Component";
+import { Header, GridView } from "../../../Component";
 import { CommonStyle } from "../../../../Styles";
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 function WishlistPage(props) {
 
@@ -17,7 +17,8 @@ function WishlistPage(props) {
 
     useEffect(() => {
         setItem(props.route.params);
-        setAllCList(record.output.category);
+        const item = record.output.category;
+        setAllCList([...item,...record.output.category]);
         console.log(item)
     }, []);
 
@@ -66,12 +67,18 @@ function WishlistPage(props) {
 
     return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
 
-
-        {/* <Header issearch={false} props={props}></Header> */}
-        <View style={{ flex: 1, padding: 20 }}>
+        <Pressable
+            onPress={() => { props.navigation.navigate("Home") }}
+            style={[{
+                width: 56, height: 56, backgroundColor: "#40241a",
+                borderRadius: 56, position: "absolute", top: 36, left: 16
+            }, { justifyContent: "center", alignItems: "center", zIndex: 1 }]}>
+            <MaterialCommunityIcons name="keyboard-backspace" color={"#FFF"} size={36} />
+        </Pressable>
+        <View style={{ flex: 1,padding:10 }}>
 
             <Text style={{
-                fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 15,
+                fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 55,
                 paddingLeft: 10
             }}>{"Your Wishlist"}</Text>
 
@@ -84,11 +91,11 @@ function WishlistPage(props) {
                     console.log(distanceFromEnd)
                 }}
                 renderItem={({ item, index }) => <GridView
-                item={item}
-                props={props}
-                index={index}
-                removeItem={removeItem}
-                addItem={addItem}></GridView>}>
+                    item={item}
+                    props={props}
+                    index={index}
+                    removeItem={removeItem}
+                    addItem={addItem}></GridView>}>
             </FlatList>
         </View>
     </SafeAreaView>)

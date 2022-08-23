@@ -1,8 +1,15 @@
+// const Images = [
+//   { image: require("../../assets/banners/food-banner1.jpeg") },
+//   { image: require("../../assets/banners/food-banner2.jpeg") },
+//   { image: require("../../assets/banners/food-banner3.jpeg") },
+//   { image: require("../../assets/banners/food-banner4.jpeg") },
+// ];
+
 const Images = [
-  { image: require("../../assets/banners/food-banner1.jpeg") },
-  { image: require("../../assets/banners/food-banner2.jpeg") },
-  { image: require("../../assets/banners/food-banner3.jpeg") },
-  { image: require("../../assets/banners/food-banner4.jpeg") },
+  { image: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765611earring.jpg_250X250.jpg" },
+  { image: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765694necklace.jpg_250X250.jpg" },
+  { image:  "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765752rings.jpg_250X250.jpg" },
+  { image: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765796bangles.jpg_250X250.jpg" }
 ];
 
 export const markers = [{
@@ -10,8 +17,8 @@ export const markers = [{
     latitude: 22.6293867,
     longitude: 88.4354486,
   },
-  title: "Amazing Food Place",
-  description: "This is the best food place",
+  title: "Earrings",
+  description: "This is the best Earrings",
   image: Images[0].image,
   rating: 4,
   reviews: 99,
@@ -21,8 +28,8 @@ export const markers = [{
     latitude: 22.6345648,
     longitude: 88.4377279,
   },
-  title: "Second Amazing Food Place",
-  description: "This is the second best food place",
+  title: "Necklaces",
+  description: "This is the second best Necklaces",
   image: Images[1].image,
   rating: 5,
   reviews: 102,
@@ -32,8 +39,8 @@ export const markers = [{
     latitude: 22.6281662,
     longitude: 88.4410113,
   },
-  title: "Third Amazing Food Place",
-  description: "This is the third best food place",
+  title: "Rings",
+  description: "This is the third best Rings",
   image: Images[2].image,
   rating: 3,
   reviews: 220,
@@ -43,8 +50,8 @@ export const markers = [{
     latitude: 22.6341137,
     longitude: 88.4497463,
   },
-  title: "Fourth Amazing Food Place",
-  description: "This is the fourth best food place",
+  title: "Bangles",
+  description: "This is the fourth best Bangles",
   image: Images[3].image,
   rating: 4,
   reviews: 48,
@@ -54,13 +61,12 @@ export const markers = [{
     latitude: 22.6292757,
     longitude: 88.444781,
   },
-  title: "Fifth Amazing Food Place",
-  description: "This is the fifth best food place",
+  title: "Bangles",
+  description: "This is the fifth best Bangles",
   image: Images[3].image,
   rating: 4,
   reviews: 178,
-},
-];
+}];
 
 export const mapDarkStyle = [
   {

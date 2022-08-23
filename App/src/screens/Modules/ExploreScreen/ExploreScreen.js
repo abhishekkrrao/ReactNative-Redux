@@ -7,6 +7,7 @@ import MapView, { Marker } from "react-native-maps";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { markers, mapStandardStyle } from '../../../../Util/mapData';
+import { CustomButton } from '../../../CustomModules';
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = 220;
 const CARD_WIDTH = width * 0.8;
@@ -132,11 +133,17 @@ const ExploreScreen = (props) => {
                         ],
                     };
                     return (
-                        <Marker key={index} coordinate={marker.coordinate} onPress={(e) => onMarkerPress(e)}>
-                            <Animated.View style={[styles.markerWrap]}>
+                        <Marker
+                            key={index}
+                            coordinate={marker.coordinate}
+                            onPress={(e) => onMarkerPress(e)}>
+                            <Animated.View
+                                style={[styles.markerWrap, { padding: 5, width: "auto", height: "auto" }]}>
+                                {/* <Text>{marker.title}</Text>
+                                <Text>{marker.description}</Text> */}
                                 <Animated.Image
                                     source={require('../../../../../assets/map_marker.png')}
-                                    style={[styles.marker, scaleStyle]}
+                                    style={[styles.marker, scaleStyle, { tintColor: "#000" }]}
                                     resizeMode="cover"
                                 />
                             </Animated.View>
@@ -146,8 +153,8 @@ const ExploreScreen = (props) => {
             </MapView>
 
             <Pressable
-            onPress={()=>{props.navigation.pop()}}
-            style={[styles.btn,{justifyContent:"center",alignItems:"center"}]}>
+                onPress={() => { props.navigation.pop() }}
+                style={[styles.btn, { justifyContent: "center", alignItems: "center" }]}>
                 <MaterialCommunityIcons name="keyboard-backspace" style={styles.chipsIcon} size={36} />
             </Pressable>
             <View style={styles.searchBox}>
@@ -215,7 +222,7 @@ const ExploreScreen = (props) => {
                 )}>
                 {state.markers.map((marker, index) => (<View style={styles.card} key={index}>
                     <Image
-                        source={marker.image}
+                        source={{ uri: marker.image }}
                         style={styles.cardImage}
                         resizeMode="cover"
                     />
@@ -223,17 +230,10 @@ const ExploreScreen = (props) => {
                         <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
                         <Text numberOfLines={1} style={styles.cardDescription}>{marker.description}</Text>
                         <View style={styles.button}>
-                            <Pressable
-                                onPress={() => { }}
-                                style={[styles.signIn, {
-                                    borderColor: '#FF6347',
-                                    borderWidth: 1
-                                }]}
-                            >
-                                <Text style={[styles.textSign, {
-                                    color: '#FF6347'
-                                }]}>{"Order Now"}</Text>
-                            </Pressable>
+                            <CustomButton
+                                value={"Buy Now"}
+                                btnStyle={{ width: 120, height: "auto" }}
+                                textStyle={{ fontSize: 15, padding: 5 }}></CustomButton>
                         </View>
                     </View>
                 </View>
@@ -250,8 +250,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     btn: {
-        width: 76, height: 76, backgroundColor: "#FFF",
-        borderRadius: 76, position: "absolute", top: 46, left: 26
+        width: 56, height: 56, backgroundColor: "#FFF",
+        borderRadius: 56, position: "absolute", top: 46, left: 26
     },
     searchBox: {
         position: 'absolute',
@@ -341,6 +341,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         width: 50,
         height: 50,
+        // backgroundColor: "#FFF"
     },
     marker: {
         width: 30,
