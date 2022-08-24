@@ -17,6 +17,7 @@ const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 const ExploreScreen = (props) => {
 
     const _map = useRef(null);
+    const _currentMarker = useRef(null);
     const _scrollView = useRef(null);
     const initialMapState = {
         markers,
@@ -104,7 +105,7 @@ const ExploreScreen = (props) => {
         if (Platform.OS === 'ios') {
             x = x - SPACING_FOR_CARD_INSET;
         }
-
+        _currentMarker.current = markerID;
         _scrollView.current.scrollTo({ x: x, y: 0, animated: true });
     }
 
@@ -138,12 +139,18 @@ const ExploreScreen = (props) => {
                             coordinate={marker.coordinate}
                             onPress={(e) => onMarkerPress(e)}>
                             <Animated.View
-                                style={[styles.markerWrap, { padding: 5, width: "auto", height: "auto" }]}>
-                                {/* <Text>{marker.title}</Text>
-                                <Text>{marker.description}</Text> */}
+                                style={[styles.markerWrap, {
+                                    padding: 10, width: "auto", height: "auto",
+                                    backgroundColor: (_currentMarker.current == index) ? "#FFF" : "", borderRadius: 26
+                                }]}>
+                                {(_currentMarker.current == index) && <Text style={{
+                                    backgroundColor: "#FFF", color: "#000",
+                                    fontSize: 11, fontFamily: "Montserrat-Regular", paddingBottom: 5
+                                }}>{marker.title}</Text>}
+                                {/* <Text>{marker.description}</Text> */}
                                 <Animated.Image
                                     source={require('../../../../../assets/map_marker.png')}
-                                    style={[styles.marker, scaleStyle, { tintColor: "#000" }]}
+                                    style={[styles.marker, scaleStyle, { tintColor: "#40241A" }]}
                                     resizeMode="cover"
                                 />
                             </Animated.View>
@@ -155,7 +162,7 @@ const ExploreScreen = (props) => {
             <Pressable
                 onPress={() => { props.navigation.pop() }}
                 style={[styles.btn, { justifyContent: "center", alignItems: "center" }]}>
-                <MaterialCommunityIcons name="keyboard-backspace" style={styles.chipsIcon} size={36} />
+                <MaterialCommunityIcons name="keyboard-backspace" style={styles.chipsIcon} color={"#FFF"} size={36} />
             </Pressable>
             <View style={styles.searchBox}>
 
@@ -220,20 +227,23 @@ const ExploreScreen = (props) => {
                     ],
                     { useNativeDriver: true }
                 )}>
-                {state.markers.map((marker, index) => (<View style={styles.card} key={index}>
+                {state.markers.map((marker, index) => (<View style={[styles.card, { width: CARD_WIDTH, height: "auto" }]} key={index}>
                     <Image
                         source={{ uri: marker.image }}
-                        style={styles.cardImage}
+                        style={[styles.cardImage, { height: 120 }]}
                         resizeMode="cover"
                     />
                     <View style={styles.textContent}>
-                        <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
-                        <Text numberOfLines={1} style={styles.cardDescription}>{marker.description}</Text>
-                        <View style={styles.button}>
+                        <Text style={styles.cardtitle}>{marker.title}</Text>
+                        <Text
+                            numberOfLines={2}
+                            style={[styles.cardDescription]}>{marker.description}</Text>
+                        <View style={[styles.button]}>
+
                             <CustomButton
                                 value={"Buy Now"}
-                                btnStyle={{ width: 120, height: "auto" }}
-                                textStyle={{ fontSize: 15, padding: 5 }}></CustomButton>
+                                btnStyle={{ width: 120, height: "auto", backgroundColor: "#40241A" }}
+                                textStyle={{ fontSize: 14, padding: 5, color: "#FFF", fontFamily: "Montserrat-Bold" }}></CustomButton>
                         </View>
                     </View>
                 </View>
@@ -250,7 +260,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     btn: {
-        width: 56, height: 56, backgroundColor: "#FFF",
+        width: 56, height: 56, backgroundColor: "#40241a",
         borderRadius: 56, position: "absolute", top: 46, left: 26
     },
     searchBox: {
@@ -306,21 +316,21 @@ const styles = StyleSheet.create({
         // padding: 10,
         elevation: 2,
         backgroundColor: "#FFF",
-        borderTopLeftRadius: 5,
-        borderTopRightRadius: 5,
+        borderRadius: 25,
         marginHorizontal: 10,
         shadowColor: "#000",
-        shadowRadius: 5,
+        shadowRadius: 25,
         shadowOpacity: 0.3,
         shadowOffset: { x: 2, y: -2 },
         height: CARD_HEIGHT,
         width: CARD_WIDTH,
         overflow: "hidden",
+        marginBottom: 20
     },
     cardImage: {
-        flex: 3,
+        flex: 1,
         width: "100%",
-        height: "100%",
+        height: 200,
         alignSelf: "center",
     },
     textContent: {
@@ -328,13 +338,14 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     cardtitle: {
-        fontSize: 12,
-        // marginTop: 5,
+        fontSize: 18,
+        fontFamily: "Montserrat-Bold",
         fontWeight: "bold",
     },
     cardDescription: {
         fontSize: 12,
         color: "#444",
+        fontFamily: "Montserrat-Regular"
     },
     markerWrap: {
         alignItems: "center",
@@ -348,7 +359,7 @@ const styles = StyleSheet.create({
         height: 30,
     },
     button: {
-        alignItems: 'center',
+        alignItems: "flex-start",
         marginTop: 5
     },
     signIn: {

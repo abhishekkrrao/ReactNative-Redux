@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
     SafeAreaView, View, FlatList, Text,
-    Dimensions, Pressable, Image, StatusBar
+    Dimensions, Pressable, Image, StatusBar, Platform
 } from "react-native";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps, record } from "../../../../Util";
@@ -17,11 +17,25 @@ function WishlistPage(props) {
 
     useEffect(() => {
         setItem(props.route.params);
-        const item = record.output.category;
-        setAllCList([...item,...record.output.category]);
+        setAllCList(record.output.category);
         console.log(item)
     }, []);
 
+
+    /***
+     * 
+     * like item
+     */
+    const likeItem = (item) => {
+        let index = clist.indexOf(item);
+        const result = clist.map((sObj, position) => {
+            if (index == position) {
+                sObj.like = !sObj.like;
+            }
+            return sObj;
+        });
+        setAllCList(result);
+    }
 
 
     /**
@@ -67,21 +81,21 @@ function WishlistPage(props) {
 
     return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
 
-        <Pressable
-            onPress={() => { props.navigation.navigate("Home") }}
-            style={[{
-                width: 56, height: 56, backgroundColor: "#40241a",
-                borderRadius: 56, position: "absolute", top: 36, left: 16
-            }, { justifyContent: "center", alignItems: "center", zIndex: 1 }]}>
-            <MaterialCommunityIcons name="keyboard-backspace" color={"#FFF"} size={36} />
-        </Pressable>
-        <View style={{ flex: 1,padding:10 }}>
+        <View style={{ width: "100%", flexDirection: "row", paddingLeft: 16, paddingTop: 16 }}>
+            <Pressable
+                onPress={() => { props.navigation.navigate("Home") }}
+                style={[{
+                    width: 55, height: 55, backgroundColor: "#40241a", borderRadius: 56
+                }, { justifyContent: "center", zIndex: 1, alignItems: "center" }]}>
+                <MaterialCommunityIcons name="keyboard-backspace" color={"#FFF"} size={28} />
+            </Pressable>
+            <View style={{ flex: 1, justifyContent: "center", padding: 10 }}>
+                <Text style={{ fontSize: 17, fontFamily: "Montserrat-Bold", flex: 1 }}>{"Your Wishlist"}</Text>
+            </View>
+        </View>
 
-            <Text style={{
-                fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 55,
-                paddingLeft: 10
-            }}>{"Your Wishlist"}</Text>
 
+        <View style={{ flex: 1, padding: 10 }}>
             <FlatList
                 nestedScrollEnabled={true}
                 numColumns={2}
@@ -93,8 +107,9 @@ function WishlistPage(props) {
                 renderItem={({ item, index }) => <GridView
                     item={item}
                     props={props}
-                    index={index}
+                    index={(index + 33)}
                     removeItem={removeItem}
+                    likeItem={likeItem}
                     addItem={addItem}></GridView>}>
             </FlatList>
         </View>

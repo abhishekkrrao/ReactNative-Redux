@@ -3,8 +3,8 @@ import {
     View, Pressable, Dimensions, Image,
     Text
 } from 'react-native';
-
-const GridView = ({ item, index, props, removeItem = () => null, addItem = () => null }) => {
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+const GridView = ({ item, index, props, removeItem = () => null, addItem = () => null, likeItem = () => null }) => {
 
     useEffect(() => {
         console.log(((parseInt(index) + (919 * 34)) + "").toString())
@@ -38,8 +38,24 @@ const GridView = ({ item, index, props, removeItem = () => null, addItem = () =>
             </View>
             <View
                 style={{ width: "100%", flexDirection: "column", padding: 10 }}>
-                <Text
-                    style={{ color: "#111", fontSize: 16, fontFamily: "Montserrat-Medium" }}>{item?.name}</Text>
+
+                <View style={{ width: "100%", flexDirection: "row" }}>
+                    <Text
+                        numberOfLines={2}
+                        style={{
+                            color: "#111", fontSize: 14,
+                            fontFamily: "Montserrat-Medium", flex: 1, textAlign: "left"
+                        }}>{item?.name}</Text>
+
+                    <Pressable
+                        onPress={() => {
+                            likeItem(item)
+                        }}
+                        style={{ width:26, alignItems: "center",marginLeft:1 }}>
+                        {item?.like ? <MaterialCommunityIcons color={"#ffab00"} name="heart-circle" size={24}></MaterialCommunityIcons> : <MaterialCommunityIcons name="heart-circle-outline" color={"#40241a"} size={24}></MaterialCommunityIcons>}
+                    </Pressable>
+                </View>
+
                 <View
                     style={{ flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                     <Text

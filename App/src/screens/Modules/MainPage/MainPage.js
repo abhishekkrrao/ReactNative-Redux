@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
     SafeAreaView, View, Text, Image, Platform, Pressable, ScrollView,
     StyleSheet, FlatList, Dimensions, Animated,
@@ -10,16 +10,23 @@ import { CommonStyle } from "../../../../Styles";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { GridView } from "../../../Component";
+import { GridView, MyLoader } from "../../../Component";
+import { Carousel } from 'react-native-snap-carousel-v4';
+
+
 const MaximumValue = 800;
 const MaximumDuration = 100;
-
+const sliderWidth = Dimensions.get("window").width;
 function MainPage(props) {
 
     /**
      * initiliaze the state
      */
+    const _carousel = useRef(null);
+    const [slides, setSlides] = useState([{ uri: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/products/img_1000/1658773621nT7KC0H.jpeg" }]);
+    const [entries, setEntries] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
     const [state, setState] = useState({});
+    const [loading, setLoading] = useState(true);
     const [allData, setAllRecord] = useState([]);
     const [clist, setAllCList] = useState([]);
     const [value, setAnimValue] = useState(new Animated.Value(0))
@@ -34,6 +41,10 @@ function MainPage(props) {
         console.log(props);
         setAllRecord(record.output.category);
         setAllCList(record.output.category);
+
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000);
     }, []);
 
     const startAnimation = () => {
@@ -46,8 +57,23 @@ function MainPage(props) {
 
     useEffect(() => {
         startAnimation();
-    }, [value]);
+    }, []);
 
+    /**
+     * 
+     * like items
+     */
+
+    const likeItem = (item) => {
+        let index = clist.indexOf(item);
+        const result = clist.map((sObj, position) => {
+            if (index == position) {
+                sObj.like = !sObj.like;
+            }
+            return sObj;
+        });
+        setAllCList(result);
+    }
 
     /**
      * 
@@ -109,6 +135,25 @@ function MainPage(props) {
     }
 
 
+
+    const _renderItem = ({ item, index }) => {
+        return (
+            <View
+                key={(parseInt(index))}
+                style={{ width: "100%" }}>
+                <Image
+                    key={(parseInt(index))}
+                    source={{ uri: slides[0].uri }}
+                    style={{
+                        width: "100%", height: 150
+                    }}>
+                </Image>
+            </View>
+        );
+    }
+
+
+
     /**
      * 
      * Horizontal Layout
@@ -121,44 +166,31 @@ function MainPage(props) {
         return (
             <View
                 key={(index + 911)}
-                style={[CommonStyle.iosShadow, {
-                    width: 166, height: 66,
-                    marginLeft: 0, justifyContent: "center", alignItems: "center"
-                }, { marginTop: 20 }]}>
+                style={[{ width: 166, justifyContent: "center", alignItems: "center", height: "auto", marginLeft: 6 }, { marginTop: 15,marginBottom:5 }]}>
                 <Pressable
                     onPress={() => {
                         items.isCheck = !items.isCheck;
                         setAllCList([]);
-                        setAnimValue(new Animated.Value(0));
+                        // setAnimValue(new Animated.Value(0));
                         const result = clist;
                         setAllCList(result);
                     }}
-                    style={{
-                        backgroundColor: items?.isCheck ? "#000" : "#FFF", padding: 20, borderRadius: 15,
-                        width: 156, flexDirection: "row"
+                    style={[CommonStyle.iosShadow, { backgroundColor: items?.isCheck ? "#000" : "#FFF", borderRadius: 16, flexDirection: "row", width: "100%" }]}>
+                    <View style={{
+                        flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center",
+                        padding: 10
                     }}>
-                    <Icon name="gesture-two-double-tap" color={(items?.isCheck ? "#FFF" : "#000")} size={24} />
-                    <Text style={{
-                        padding: 5, fontSize: 11, fontFamily: "Montserrat-Medium",
-                        color: (items?.isCheck ? "#FFF" : "#000")
-                    }}>{items?.name}</Text>
-
-                    <View
-                        style={{
-                            position: "absolute", right: 10, top: -20, width: 46,
-                            height: 76, borderRadius: 26, backgroundColor: "#FFF"
-                        }}>
-                        <Image
-                            resizeMode={"cover"}
-                            source={{ uri: items?.thumb }}
-                            style={{
-                                width: 46, height: 76, borderRadius: 26
-                            }}></Image>
+                        <Icon name="gesture-two-double-tap" color={(items?.isCheck ? "#FFF" : "#000")} size={24} />
+                        <Text
+                            numberOfLines={1}
+                            style={{ padding: 5, fontSize: 11, fontFamily: "Montserrat-Medium", color: (items?.isCheck ? "#FFF" : "#000") }}>{items?.short_code}</Text>
                     </View>
-
+                    <Image
+                        resizeMode={"cover"}
+                        source={{ uri: items?.thumb }}
+                        style={{ width: 56, height: 86, flex: 1, alignSelf: "flex-end", borderTopRightRadius: 16, borderBottomRightRadius: 16 }}></Image>
 
                 </Pressable>
-
             </View>
         );
     }
@@ -171,7 +203,8 @@ function MainPage(props) {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
 
-            <ScrollView
+            {loading && <MyLoader />}
+            {!loading && <ScrollView
 
                 style={{ flex: 1, padding: 10 }}>
 
@@ -190,7 +223,7 @@ function MainPage(props) {
                             flex: 1, alignItems: "flex-end", justifyContent: "center",
                             paddingEnd: 15
                         }}>
-                        <Ionicons name="person-circle-sharp" size={45} color="#000" />
+                        <Ionicons name="person-circle-sharp" size={45} color="#40241a" />
                     </Pressable>
                 </View>
 
@@ -221,13 +254,54 @@ function MainPage(props) {
                     </View> */}
                 </View>
 
+
+                <View style={{ width: "100%", height: "auto", flexDirection: "column", marginTop: 10 }}>
+                    <Carousel
+                        ref={(c) => {
+                            _carousel.current = c;
+                            // console.log(_carousel?.current?._activeItem);
+                        }}
+                        data={[1, 2, 3, 4, 5, 6, 7, 8]}
+                        renderItem={_renderItem}
+                        sliderWidth={sliderWidth}
+                        itemWidth={sliderWidth * 0.88}
+                        autoplay={true}
+                        autoplayDelay={1500}
+                    />
+
+
+                    <View style={{
+                        width: "100%", flexDirection: 'row', flexWrap: "wrap",
+                        marginTop: 10,
+                        justifyContent: "center", alignItems: "center"
+                    }}>
+                        {entries.map((item, index) => {
+                            return (
+                                <View
+                                    style={{
+                                        width: 22, height: 5,
+                                        backgroundColor: (_carousel?.current?._activeItem == index) ? "#FFAB00" : "#40241A",
+                                        borderRadius: 39,
+                                        zIndex: 1, marginLeft: 3
+                                    }} />
+                            )
+                        })}
+                    </View>
+
+                </View>
+
+
+
+
+                {/* Main Page Start */}
+
                 <Text style={{
                     fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 15,
                     paddingLeft: 10
                 }}>{"Categories"}</Text>
 
 
-                <View style={{ width: "100%", height: 96 }}>
+                <View style={{ width: "100%", marginBottom: 5 }}>
                     <ScrollView
                         horizontal={true}>
                         <View style={{
@@ -266,6 +340,7 @@ function MainPage(props) {
                         props={props}
                         index={(parseInt(index) + 77)}
                         removeItem={removeItem}
+                        likeItem={likeItem}
                         addItem={addItem}></GridView>)}
                 </View>
 
@@ -302,7 +377,7 @@ function MainPage(props) {
 
                 <View style={{ width: "100%", height: 50 }}></View>
 
-            </ScrollView>
+            </ScrollView>}
         </SafeAreaView>
     );
 }
