@@ -6,14 +6,14 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 
-function Header({ props, style, home, issearch, onChange = () => null,value }) {
+function Header({ props, style, home, issearch, onChange = () => null, value, isTrending }) {
 
 
 
     useEffect(() => {
         // console.log(props)
 
-        console.log(home, issearch,value)
+        console.log(home, issearch, value)
     }, []);
 
     const logOut = () => {
@@ -34,8 +34,8 @@ function Header({ props, style, home, issearch, onChange = () => null,value }) {
     }
     return (
         <View style={[{ width: "100%", backgroundColor: "#40241a", height: Platform.OS == "ios" ? 96 : 70, marginTop: Platform.OS == "ios" ? -50 : 0 }]}>
-           
-           
+
+
             {(issearch == false) && <View style={{ flex: 1, flexDirection: "row" }}>
                 {!home && <Pressable
                     onPress={() => props.navigation.pop()}
@@ -46,11 +46,15 @@ function Header({ props, style, home, issearch, onChange = () => null,value }) {
                     <Ionicons name="chevron-back" size={38} color={"#FFF"}></Ionicons>
                 </Pressable>}
 
-
-               {!issearch &&  <Pressable
+                {isTrending && <Pressable
                     onPress={() => logOut()}
                     style={{ width: home ? 56 : 56, height: 66, alignSelf: "flex-end", justifyContent: "center" }}>
                     <AntDesign name="logout" size={26} color={"#FFF"}></AntDesign>
+                </Pressable>}
+                {!isTrending && <Pressable
+                    onPress={() => {}}
+                    style={{ width: home ? 56 : 56, height: 66, alignSelf: "flex-end", justifyContent: "center" }}>
+                    <Ionicons name="cart" size={26} color={"#FFF"}></Ionicons>
                 </Pressable>}
 
             </View>}

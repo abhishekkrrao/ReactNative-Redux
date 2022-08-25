@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import {
     SafeAreaView, View, Text, Image, Platform, Pressable, ScrollView,
     StyleSheet, FlatList, Dimensions, Animated,
-    StatusBar
+    StatusBar,
+    Alert
 } from "react-native";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps, record } from "../../../../Util";
@@ -26,7 +27,7 @@ function MainPage(props) {
     const [slides, setSlides] = useState([{ uri: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/products/img_1000/1658773621nT7KC0H.jpeg" }]);
     const [entries, setEntries] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
     const [state, setState] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [allData, setAllRecord] = useState([]);
     const [clist, setAllCList] = useState([]);
     const [value, setAnimValue] = useState(new Animated.Value(0))
@@ -45,7 +46,25 @@ function MainPage(props) {
         setTimeout(() => {
             setLoading(false)
         }, 1000);
+       
+        // getMoviesFromApi();
+        
     }, []);
+
+
+    const getMoviesFromApi = () => {
+        return fetch('https://reactnative.dev/movies.json')
+          .then((response) => response.json())
+          .then((json) => {
+            console.log(json.movies);
+            return json.movies;
+          })
+          .catch(() => {
+            Alert.alert("3")
+            console.log("Check Your Internet Connections .....");
+          });
+      };
+
 
     const startAnimation = () => {
         Animated.timing(value, {
@@ -166,7 +185,7 @@ function MainPage(props) {
         return (
             <View
                 key={(index + 911)}
-                style={[{ width: 166, justifyContent: "center", alignItems: "center", height: "auto", marginLeft: 6 }, { marginTop: 15,marginBottom:5 }]}>
+                style={[{ width: 166, justifyContent: "center", alignItems: "center", height: "auto", marginLeft: 6 }, { marginTop: 15, marginBottom: 5 }]}>
                 <Pressable
                     onPress={() => {
                         items.isCheck = !items.isCheck;
@@ -255,7 +274,7 @@ function MainPage(props) {
                 </View>
 
 
-                <View style={{ width: "100%", height: "auto", flexDirection: "column", marginTop: 10 }}>
+                <View style={[{ width: "100%", height: "auto", flexDirection: "column", marginTop: 10 }]}>
                     <Carousel
                         ref={(c) => {
                             _carousel.current = c;
@@ -267,6 +286,7 @@ function MainPage(props) {
                         itemWidth={sliderWidth * 0.88}
                         autoplay={true}
                         autoplayDelay={1500}
+                    // style={{ backgroundColor: "#FFF", elevation: 3 }}
                     />
 
 
