@@ -16,15 +16,10 @@ function SearchPage(props) {
 
 
     return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
-        <Header
-            value={value}
-            onChange={(value) => { setValue(value) }}
-            issearch={true} props={props}></Header>
+        <Header value={value} onChange={(value) => { setValue(value) }} issearch={true} props={props}></Header>
         <View style={{ flex: 1, padding: 20 }}>
-
-
             {item.length <= 0 && <NoRecordPage screenTitle={"No Record found..."}></NoRecordPage>}
         </View>
-    </SafeAreaView>)
+    </SafeAreaView>);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SearchPage)

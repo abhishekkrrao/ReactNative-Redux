@@ -4,6 +4,7 @@ import {
     Text
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { fontStyle } from '../../../Styles';
 const GridView = ({ item, index, props, removeItem = () => null, addItem = () => null, likeItem = () => null }) => {
 
     useEffect(() => {
@@ -44,7 +45,7 @@ const GridView = ({ item, index, props, removeItem = () => null, addItem = () =>
                         numberOfLines={2}
                         style={{
                             color: "#111", fontSize: 14,
-                            fontFamily: "Montserrat-Medium", flex: 1, textAlign: "left"
+                            fontFamily: fontStyle.medium, flex: 1, textAlign: "left"
                         }}>{item?.name}</Text>
 
                     <Pressable
@@ -59,17 +60,17 @@ const GridView = ({ item, index, props, removeItem = () => null, addItem = () =>
                 <View
                     style={{ flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                     <Text
-                        style={{ color: "#111", fontSize: 14, flex: 1, paddingTop: 5, fontFamily: "Montserrat-Bold" }}>{"$" + item?.price}</Text>
+                        style={{ color: "#111", fontSize: 14, flex: 1, paddingTop: 5, fontFamily: fontStyle.bold }}>{"$" + item?.price}</Text>
                     <Text
-                        style={{ color: "#ffab00", fontSize: 11, flex: 1, paddingTop: 5, fontFamily: "Montserrat-Bold" }}>{"Cart " + (item?.count ? item?.count : 0)}</Text>
+                        style={{ color: "#ffab00", fontSize: 11, flex: 1, paddingTop: 5, fontFamily: fontStyle.bold }}>{"Cart " + (item?.count ? item?.count : 0)}</Text>
                     <View
                         style={{ flex: 1, flexDirection: "row", alignItems: "flex-end", justifyContent: "flex-end" }}>
                         {(item?.count > 0) && <Text
                             onPress={() => removeItem(item)}
-                            style={{ color: "#111", fontSize: 28, fontFamily: "Montserrat-Bold", paddingEnd: 20 }}>{"-"}</Text>}
+                            style={{ color: "#111", fontSize: 28, fontFamily: fontStyle.bold, paddingEnd: 20 }}>{"-"}</Text>}
                         <Text
                             onPress={() => addItem(item)}
-                            style={{ color: "#111", fontSize: 28, fontFamily: "Montserrat-Bold", fontWeight: "bold" }}>{"+"}</Text>
+                            style={{ color: "#111", fontSize: 28, fontFamily: fontStyle.bold, fontWeight: "bold" }}>{"+"}</Text>
                     </View>
                 </View>
             </View>

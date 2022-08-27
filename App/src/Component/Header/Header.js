@@ -6,7 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 
-function Header({ props, style, home, issearch, onChange = () => null, value, isTrending, screenTitle = "" }) {
+function Header({ props, style, home, issearch, onChange = () => null, value="", isTrending, screenTitle = "" }) {
 
 
 
@@ -83,10 +83,11 @@ function Header({ props, style, home, issearch, onChange = () => null, value, is
                 <TextInput
                     style={{
                         height: 48, width: "76%", backgroundColor: "#FFF", bottom: 5, position: "absolute",
-                        left: 67, paddingLeft: 10, borderRadius: 10, fontFamily: "Montserrat-Regular"
+                        left: 67, paddingLeft: 10, borderRadius: 10, fontFamily: "Montserrat-Regular",
+                        textTransform:"lowercase"
                     }}
                     placeholder={"Searching..."}
-                    value={value}
+                    value={value.toLowerCase()}
                     onChangeText={onChange}
                 ></TextInput>
             </View>}

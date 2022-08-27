@@ -73,7 +73,7 @@ function RegisterPage(props) {
                     value={uID}>
                 </TextInput>
 
-                {uidError && <Text style={[CommonStyle.hintStyle, { marginTop: 10 }]}>{uidError}</Text>}
+                {uidError && <Text style={[CommonStyle.hintStyle, { marginTop: 10,paddingLeft:10 }]}>{uidError}</Text>}
 
 
 
@@ -93,7 +93,7 @@ function RegisterPage(props) {
                     value={password}>
                 </TextInput>
 
-                {passError && <Text style={[CommonStyle.hintStyle, { marginTop: 10 }]}>{passError}</Text>}
+                {passError && <Text style={[CommonStyle.hintStyle, { marginTop: 10,paddingLeft:10 }]}>{passError}</Text>}
 
 
                 <View style={[styles.vAB3, { flexDirection: "row" }]}>

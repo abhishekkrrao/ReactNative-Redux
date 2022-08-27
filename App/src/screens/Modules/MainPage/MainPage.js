@@ -92,7 +92,7 @@ function MainPage(props) {
             }
             return sObj;
         });
-        setAllCList(result);
+        // setAllCList(result);
     }, []);
 
 
@@ -178,14 +178,9 @@ function MainPage(props) {
 
 
     const checkedItem = (item) => {
-        let index = allData.indexOf(item);
-        const result = allData.map((sObj, position) => {
-            if (index == position) {
-                item.isCheck = !item.isCheck;
-            }
-            return sObj;
-        });
-        setAllRecord(result);
+        props.navigation.navigate("TrendingPage", { name: "Categories" });
+        // let index = allData.indexOf(item);
+        // allData[index].isCheck = !allData[index].isCheck;
     }
 
 

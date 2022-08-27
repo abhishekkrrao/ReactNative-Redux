@@ -3,7 +3,7 @@ import { SafeAreaView, View, TextInput, Text, StyleSheet, KeyboardAvoidingView, 
 import { CustomButton } from '../../../CustomModules/index';
 import { LocalStorage, mapStateToProps, mapDispatchToProps } from "../../../../Util";
 import { connect } from 'react-redux';
-import { appColor, appDimension, CommonStyle } from "../../../../Styles";
+import { appColor, appDimension, CommonStyle, fontStyle } from "../../../../Styles";
 
 
 const LoginPage = (props) => {
@@ -56,8 +56,8 @@ const LoginPage = (props) => {
                     props.signIn(obj);
                 }}
                 style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, {
-                    fontFamily: "Montserrat-Medium", textAlign: "right",
-                    paddingEnd: 26
+                    fontFamily: fontStyle.medium, textAlign: "right",
+                    paddingEnd: 26, fontFamily: fontStyle.bold
                 }]}>{"Skip"}</Text>
             <KeyboardAvoidingView behavior={"padding"} style={[styles.v1]}>
 
@@ -67,7 +67,7 @@ const LoginPage = (props) => {
                         source={require("../../../../../assets/appicon.png")}></Image>
                 </View> */}
 
-                <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"UserID*"}</Text>
+                <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: fontStyle.medium }]}>{"UserID*"}</Text>
 
                 <TextInput
                     autoCapitalize={"none"}
@@ -75,8 +75,10 @@ const LoginPage = (props) => {
                     autoFocus={true}
                     maxLength={15}
                     placeholder={"UserID*"}
-                    style={[CommonStyle.txtInput, { borderColor: (uidError) ? "red" : appColor.grey,
-                backgroundColor:"#FFF",borderRadius:26 }]}
+                    style={[CommonStyle.txtInput, {
+                        borderColor: (uidError) ? "red" : appColor.grey,
+                        backgroundColor: "#FFF", borderRadius: 26
+                    }]}
                     onChangeText={(value) => {
                         setUID(value);
                         setUIDError("");
@@ -84,18 +86,20 @@ const LoginPage = (props) => {
                     value={uID}>
                 </TextInput>
 
-                {uidError && <Text style={[CommonStyle.hintStyle, { marginTop: 10 }]}>{uidError}</Text>}
+                {uidError && <Text style={[CommonStyle.hintStyle, { marginTop: 10, paddingLeft: 10 }]}>{uidError}</Text>}
 
 
 
-                <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"Password*"}</Text>
+                <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: fontStyle.medium }]}>{"Password*"}</Text>
 
                 <TextInput
                     autoCapitalize={"none"}
                     autoCorrect={false}
                     maxLength={15}
-                    style={[CommonStyle.txtInput, { borderColor: (passError) ? "red" : appColor.grey,
-                    backgroundColor:"#FFF",borderRadius:26 }]}
+                    style={[CommonStyle.txtInput, {
+                        borderColor: (passError) ? "red" : appColor.grey,
+                        backgroundColor: "#FFF", borderRadius: 26
+                    }]}
                     onChangeText={(value) => {
                         setPassword(value);
                         setPassError("");
@@ -104,7 +108,7 @@ const LoginPage = (props) => {
                     value={password}>
                 </TextInput>
 
-                {passError && <Text style={[CommonStyle.hintStyle, { marginTop: 10 }]}>{passError}</Text>}
+                {passError && <Text style={[CommonStyle.hintStyle, { marginTop: 10, paddingLeft: 10 }]}>{passError}</Text>}
 
 
                 <View style={[styles.vAB3, { flexDirection: "row" }]}>
