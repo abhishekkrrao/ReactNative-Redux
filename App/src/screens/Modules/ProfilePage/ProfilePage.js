@@ -8,30 +8,42 @@ import { mapDispatchToProps, mapStateToProps } from "../../../../Util";
 import { Header } from "../../../Component";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { ScrollView } from "react-native-gesture-handler";
+import { LocalStorage } from "../../../../Util";
+import { BackButton } from "../../../Component";
 
 function ProfilePage(props) {
 
+
+    const logOut = () => {
+        try {
+            LocalStorage.localStorageInstance.clearAll()
+                .then(() => {
+                    try {
+                        const value = { islogin: false };
+                        props.signIn(value);
+                        props.setLoggedIn(false);
+                    } catch (error) {
+                        console.log(error);
+                    }
+                });
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const [item, setItem] = useState({});
     useEffect(() => {
         setItem(props.route.params);
     }, []);
 
-
+    const onClick = () => { props.navigation.navigate("Home") }
     return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
 
         <View style={{ width: "100%", flexDirection: "row", padding: 16 }}>
-            <Pressable
-                onPress={() => { props.navigation.navigate("Home") }}
-                style={[{
-                    width: 55, height: 55, backgroundColor: "#40241a",
-                    borderRadius: 56
-                }, { justifyContent: "center", zIndex: 1, alignItems: "center" }]}>
-                <MaterialCommunityIcons name="keyboard-backspace" color={"#FFF"} size={28} />
-            </Pressable>
-            <View style={{ flex: 1, justifyContent: "center", padding: 10 }}>
-                <Text style={{ fontSize: 17, fontFamily: "Montserrat-Bold", flex: 1 }}>{"Your Profile"}</Text>
-            </View>
+
+            <BackButton onClick={() => onClick()} screenTitle={"Your Profile"} props={props} ></BackButton>
+
         </View>
 
 
@@ -47,12 +59,13 @@ function ProfilePage(props) {
                     textAlign: "left"
                 }}>{"Balraj Khanna Marg, Patel Nagar, New Delhi, Delhi 110008"}</Text>
                 <Pressable
+                    onPress={() => props.navigation.navigate("EditProfilePage")}
                     style={{
                         width: 126, height: 'auto', backgroundColor: "#FFF",
                         justifyContent: "center", alignItems: "center", borderWidth: 1, borderColor: "#CCC", marginTop: 5
                     }}>
                     <Text style={{
-                        color: "#000", fontFamily: "Montserrat-Regular", fontSize: 10,
+                        color: "#000", fontFamily: "Montserrat-Medium", fontSize: 12,
                         padding: 10
                     }}>{"Edit Your Profile"}</Text>
                 </Pressable>
@@ -63,23 +76,77 @@ function ProfilePage(props) {
                 {/* <Image
                     source={{ uri: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/products/img_1000/1658773621nT7KC0H.jpeg" }}
                     style={{ width: 76, height: 76, borderRadius: 96,backgroundColor:"#CCC" }}></Image> */}
-                <Ionicons name="person-circle-sharp" size={96} color="#40241a" />
+                <Ionicons name="person-circle-sharp" size={96} color="#CCC" />
                 <View style={{ position: "absolute", bottom: 12, right: 30 }}>
                     <MaterialCommunityIcons name="plus" color={"#FFF"} size={44} />
                 </View>
             </View>
         </View>
 
-        <View style={{ flex: 1 }}>
+        <ScrollView style={{ flex: 1, paddingTop: 20 }}>
 
 
+            <View style={{
+                width: "90%", backgroundColor: "#FFF", alignSelf: "center", padding: 20, borderRadius: 26,
+                flexDirection: "row", justifyContent: "center"
+            }}>
+                <Text style={{ fontFamily: "Montserrat-Medium", fontSize: 19, flex: 1 }}>{"Referrals"}</Text>
+                <View style={{ flex: 1, alignItems: "flex-end" }}>
+                    <Ionicons name="arrow-forward-sharp" color={"#000"} size={28} />
+                </View>
+            </View>
+            <View style={{
+                width: "90%", backgroundColor: "#FFF", marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
+                flexDirection: "row", justifyContent: "center"
+            }}>
+                <Text style={{ fontFamily: "Montserrat-Medium", fontSize: 19, flex: 1 }}>{"Your Order"}</Text>
+                <View style={{ flex: 1, alignItems: "flex-end" }}>
+                    <Ionicons name="arrow-forward-sharp" color={"#000"} size={28} />
+                </View>
+            </View>
 
 
-            <Pressable style={{ position: "absolute", bottom: 20, left: "44%" }}>
-                <Text style={{ fontSize: 17, fontFamily: "Montserrat-Medium" }}>{"Logout"}</Text>
+            <View style={{
+                width: "90%", backgroundColor: "#FFF", marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
+                flexDirection: "row", justifyContent: "center"
+            }}>
+                <Text style={{ fontFamily: "Montserrat-Medium", fontSize: 19, flex: 2 }}>{"Privacy & Policy"}</Text>
+                <View style={{ flex: 1, alignItems: "flex-end" }}>
+                    <Ionicons name="arrow-forward-sharp" color={"#000"} size={28} />
+                </View>
+            </View>
+
+
+            <View style={{
+                width: "90%", backgroundColor: "#FFF", marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
+                flexDirection: "row", justifyContent: "center"
+            }}>
+                <Text style={{ fontFamily: "Montserrat-Medium", fontSize: 19, flex: 2 }}>{"Contact Support"}</Text>
+                <View style={{ flex: 1, alignItems: "flex-end" }}>
+                    <Ionicons name="arrow-forward-sharp" color={"#000"} size={28} />
+                </View>
+            </View>
+            <View style={{
+                width: "90%", backgroundColor: "#FFF", marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
+                flexDirection: "row", justifyContent: "center"
+            }}>
+                <Text style={{ fontFamily: "Montserrat-Medium", fontSize: 19, flex: 1 }}>{"Address"}</Text>
+                <View style={{ flex: 1, alignItems: "flex-end" }}>
+                    <Ionicons name="arrow-forward-sharp" color={"#000"} size={28} />
+                </View>
+            </View>
+
+
+            <Pressable
+                onPress={() => logOut()}
+                style={{
+                    width: "100%", padding: 25, alignItems: "center",
+                    marginBottom: 50
+                }}>
+                <Text style={{ fontSize: 19, fontFamily: "Montserrat-Bold" }}>{"Logout"}</Text>
             </Pressable>
 
-        </View>
+        </ScrollView>
     </SafeAreaView>)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)

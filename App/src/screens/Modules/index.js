@@ -10,7 +10,12 @@ import ProfilePage from "./ProfilePage/ProfilePage";
 import WishlistPage from "./WishlistPage/WishlistPage";
 import TrendingPage from "./Trendings/TrendingPage";
 import ExploreScreen from "./ExploreScreen/ExploreScreen";
+import CartPage from "./CartPage/CartPage";
+import EditProfilePage from "./EditProfilePage/EditProfilePage";
+
+
 export {
     SceenA, SceenB, HomeScreen, SplashPage, ScreenTest, MainPage, DetailPage, SearchPage,
-    ProfilePage, WishlistPage, TrendingPage, ExploreScreen
+    ProfilePage, WishlistPage, TrendingPage, ExploreScreen, CartPage,
+    EditProfilePage
 };

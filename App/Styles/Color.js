@@ -2,6 +2,6 @@ export const appColor = {
     grey: "#CCC",
     white: "#FFF",
     black: "#000",
-    backGround:"#e3f2fd",
-    appColor:"#40241a"
+    backGround:"#efebe9",
+    appColor:"#000"
 }

@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import { LocalStorage, mapStateToProps, mapDispatchToProps } from '../../../Util';
 import { connect } from 'react-redux';
 import Ionicons from "react-native-vector-icons/Ionicons";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 
-function Header({ props, style, home, issearch, onChange = () => null, value, isTrending }) {
+function Header({ props, style, home, issearch, onChange = () => null, value, isTrending, screenTitle = "" }) {
 
 
 
@@ -33,29 +33,40 @@ function Header({ props, style, home, issearch, onChange = () => null, value, is
         }
     }
     return (
-        <View style={[{ width: "100%", backgroundColor: "#40241a", height: Platform.OS == "ios" ? 96 : 70, marginTop: Platform.OS == "ios" ? -50 : 0 }]}>
+        <View style={[{ width: "100%", backgroundColor: "#000", height: Platform.OS == "ios" ? 96 : 70, marginTop: Platform.OS == "ios" ? -50 : 0 }]}>
 
 
             {(issearch == false) && <View style={{ flex: 1, flexDirection: "row" }}>
-                {!home && <Pressable
-                    onPress={() => props.navigation.pop()}
-                    style={{
-                        flex: 1, height: Platform.OS == "ios" ? 126 : 66, justifyContent: "center",
-                        paddingLeft: 16
-                    }}>
-                    <Ionicons name="chevron-back" size={38} color={"#FFF"}></Ionicons>
-                </Pressable>}
+                {!home && <View style={{ flex: 1, justifyContent: "center", paddingTop: Platform.OS == "ios" ? 16 : 0 }}>
+                    <Pressable
+                        onPress={() => props.navigation.pop()}
+                        style={{
+                            width: 226, justifyContent: "center",paddingTop:12,
+                            paddingLeft:5
+                        }}>
+                        <View style={{
+                            width: 'auto', flexDirection: "row", justifyContent: "center", alignItems: "flex-start", alignSelf: "flex-start",
+                            paddingLeft: 20
+                        }}>
+                            <MaterialCommunityIcons name="keyboard-backspace" color={"#FFF"} size={28} />
+                            {screenTitle && <Text style={{ color: "#FFF", fontFamily: "Montserrat-Medium", fontSize: 16, paddingLeft: 10,height:28,
+                        textAlign:"center" }}>{screenTitle}</Text>}
+                        </View>
 
-                {isTrending && <Pressable
+                    </Pressable>
+                </View>}
+
+                {/* {isTrending && <Pressable
                     onPress={() => logOut()}
                     style={{ width: home ? 56 : 56, height: 66, alignSelf: "flex-end", justifyContent: "center" }}>
                     <AntDesign name="logout" size={26} color={"#FFF"}></AntDesign>
-                </Pressable>}
-                {!isTrending && <Pressable
-                    onPress={() => {}}
-                    style={{ width: home ? 56 : 56, height: 66, alignSelf: "flex-end", justifyContent: "center" }}>
-                    <Ionicons name="cart" size={26} color={"#FFF"}></Ionicons>
-                </Pressable>}
+                </Pressable>} */}
+                {!isTrending && <View style={{ flex: 2, justifyContent: "center", paddingTop: Platform.OS == "ios" ? 16 : 0 }}>
+                    <Pressable
+                        onPress={() => props.navigation.navigate("CartPage")}
+                        style={{ width: home ? 56 : 56, height: 66, alignSelf: "flex-end", justifyContent: "center", alignSelf: "flex-end" }}>
+                        <Ionicons name="cart" size={26} color={"#FFF"}></Ionicons>
+                    </Pressable></View>}
 
             </View>}
 
@@ -65,14 +76,14 @@ function Header({ props, style, home, issearch, onChange = () => null, value, is
                     onPress={() => props.navigation.pop()}
                     style={{
                         width: 46, height: Platform.OS == "ios" ? 126 : 66, justifyContent: "center",
-                        paddingLeft: 6
+                        paddingLeft: 20
                     }}>
-                    <Ionicons name="chevron-back" size={38} color={"#FFF"}></Ionicons>
+                    <MaterialCommunityIcons name="keyboard-backspace" color={"#FFF"} size={28} />
                 </Pressable>
                 <TextInput
                     style={{
-                        height: 48, width: "82%", backgroundColor: "#FFF", bottom: 5, position: "absolute",
-                        left: 50, paddingLeft: 20, borderRadius: 10, fontFamily: "Montserrat-Regular"
+                        height: 48, width: "76%", backgroundColor: "#FFF", bottom: 5, position: "absolute",
+                        left: 67, paddingLeft: 20, borderRadius: 10, fontFamily: "Montserrat-Regular"
                     }}
                     placeholder={"Searching ...."}
                     value={value}

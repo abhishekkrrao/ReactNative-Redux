@@ -46,24 +46,25 @@ function MainPage(props) {
         setTimeout(() => {
             setLoading(false)
         }, 1000);
-       
-        // getMoviesFromApi();
-        
+
+        getMoviesFromApi();
+
     }, []);
 
 
     const getMoviesFromApi = () => {
         return fetch('https://reactnative.dev/movies.json')
-          .then((response) => response.json())
-          .then((json) => {
-            console.log(json.movies);
-            return json.movies;
-          })
-          .catch(() => {
-            Alert.alert("3")
-            console.log("Check Your Internet Connections .....");
-          });
-      };
+            .then((response) => response.json())
+            .then((json) => {
+                console.log(json.movies);
+                return json.movies;
+            })
+            .catch(() => {
+                Alert.alert("Check Your Internet Connections .....")
+
+                console.log("Check Your Internet Connections .....");
+            });
+    };
 
 
     const startAnimation = () => {
@@ -157,7 +158,8 @@ function MainPage(props) {
 
     const _renderItem = ({ item, index }) => {
         return (
-            <View
+            <Pressable
+                onPress={() => { props.navigation.navigate("DetailPage", item); }}
                 key={(parseInt(index))}
                 style={{ width: "100%" }}>
                 <Image
@@ -167,7 +169,7 @@ function MainPage(props) {
                         width: "100%", height: 150
                     }}>
                 </Image>
-            </View>
+            </Pressable>
         );
     }
 
@@ -234,16 +236,26 @@ function MainPage(props) {
                         <Text style={{ fontSize: 16, fontFamily: "Montserrat-Medium" }}>{"What do you want to buy today ?"}</Text>
                         {/* <Text style={{ fontSize: 24, paddingTop: 2, fontFamily: "Montserrat-Regular" }}>{"Great for life"}</Text> */}
                     </View>
-                    <Pressable
-                        onPress={() => {
-                            props.navigation.navigate("ExploreScreen")
-                        }}
-                        style={{
-                            flex: 1, alignItems: "flex-end", justifyContent: "center",
-                            paddingEnd: 15
-                        }}>
-                        <Ionicons name="person-circle-sharp" size={45} color="#40241a" />
-                    </Pressable>
+
+                    <View style={{
+                        flex: .8, flexDirection: "row", justifyContent: "flex-end", alignContent: "flex-end",
+                        paddingEnd: 16
+                    }}>
+                        <Pressable
+                            onPress={() => { props.navigation.navigate("CartPage") }}
+                            style={{ padding: 5, backgroundColor: "#FFF", borderRadius: 36, justifyContent: "center", alignItems: "center" }}>
+                            <Text style={{
+                                position: "absolute", top: -10, right: 5,
+                                color: "#000", fontFamily: "Montserrat-Bold", fontSize: 21
+                            }}>{"3"}</Text>
+                            <Ionicons name="cart" size={34} color={"#000"}></Ionicons>
+                        </Pressable>
+                        <Pressable
+                            onPress={() => { props.navigation.navigate("ExploreScreen") }}
+                            style={{ padding: 5, backgroundColor: "#FFF", borderRadius: 36, marginLeft: 10, justifyContent: "center", alignItems: "center" }}>
+                            <Ionicons name="person-circle-sharp" size={34} color="#000" />
+                        </Pressable>
+                    </View>
                 </View>
 
 
@@ -266,7 +278,7 @@ function MainPage(props) {
                         </Text>
                     </Pressable>
                     {/* <View style={{
-                        justifyContent: "center", alignItems: "center", backgroundColor: "#40241a", padding: 5,
+                        justifyContent: "center", alignItems: "center", backgroundColor: "#000", padding: 5,
                         borderRadius: 11
                     }}>
                         <Icon name="widgets" size={30} color="#FFF" />
@@ -285,6 +297,7 @@ function MainPage(props) {
                         sliderWidth={sliderWidth}
                         itemWidth={sliderWidth * 0.88}
                         autoplay={true}
+
                         autoplayDelay={1500}
                     // style={{ backgroundColor: "#FFF", elevation: 3 }}
                     />
@@ -300,7 +313,7 @@ function MainPage(props) {
                                 <View
                                     style={{
                                         width: 22, height: 5,
-                                        backgroundColor: (_carousel?.current?._activeItem == index) ? "#FFAB00" : "#40241A",
+                                        backgroundColor: (_carousel?.current?._activeItem == index) ? "#FFAB00" : "#000",
                                         borderRadius: 39,
                                         zIndex: 1, marginLeft: 3
                                     }} />
@@ -344,7 +357,7 @@ function MainPage(props) {
                         paddingLeft: 10, marginBottom: 5
                     }}>{"Trending jewelleries"}</Text>
                     <Text
-                        onPress={() => { props.navigation.navigate("TrendingPage") }}
+                        onPress={() => { props.navigation.navigate("TrendingPage", { name: "Trending Categories" }) }}
                         style={{
                             fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10,
                             marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10,
@@ -374,7 +387,7 @@ function MainPage(props) {
                         paddingLeft: 10, marginBottom: 5
                     }}>{"Your Recent jewelleries"}</Text>
                     <Text
-                        onPress={() => { props.navigation.navigate("TrendingPage") }}
+                        onPress={() => { props.navigation.navigate("TrendingPage", { name: "Recent Categories" }) }}
                         style={{
                             fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10,
                             marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10,

@@ -8,6 +8,7 @@ import { mapDispatchToProps, mapStateToProps, record } from "../../../../Util";
 import { Header, GridView } from "../../../Component";
 import { CommonStyle } from "../../../../Styles";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { BackButton } from "../../../Component";
 
 function WishlistPage(props) {
 
@@ -77,21 +78,23 @@ function WishlistPage(props) {
         setAllCList(result);
     }
 
-
+    const onClick = () => { props.navigation.navigate("Home") }
 
     return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
 
         <View style={{ width: "100%", flexDirection: "row", paddingLeft: 16, paddingTop: 16 }}>
-            <Pressable
+        <BackButton onClick={() => onClick()} screenTitle={"Your Wishlist"} props={props} ></BackButton>
+
+            {/* <Pressable
                 onPress={() => { props.navigation.navigate("Home") }}
                 style={[{
-                    width: 55, height: 55, backgroundColor: "#40241a", borderRadius: 56
+                    width: 55, height: 55, backgroundColor: "#FFF", borderRadius: 56
                 }, { justifyContent: "center", zIndex: 1, alignItems: "center" }]}>
-                <MaterialCommunityIcons name="keyboard-backspace" color={"#FFF"} size={28} />
+                <MaterialCommunityIcons name="keyboard-backspace" color={"#000"} size={28} />
             </Pressable>
             <View style={{ flex: 1, justifyContent: "center", padding: 10 }}>
                 <Text style={{ fontSize: 17, fontFamily: "Montserrat-Bold", flex: 1 }}>{"Your Wishlist"}</Text>
-            </View>
+            </View> */}
         </View>
 
 

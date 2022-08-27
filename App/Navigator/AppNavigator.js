@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import {
     SceenA, SceenB, HomeScreen, LoginPage, RegisterPage, SplashPage, ScreenTest,
-    DetailPage, SearchPage, TrendingPage, ExploreScreen
+    DetailPage, SearchPage, TrendingPage, ExploreScreen,CartPage,
+    EditProfilePage
 } from '../src';
 import { createStackNavigator } from '@react-navigation/stack';
 import { mapDispatchToProps, mapStateToProps, LocalStorage } from "../Util";
@@ -45,8 +46,9 @@ const ModuleRoute = () => (
         <ModuleStack.Screen name="ScreenTest" component={ScreenTest} />
         <ModuleStack.Screen name="SearchPage" component={SearchPage} />
         <ModuleStack.Screen name="TrendingPage" component={TrendingPage} />
-        {/* <ModuleStack.Screen name="MapViewPage" component={MapViewPage} /> */}
+        <ModuleStack.Screen name="CartPage" component={CartPage} />
         <ModuleStack.Screen name="ExploreScreen" component={ExploreScreen} />
+        <ModuleStack.Screen name="EditProfilePage" component={EditProfilePage} />
     </ModuleStack.Navigator>
 );
 

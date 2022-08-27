@@ -9,15 +9,14 @@ import { mapDispatchToProps, mapStateToProps } from "../../../../Util";
 import { Header } from "../../../Component";
 import { CustomButton } from '../../../CustomModules';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Carousel } from 'react-native-snap-carousel-v4';
+import { BackButton } from '../../../Component';
 
 
-const horizontalMargin = 20;
-const slideWidth = 280;
 
 const sliderWidth = Dimensions.get("window").width;
-const itemWidth = slideWidth + horizontalMargin * 2;
-const itemHeight = 100;
+
 
 function DetailPage(props) {
 
@@ -40,29 +39,60 @@ function DetailPage(props) {
                     key={(parseInt(index))}
                     source={{ uri: slides[0].uri }}
                     style={{
-                        width: "100%", height: 300
+                        width: "90%", height: 200, borderRadius: 26
                     }}>
                 </Image>
             </View>
         );
     }
 
-
+    const onClick = () => { props.navigation.pop(); }
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9", marginTop: -46 }}>
             <ScrollView
                 style={{ flex: 1 }}>
 
-                <Pressable
+                <View style={{
+                    width: "100%", flexDirection: "row",
+                    marginTop: Platform.OS == "ios" ? 40 : 20, marginLeft: 20
+                }}>
+                    <View style={{ flex: 2 }}>
+                    <BackButton onClick={() => onClick()} screenTitle={"Detail"} props={props} ></BackButton>
+                        {/* <Pressable
+                            onPress={() => { props.navigation.pop() }}
+                            style={[{
+                                width: 56, height: 56, backgroundColor: "#FFF",
+                                borderRadius: 56,
+                            }, { justifyContent: "center", alignItems: "center", zIndex: 1 }]}>
+                            <MaterialCommunityIcons name="keyboard-backspace" color={"#000"} size={28} />
+                        </Pressable> */}
+                    </View>
+                    <View style={{ flex: 1, alignItems: "flex-end", paddingRight: 40 }}>
+
+                        <Pressable
+                            onPress={() => {  }}
+                            style={[{
+                                width: 56, height: 56, borderRadius: 56, backgroundColor: "#FFF"
+                            }, { justifyContent: "center", alignItems: "center", zIndex: 1 }]}>
+                            <Ionicons name="notifications" color={"#000"} size={28} />
+                        </Pressable>
+
+                    </View>
+
+                </View>
+                {/* <Pressable
                     onPress={() => { props.navigation.pop() }}
                     style={[{
-                        width: 56, height: 56, backgroundColor: "#40241a",
+                        width: 56, height: 56, backgroundColor: "#000",
                         borderRadius: 56, position: "absolute", top: Platform.OS == "android" ? 60 : 40, left: 16
                     }, { justifyContent: "center", alignItems: "center", zIndex: 1 }]}>
                     <MaterialCommunityIcons name="keyboard-backspace" color={"#FFF"} size={28} />
-                </Pressable>
+                </Pressable> */}
 
-                <View style={{ width: "100%", height: "auto", flexDirection: "column" }}>
+                <View style={{
+                    width: "90%", height: "auto", flexDirection: "column",
+                    marginTop: 20, alignSelf: "center"
+                }}>
                     <Carousel
                         ref={(c) => {
                             _carousel.current = c;
@@ -70,8 +100,8 @@ function DetailPage(props) {
                         }}
                         data={[1, 2, 3, 4, 5, 6, 7, 8]}
                         renderItem={_renderItem}
-                        sliderWidth={sliderWidth}
-                        itemWidth={sliderWidth * 0.99}
+                        sliderWidth={sliderWidth / 1.1}
+                        itemWidth={sliderWidth * 1}
                         autoplay={true}
                         autoplayDelay={1000}
                     />
@@ -79,7 +109,7 @@ function DetailPage(props) {
 
                     <View style={{
                         width: "100%", flexDirection: 'row', flexWrap: "wrap",
-                        marginTop: -56,
+                        marginTop: 20,
                         justifyContent: "center", alignItems: "center"
                     }}>
                         {entries.map((item, index) => {
@@ -87,7 +117,7 @@ function DetailPage(props) {
                                 <View
                                     style={{
                                         width: 22, height: 5,
-                                        backgroundColor: (_carousel?.current?._activeItem == index) ? "#FFF" : "#40241a",
+                                        backgroundColor: (_carousel?.current?._activeItem == index) ? "#FFF" : "#000",
                                         borderRadius: 39,
                                         zIndex: 1, marginLeft: 3
                                     }} />
@@ -99,7 +129,7 @@ function DetailPage(props) {
 
                 <View style={[{
                     flex: 1, backgroundColor: "#FFF", borderTopEndRadius: 26,
-                    borderTopLeftRadius: 26, marginTop: 30,
+                    borderTopLeftRadius: 26, marginTop: 20,
                     padding: 10, height: 900
                 }]}>
 
@@ -114,7 +144,7 @@ function DetailPage(props) {
                         <Text
                             style={{
                                 flex: 1, padding: 5, fontSize: 23, fontFamily: "Montserrat-Bold",
-                                color: "#40241A"
+                                color: "#000"
                             }}>{"₹499"}</Text>
                     </View>
 
@@ -143,13 +173,13 @@ function DetailPage(props) {
 
                     <View style={{ flex: 1, padding: 5 }}>
                         <CustomButton
-                            btnStyle={{ backgroundColor: "#40241a", height: 45, width: "100%", alignSelf: "center" }}
+                            btnStyle={{ backgroundColor: "#000", height: 45, width: "100%", alignSelf: "center" }}
                             textStyle={{ fontSize: 13, fontFamily: "Montserrat-Bold" }}
                             value='Add to cart'></CustomButton>
                     </View>
                     <View style={{ flex: 1, padding: 5 }}>
                         <CustomButton
-                            btnStyle={{ backgroundColor: "#40241a", height: 45, width: "100%", alignSelf: "center" }}
+                            btnStyle={{ backgroundColor: "#000", height: 45, width: "100%", alignSelf: "center" }}
                             textStyle={{ fontSize: 13, fontFamily: "Montserrat-Bold" }}
                             value='Buy Now'></CustomButton>
                     </View>

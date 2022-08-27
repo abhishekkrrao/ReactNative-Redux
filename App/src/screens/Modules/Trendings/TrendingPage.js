@@ -17,7 +17,6 @@ function TrendingPage(props) {
     useEffect(() => {
         setItem(props.route.params);
         setAllCList(record.output.category[0].children);
-        console.log(item)
     }, []);
 
 
@@ -63,7 +62,7 @@ function TrendingPage(props) {
 
 
     return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
-        <Header isTrending={false} issearch={false} props={props}></Header>
+        <Header screenTitle={item?.name} isTrending={false} issearch={false} props={props}></Header>
         <View style={{ flex: 1, padding: 10 }}>
             <FlatList
                 nestedScrollEnabled={true}

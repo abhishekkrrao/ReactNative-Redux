@@ -3,7 +3,7 @@ import {
     StyleSheet, Text, TextInput, View, ScrollView, Animated,
     Image, TouchableOpacity, Dimensions, Platform, Pressable
 } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker,PROVIDER_GOOGLE } from "react-native-maps";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { markers, mapStandardStyle } from '../../../../Util/mapData';
@@ -114,14 +114,16 @@ const ExploreScreen = (props) => {
     return (
         <View style={styles.container}>
             <MapView
+            // provider={PROVIDER_GOOGLE}
                 zoomEnabled={true}
                 mapType={"standard"}
                 ref={_map}
                 initialRegion={state.region}
                 style={styles.container}
-                showsUserLocation={true}
-                showsScale={true}
+                // showsScale={true}
                 tintColor={"#000"}
+                showsUserLocation={true}
+                showsMyLocationButton={false}
                 customMapStyle={mapStandardStyle}>
 
 
@@ -150,7 +152,7 @@ const ExploreScreen = (props) => {
                                 {/* <Text>{marker.description}</Text> */}
                                 <Animated.Image
                                     source={require('../../../../../assets/map_marker.png')}
-                                    style={[styles.marker, scaleStyle, { tintColor: "#40241A" }]}
+                                    style={[styles.marker, scaleStyle, { tintColor: "#000" }]}
                                     resizeMode="cover"
                                 />
                             </Animated.View>
@@ -242,7 +244,7 @@ const ExploreScreen = (props) => {
 
                             <CustomButton
                                 value={"Buy Now"}
-                                btnStyle={{ width: 120, height: "auto", backgroundColor: "#40241A" }}
+                                btnStyle={{ width: 120, height: "auto", backgroundColor: "#000" }}
                                 textStyle={{ fontSize: 14, padding: 5, color: "#FFF", fontFamily: "Montserrat-Bold" }}></CustomButton>
                         </View>
                     </View>
@@ -260,7 +262,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     btn: {
-        width: 56, height: 56, backgroundColor: "#40241a",
+        width: 56, height: 56, backgroundColor: "#000",
         borderRadius: 56, position: "absolute", top: 46, left: 26
     },
     searchBox: {
