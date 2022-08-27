@@ -57,37 +57,19 @@ function DetailPage(props) {
                     marginTop: Platform.OS == "ios" ? 40 : 20, marginLeft: 20
                 }}>
                     <View style={{ flex: 2 }}>
-                    <BackButton onClick={() => onClick()} screenTitle={"Detail"} props={props} ></BackButton>
-                        {/* <Pressable
-                            onPress={() => { props.navigation.pop() }}
-                            style={[{
-                                width: 56, height: 56, backgroundColor: "#FFF",
-                                borderRadius: 56,
-                            }, { justifyContent: "center", alignItems: "center", zIndex: 1 }]}>
-                            <MaterialCommunityIcons name="keyboard-backspace" color={"#000"} size={28} />
-                        </Pressable> */}
+                        <BackButton onClick={() => onClick()} screenTitle={"Detail"} props={props} ></BackButton>
                     </View>
                     <View style={{ flex: 1, alignItems: "flex-end", paddingRight: 40 }}>
-
                         <Pressable
-                            onPress={() => {  }}
+                            onPress={() => { }}
                             style={[{
                                 width: 56, height: 56, borderRadius: 56, backgroundColor: "#FFF"
                             }, { justifyContent: "center", alignItems: "center", zIndex: 1 }]}>
                             <Ionicons name="notifications" color={"#000"} size={28} />
                         </Pressable>
-
                     </View>
-
                 </View>
-                {/* <Pressable
-                    onPress={() => { props.navigation.pop() }}
-                    style={[{
-                        width: 56, height: 56, backgroundColor: "#000",
-                        borderRadius: 56, position: "absolute", top: Platform.OS == "android" ? 60 : 40, left: 16
-                    }, { justifyContent: "center", alignItems: "center", zIndex: 1 }]}>
-                    <MaterialCommunityIcons name="keyboard-backspace" color={"#FFF"} size={28} />
-                </Pressable> */}
+ 
 
                 <View style={{
                     width: "90%", height: "auto", flexDirection: "column",

@@ -246,14 +246,14 @@ function MainPage(props) {
                             style={{ padding: 5, backgroundColor: "#FFF", borderRadius: 36, justifyContent: "center", alignItems: "center" }}>
                             <Text style={{
                                 position: "absolute", top: -10, right: 5,
-                                color: "#000", fontFamily: "Montserrat-Bold", fontSize: 21
+                                color: "#000", fontFamily: "Montserrat-Bold", fontSize: 19
                             }}>{"3"}</Text>
-                            <Ionicons name="cart" size={34} color={"#000"}></Ionicons>
+                            <Ionicons name="cart" size={28} color={"#000"}></Ionicons>
                         </Pressable>
                         <Pressable
                             onPress={() => { props.navigation.navigate("ExploreScreen") }}
-                            style={{ padding: 5, backgroundColor: "#FFF", borderRadius: 36, marginLeft: 10, justifyContent: "center", alignItems: "center" }}>
-                            <Ionicons name="person-circle-sharp" size={34} color="#000" />
+                            style={{ padding: 5, borderRadius: 36,backgroundColor:"#FFF", marginLeft: 10, justifyContent: "center", alignItems: "center" }}>
+                            <Ionicons name="person-circle-sharp" size={28} color="#000" />
                         </Pressable>
                     </View>
                 </View>

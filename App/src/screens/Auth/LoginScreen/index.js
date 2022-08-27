@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, View, TextInput, Text, StyleSheet, KeyboardAvoidingView } from "react-native";
+import { SafeAreaView, View, TextInput, Text, StyleSheet, KeyboardAvoidingView, Image } from "react-native";
 import { CustomButton } from '../../../CustomModules/index';
 import { LocalStorage, mapStateToProps, mapDispatchToProps } from "../../../../Util";
 import { connect } from 'react-redux';
@@ -47,7 +47,25 @@ const LoginPage = (props) => {
 
     return (
         <SafeAreaView style={[CommonStyle.container, { backgroundColor: appColor.backGround }]}>
+            <Text
+                onPress={() => {
+                    const obj = {
+                        islogin: true,
+                        user: { islogin: true }
+                    };
+                    props.signIn(obj);
+                }}
+                style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, {
+                    fontFamily: "Montserrat-Medium", textAlign: "right",
+                    paddingEnd: 26
+                }]}>{"Skip"}</Text>
             <KeyboardAvoidingView behavior={"padding"} style={[styles.v1]}>
+
+                <View style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+                    <Image
+                        style={{ width: 96, height: 96 }}
+                        source={require("../../../../../assets/appicon.png")}></Image>
+                </View>
 
                 <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"UserID*"}</Text>
 
@@ -90,13 +108,13 @@ const LoginPage = (props) => {
                 <View style={[styles.vAB3, { flexDirection: "row" }]}>
                     <View style={{ flex: 1 }}>
                         <CustomButton
-                            textStyle={CommonStyle.btnTxt}
+                            textStyle={[CommonStyle.btnTxt, { color: "#000" }]}
                             value={"Register"}
-                            btnStyle={styles.vABC1}
+                            btnStyle={[styles.vABC1, { backgroundColor: "#FFF" }]}
                             onPress={() => { props.navigation.navigate("RegisterPage") }}>
                         </CustomButton>
                     </View>
-                    <View style={{ flex: 1,marginLeft:20 }}>
+                    <View style={{ flex: 1, marginLeft: 20 }}>
                         <CustomButton
                             textStyle={CommonStyle.btnTxt}
                             value={"Login"}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
     SafeAreaView, View, TextInput, Text, StyleSheet,
-    KeyboardAvoidingView
+    KeyboardAvoidingView, Image
 } from "react-native";
 import { CustomButton } from '../../../CustomModules';
 import { connect } from "react-redux";
@@ -51,7 +51,11 @@ function RegisterPage(props) {
                 <BackButton onClick={() => onClick()} screenTitle={"Register"} props={props} ></BackButton>
             </View>
             <KeyboardAvoidingView behavior={"padding"} style={[styles.v1]}>
-
+                <View style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+                    <Image
+                        style={{ width: 96, height: 96 }}
+                        source={require("../../../../../assets/appicon.png")}></Image>
+                </View>
                 <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"UserID*"}</Text>
 
                 <TextInput
@@ -92,12 +96,12 @@ function RegisterPage(props) {
 
                 <View style={[styles.vAB3, { flexDirection: "row" }]}>
                     <View style={{ flex: 1 }}>
-                        {/* <CustomButton
-                            textStyle={CommonStyle.btnTxt}
-                            value={"Create an account"}
-                            btnStyle={styles.vABC1}
-                            onPress={() => { props.navigation.navigate("RegisterPage") }}>
-                        </CustomButton> */}
+                        <CustomButton
+                            textStyle={[CommonStyle.btnTxt,{color:"#000"}]}
+                            value={"Login here"}
+                            btnStyle={[styles.vABC1,{backgroundColor:"#FFF"}]}
+                            onPress={() => { props.navigation.pop() }}>
+                        </CustomButton>
                     </View>
                     <View style={{ flex: 1, marginLeft: 20 }}>
                         <CustomButton

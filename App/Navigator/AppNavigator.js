@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import {
     SceenA, SceenB, HomeScreen, LoginPage, RegisterPage, SplashPage, ScreenTest,
-    DetailPage, SearchPage, TrendingPage, ExploreScreen,CartPage,
+    DetailPage, SearchPage, TrendingPage, ExploreScreen, CartPage,
     EditProfilePage
 } from '../src';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { screenOptionStyle } from './style';
 import TabNavigator from './TabNavigator';
-import {enableLatestRenderer} from 'react-native-maps';
+import { enableLatestRenderer } from 'react-native-maps';
 
 
 /***
@@ -77,10 +77,11 @@ function AppNavigator({ signIn = () => null }) {
             })
     }
 
-
-
     useEffect(() => {
         enableLatestRenderer();
+    }, [])
+
+    useEffect(() => {
         setTimeout(() => {
             setIsloading(false)
         }, 3000)
