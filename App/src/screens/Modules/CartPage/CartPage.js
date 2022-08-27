@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "../../../../Util";
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, View } from "react-native";
-import { Header } from "../../../Component";
+import { SafeAreaView, View, Text } from "react-native";
+import { Header,NoRecordPage } from "../../../Component";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 function CartPage(props) {
 
@@ -11,8 +12,12 @@ function CartPage(props) {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
+            <Header screenTitle={"Cart"} issearch={false} isTrending={true} props={props}></Header>
             <View style={{ flex: 1 }}>
-                <Header screenTitle={"Cart"} issearch={false} isTrending={true} props={props}></Header>
+
+
+                {cartItems.length <= 0 && <NoRecordPage screenTitle={"No Record found..."} />}
+
             </View>
         </SafeAreaView>
     );

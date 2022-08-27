@@ -83,9 +83,9 @@ function Header({ props, style, home, issearch, onChange = () => null, value, is
                 <TextInput
                     style={{
                         height: 48, width: "76%", backgroundColor: "#FFF", bottom: 5, position: "absolute",
-                        left: 67, paddingLeft: 20, borderRadius: 10, fontFamily: "Montserrat-Regular"
+                        left: 67, paddingLeft: 10, borderRadius: 10, fontFamily: "Montserrat-Regular"
                     }}
-                    placeholder={"Searching ...."}
+                    placeholder={"Searching..."}
                     value={value}
                     onChangeText={onChange}
                 ></TextInput>

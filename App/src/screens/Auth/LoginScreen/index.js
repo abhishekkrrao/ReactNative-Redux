@@ -61,11 +61,11 @@ const LoginPage = (props) => {
                 }]}>{"Skip"}</Text>
             <KeyboardAvoidingView behavior={"padding"} style={[styles.v1]}>
 
-                <View style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+                {/* <View style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
                     <Image
                         style={{ width: 96, height: 96 }}
                         source={require("../../../../../assets/appicon.png")}></Image>
-                </View>
+                </View> */}
 
                 <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"UserID*"}</Text>
 
@@ -75,7 +75,8 @@ const LoginPage = (props) => {
                     autoFocus={true}
                     maxLength={15}
                     placeholder={"UserID*"}
-                    style={[CommonStyle.txtInput, { borderColor: (uidError) ? "red" : appColor.grey }]}
+                    style={[CommonStyle.txtInput, { borderColor: (uidError) ? "red" : appColor.grey,
+                backgroundColor:"#FFF",borderRadius:26 }]}
                     onChangeText={(value) => {
                         setUID(value);
                         setUIDError("");
@@ -93,7 +94,8 @@ const LoginPage = (props) => {
                     autoCapitalize={"none"}
                     autoCorrect={false}
                     maxLength={15}
-                    style={[CommonStyle.txtInput, { borderColor: (passError) ? "red" : appColor.grey }]}
+                    style={[CommonStyle.txtInput, { borderColor: (passError) ? "red" : appColor.grey,
+                    backgroundColor:"#FFF",borderRadius:26 }]}
                     onChangeText={(value) => {
                         setPassword(value);
                         setPassError("");

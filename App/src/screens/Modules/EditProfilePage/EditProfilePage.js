@@ -68,7 +68,7 @@ const EditProfilePage = (props) => {
     return (
         <SafeAreaView style={[CommonStyle.container, { backgroundColor: appColor.backGround }]}>
             <View style={{ padding: 20 }}>
-                <BackButton onClick={() => onClick()} screenTitle={"Edit Profile"} props={props} ></BackButton>
+                <BackButton onClick={() => onClick()} screenTitle={"Edit Your Profile"} props={props} ></BackButton>
             </View>
             <KeyboardAvoidingView behavior={"padding"} style={[styles.v1]}>
 
@@ -80,7 +80,8 @@ const EditProfilePage = (props) => {
                     autoFocus={true}
                     maxLength={15}
                     placeholder={"UserID*"}
-                    style={[CommonStyle.txtInput, { borderColor: (uidError) ? "red" : appColor.grey }]}
+                    style={[CommonStyle.txtInput, { borderColor: (uidError) ? "red" : appColor.grey,
+                backgroundColor:"#FFF",borderRadius:26 }]}
                     onChangeText={(value) => {
                         setUID(value);
                         setUIDError("");
@@ -98,7 +99,8 @@ const EditProfilePage = (props) => {
                     autoCapitalize={"none"}
                     autoCorrect={false}
                     maxLength={15}
-                    style={[CommonStyle.txtInput, { borderColor: (passError) ? "red" : appColor.grey }]}
+                    style={[CommonStyle.txtInput, { borderColor: (passError) ? "red" : appColor.grey,
+                backgroundColor:"#FFF",borderRadius:26 }]}
                     onChangeText={(value) => {
                         setPassword(value);
                         setPassError("");

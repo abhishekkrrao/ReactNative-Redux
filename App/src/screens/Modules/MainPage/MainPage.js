@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import {
     SafeAreaView, View, Text, Image, Platform, Pressable, ScrollView,
     StyleSheet, FlatList, Dimensions, Animated,
@@ -84,7 +84,7 @@ function MainPage(props) {
      * like items
      */
 
-    const likeItem = (item) => {
+    const likeItem = useCallback((item) => {
         let index = clist.indexOf(item);
         const result = clist.map((sObj, position) => {
             if (index == position) {
@@ -93,7 +93,8 @@ function MainPage(props) {
             return sObj;
         });
         setAllCList(result);
-    }
+    }, []);
+
 
     /**
      * 
@@ -101,7 +102,7 @@ function MainPage(props) {
      * @param {*} item 
      */
 
-    const addItem = (item) => {
+    const addItem = useCallback((item) => {
         let index = clist.indexOf(item);
         const result = clist.map((sObj, position) => {
             if (index == position) {
@@ -110,7 +111,9 @@ function MainPage(props) {
             return sObj;
         });
         setAllCList(result);
-    }
+    }, [])
+
+
 
     /**
      * Remove Items
@@ -174,6 +177,17 @@ function MainPage(props) {
     }
 
 
+    const checkedItem = (item) => {
+        let index = allData.indexOf(item);
+        const result = allData.map((sObj, position) => {
+            if (index == position) {
+                item.isCheck = !item.isCheck;
+            }
+            return sObj;
+        });
+        setAllRecord(result);
+    }
+
 
     /**
      * 
@@ -183,19 +197,14 @@ function MainPage(props) {
      * @returns 
      */
 
-    const _HorizontalLayout = (items, index) => {
+
+    const _HorizontalLayout = useCallback((items, index) => {
         return (
             <View
                 key={(index + 911)}
-                style={[{ width: 166, justifyContent: "center", alignItems: "center", height: "auto", marginLeft: 6 }, { marginTop: 15, marginBottom: 5 }]}>
+                style={[{ width: 166, justifyContent: "center", alignItems: "center", height: "auto", marginLeft: 10 }, { marginTop: 15, marginBottom: 5 }]}>
                 <Pressable
-                    onPress={() => {
-                        items.isCheck = !items.isCheck;
-                        setAllCList([]);
-                        // setAnimValue(new Animated.Value(0));
-                        const result = clist;
-                        setAllCList(result);
-                    }}
+                    onPress={() => { checkedItem(items) }}
                     style={[CommonStyle.iosShadow, { backgroundColor: items?.isCheck ? "#000" : "#FFF", borderRadius: 16, flexDirection: "row", width: "100%" }]}>
                     <View style={{
                         flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center",
@@ -210,11 +219,11 @@ function MainPage(props) {
                         resizeMode={"cover"}
                         source={{ uri: items?.thumb }}
                         style={{ width: 56, height: 86, flex: 1, alignSelf: "flex-end", borderTopRightRadius: 16, borderBottomRightRadius: 16 }}></Image>
-
                 </Pressable>
             </View>
         );
-    }
+    }, [])
+
 
     /**
      * Main Layout
@@ -252,7 +261,7 @@ function MainPage(props) {
                         </Pressable>
                         <Pressable
                             onPress={() => { props.navigation.navigate("ExploreScreen") }}
-                            style={{ padding: 5, borderRadius: 36,backgroundColor:"#FFF", marginLeft: 10, justifyContent: "center", alignItems: "center" }}>
+                            style={{ padding: 5, borderRadius: 36, backgroundColor: "#FFF", marginLeft: 10, justifyContent: "center", alignItems: "center" }}>
                             <Ionicons name="person-circle-sharp" size={28} color="#000" />
                         </Pressable>
                     </View>
