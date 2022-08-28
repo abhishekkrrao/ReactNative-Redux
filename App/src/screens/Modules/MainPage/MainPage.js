@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps, record } from "../../../../Util";
-import { CommonStyle } from "../../../../Styles";
+import { appColor, CommonStyle, fontStyle } from "../../../../Styles";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -200,15 +200,15 @@ function MainPage(props) {
                 style={[{ width: 166, justifyContent: "center", alignItems: "center", height: "auto", marginLeft: 10 }, { marginTop: 15, marginBottom: 5 }]}>
                 <Pressable
                     onPress={() => { checkedItem(items) }}
-                    style={[CommonStyle.iosShadow, { backgroundColor: items?.isCheck ? "#000" : "#FFF", borderRadius: 16, flexDirection: "row", width: "100%" }]}>
+                    style={[CommonStyle.iosShadow, { backgroundColor: items?.isCheck ? appColor.black : appColor.white, borderRadius: 16, flexDirection: "row", width: "100%" }]}>
                     <View style={{
                         flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center",
                         padding: 10
                     }}>
-                        <Icon name="gesture-two-double-tap" color={(items?.isCheck ? "#FFF" : "#000")} size={24} />
+                        <Icon name="gesture-two-double-tap" color={(items?.isCheck ? appColor.white : appColor.black)} size={24} />
                         <Text
                             numberOfLines={1}
-                            style={{ padding: 5, fontSize: 11, fontFamily: "Montserrat-Medium", color: (items?.isCheck ? "#FFF" : "#000") }}>{items?.short_code}</Text>
+                            style={{ padding: 5, fontSize: 11, fontFamily: fontStyle.medium, color: (items?.isCheck ? appColor.white : appColor.black) }}>{items?.short_code}</Text>
                     </View>
                     <Image
                         resizeMode={"cover"}
@@ -226,195 +226,122 @@ function MainPage(props) {
 
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
-
+        <SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround }}>
             {loading && <MyLoader />}
-            {!loading && <ScrollView
+            {!loading && <View style={{ flex: 1, padding: 10 }}>
 
-                style={{ flex: 1, padding: 10 }}>
-
-                {/* Montserrat-Bold */}
-
+                {/* Header */}
                 <View style={{ width: "100%", flexDirection: "row", margin: 10 }}>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontSize: 16, fontFamily: "Montserrat-Medium" }}>{"What do you want to buy today ?"}</Text>
-                        {/* <Text style={{ fontSize: 24, paddingTop: 2, fontFamily: "Montserrat-Regular" }}>{"Great for life"}</Text> */}
+                        <Text style={{ fontSize: 16, fontFamily: fontStyle.medium }}>{"What do you want to buy today ?"}</Text>
                     </View>
-
-                    <View style={{
-                        flex: .8, flexDirection: "row", justifyContent: "flex-end", alignContent: "flex-end",
-                        paddingEnd: 16
-                    }}>
+                    <View style={{ flex: .8, flexDirection: "row", justifyContent: "flex-end", alignContent: "flex-end", paddingEnd: 16 }}>
                         <Pressable
                             onPress={() => { props.navigation.navigate("CartPage") }}
-                            style={{ padding: 5, backgroundColor: "#FFF", borderRadius: 36, justifyContent: "center", alignItems: "center" }}>
+                            style={{ padding: 5, backgroundColor: appColor.white, borderRadius: 36, justifyContent: "center", alignItems: "center" }}>
                             <Text style={{
                                 position: "absolute", top: -10, right: 5,
-                                color: "#000", fontFamily: "Montserrat-Bold", fontSize: 19
+                                color: appColor.black, fontFamily: "Montserrat-Bold", fontSize: 19
                             }}>{"3"}</Text>
-                            <Ionicons name="cart" size={28} color={"#000"}></Ionicons>
+                            <Ionicons name="cart" size={28} color={appColor.black}></Ionicons>
                         </Pressable>
                         <Pressable
                             onPress={() => { props.navigation.navigate("ExploreScreen") }}
-                            style={{ padding: 5, borderRadius: 36, backgroundColor: "#FFF", marginLeft: 10, justifyContent: "center", alignItems: "center" }}>
-                            <Ionicons name="person-circle-sharp" size={28} color="#000" />
+                            style={{ padding: 5, borderRadius: 36, backgroundColor: appColor.white, marginLeft: 10, justifyContent: "center", alignItems: "center" }}>
+                            <Ionicons name="person-circle-sharp" size={28} color={appColor.black} />
                         </Pressable>
                     </View>
                 </View>
 
-
-                <View style={{
-                    width: "100%", flexDirection: "row", alignSelf: "center", margin: 5,
-                    alignItems: "center"
-                }}>
+                {/* Search Menu */}
+                <View style={{ width: "100%", flexDirection: "row", alignSelf: "center", margin: 5, alignItems: "center" }}>
                     <Pressable
                         onPress={() => props.navigation.navigate("SearchPage")}
-                        style={{
-                            flex: 1, flexDirection: "row",
-                            backgroundColor: "#FFF", padding: 10, marginEnd: 10, borderRadius: 26,
-                            justifyContent: "center", alignItems: "center"
-                        }}>
+                        style={{ flex: 1, flexDirection: "row", backgroundColor: appColor.white, padding: 10, borderRadius: 26, justifyContent: "center", alignItems: "center" }}>
                         <EvilIcons name="search" size={30} color="#757575" />
                         <Text
-
-                            style={{ flex: 1, paddingLeft: 10, fontSize: 12, fontFamily: "Montserrat-Medium" }}>
+                            style={{ flex: 1, paddingLeft: 10, fontSize: 12, fontFamily: fontStyle.medium }}>
                             {"Find the favorite jewelleries here"}
                         </Text>
                     </Pressable>
-                    {/* <View style={{
-                        justifyContent: "center", alignItems: "center", backgroundColor: "#000", padding: 5,
-                        borderRadius: 11
-                    }}>
-                        <Icon name="widgets" size={30} color="#FFF" />
-                    </View> */}
                 </View>
 
 
-                <View style={[{ width: "100%", height: "auto", flexDirection: "column", marginTop: 10 }]}>
-                    <Carousel
-                        ref={(c) => {
-                            _carousel.current = c;
-                            // console.log(_carousel?.current?._activeItem);
-                        }}
-                        data={[1, 2, 3, 4, 5, 6, 7, 8]}
-                        renderItem={_renderItem}
-                        sliderWidth={sliderWidth}
-                        itemWidth={sliderWidth * 0.88}
-                        autoplay={true}
+                {/* Main Page layouts */}
 
-                        autoplayDelay={1500}
-                    // style={{ backgroundColor: "#FFF", elevation: 3 }}
-                    />
+                <ScrollView nestedScrollEnabled={true} style={{ flex: 1 }}>
 
-
-                    <View style={{
-                        width: "100%", flexDirection: 'row', flexWrap: "wrap",
-                        marginTop: 10,
-                        justifyContent: "center", alignItems: "center"
-                    }}>
-                        {entries.map((item, index) => {
-                            return (
-                                <View
-                                    style={{
-                                        width: 22, height: 5,
-                                        backgroundColor: (_carousel?.current?._activeItem == index) ? "#FFAB00" : "#000",
-                                        borderRadius: 39,
-                                        zIndex: 1, marginLeft: 3
-                                    }} />
-                            )
-                        })}
-                    </View>
-
-                </View>
-
-
-
-
-                {/* Main Page Start */}
-
-                <Text style={{
-                    fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 15,
-                    paddingLeft: 10
-                }}>{"Categories"}</Text>
-
-
-                <View style={{ width: "100%", marginBottom: 5 }}>
-                    <ScrollView
-                        horizontal={true}>
-                        <View style={{
-                            width: "100%", flexDirection: 'row', flexWrap: "nowrap"
-                        }}>
-                            {allData.map((value, index) => {
-                                return _HorizontalLayout(value, index);
+                    <View style={[{ width: "100%", height: "auto", flexDirection: "column", marginTop: 10 }]}>
+                        <Carousel
+                            ref={(c) => { _carousel.current = c; }}
+                            data={[1, 2, 3, 4, 5, 6, 7, 8]}
+                            renderItem={_renderItem}
+                            sliderWidth={sliderWidth}
+                            itemWidth={sliderWidth * 0.88}
+                            autoplay={true}
+                            autoplayDelay={1500}
+                        />
+                        <View style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap", marginTop: 10, justifyContent: "center", alignItems: "center" }}>
+                            {entries.map((item, index) => {
+                                return (
+                                    <View style={{ width: 22, height: 5, backgroundColor: (_carousel?.current?._activeItem == index) ? "#FFAB00" : appColor.black, borderRadius: 39, zIndex: 1, marginLeft: 3 }} />
+                                );
                             })}
                         </View>
-                    </ScrollView>
-                </View>
+                    </View>
+
+                    {/* Main Page Start */}
+                    <Text style={{ fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 15, paddingLeft: 10 }}>{"Categories"}</Text>
+                    <View style={{ width: "100%", marginBottom: 5 }}>
+                        <ScrollView
+                            horizontal={true}>
+                            <View style={{ width: "100%", flexDirection: 'row', flexWrap: "nowrap" }}>
+                                {allData.map((value, index) => {
+                                    return _HorizontalLayout(value, index);
+                                })}
+                            </View>
+                        </ScrollView>
+                    </View>
 
 
-                <View style={{
-                    width: "100%", flexDirection: "row", justifyContent: "center",
-                    alignItems: "center"
-                }}>
-                    <Text style={{
-                        fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 10,
-                        paddingLeft: 10, marginBottom: 5
-                    }}>{"Trending jewelleries"}</Text>
-                    <Text
-                        onPress={() => { props.navigation.navigate("TrendingPage", { name: "Trending Categories" }) }}
-                        style={{
-                            fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10,
-                            marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10,
-                            color: "#524c00"
-                        }}>{"Show all"}</Text>
-                </View>
+                    <View style={{ width: "100%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                        <Text style={{ fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 10, paddingLeft: 10, marginBottom: 5 }}>{"Trending jewelleries"}</Text>
+                        <Text
+                            onPress={() => { props.navigation.navigate("TrendingPage", { name: "Trending Categories" }) }}
+                            style={{ fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10, marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10, color: "#524c00" }}>{"Show all"}</Text>
+                    </View>
+
+                    <View style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap" }}>
+                        {clist.map((value, index) => <GridView
+                            item={value}
+                            props={props}
+                            index={(parseInt(index) + 77)}
+                            removeItem={removeItem}
+                            likeItem={likeItem}
+                            addItem={addItem}></GridView>)}
+                    </View>
 
 
+                    <View style={{ width: "100%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                        <Text style={{ fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 10, paddingLeft: 10, marginBottom: 5 }}>{"Your Recent jewelleries"}</Text>
+                        <Text
+                            onPress={() => { props.navigation.navigate("TrendingPage", { name: "Recent Categories" }) }}
+                            style={{ fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10, marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10, color: "#524c00" }}>{"Show all"}</Text>
+                    </View>
 
-                <View style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap" }}>
-                    {clist.map((value, index) => <GridView
-                        item={value}
-                        props={props}
-                        index={(parseInt(index) + 77)}
-                        removeItem={removeItem}
-                        likeItem={likeItem}
-                        addItem={addItem}></GridView>)}
-                </View>
+                    <View style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap" }}>
+                        {clist.map((value, index) => <GridView
+                            item={value}
+                            props={props}
+                            index={(parseInt(index) + 99)}
+                            removeItem={removeItem}
+                            addItem={addItem}></GridView>)}
+                    </View>
 
+                    <View style={{ width: "100%", height: 50 }}></View>
 
-                <View style={{
-                    width: "100%", flexDirection: "row", justifyContent: "center",
-                    alignItems: "center"
-                }}>
-                    <Text style={{
-                        fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 10,
-                        paddingLeft: 10, marginBottom: 5
-                    }}>{"Your Recent jewelleries"}</Text>
-                    <Text
-                        onPress={() => { props.navigation.navigate("TrendingPage", { name: "Recent Categories" }) }}
-                        style={{
-                            fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10,
-                            marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10,
-                            color: "#524c00"
-                        }}>{"Show all"}</Text>
-                </View>
-
-                <View style={{
-                    width: "100%", flexDirection: 'row', flexWrap: "wrap"
-                }}>
-                    {clist.map((value, index) => <GridView
-                        item={value}
-                        props={props}
-                        index={(parseInt(index) + 99)}
-                        removeItem={removeItem}
-                        addItem={addItem}></GridView>)}
-                </View>
-
-
-
-                <View style={{ width: "100%", height: 50 }}></View>
-
-            </ScrollView>}
+                </ScrollView>
+            </View>}
         </SafeAreaView>
     );
 }
@@ -423,7 +350,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
 
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: "#FFF" },
+    container: { flex: 1, backgroundColor: appColor.white },
     containerChild: { flex: 1 },
     ingredientsText: {
         fontSize: 14, color: 'black', paddingTop: 5, paddingStart: 5

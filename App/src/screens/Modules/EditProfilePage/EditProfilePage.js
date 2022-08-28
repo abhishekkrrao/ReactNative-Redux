@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, View, TextInput, Text, StyleSheet, KeyboardAvoidingView, Alert } from "react-native";
+import { SafeAreaView, View, TextInput, Text, StyleSheet, KeyboardAvoidingView, Alert, Pressable } from "react-native";
 import { CustomButton } from '../../../CustomModules/index';
 import { LocalStorage, mapStateToProps, mapDispatchToProps } from "../../../../Util";
 import { connect } from 'react-redux';
 import { appColor, appDimension, CommonStyle } from "../../../../Styles";
 import { BackButton, MyLoader } from "../../../Component";
-
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const EditProfilePage = (props) => {
     const [uID, setUID] = useState("");
@@ -13,6 +13,7 @@ const EditProfilePage = (props) => {
     const [uidError, setUIDError] = useState("");
     const [passError, setPassError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
 
     const onClick = () => {
         props.navigation.pop()
@@ -76,7 +77,7 @@ const EditProfilePage = (props) => {
             </View>
             <KeyboardAvoidingView behavior={"padding"} style={[styles.v1]}>
 
-               
+
                 <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"UserID*"}</Text>
 
                 <TextInput
@@ -102,25 +103,31 @@ const EditProfilePage = (props) => {
 
                 <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"Password*"}</Text>
                 {loading && <MyLoader></MyLoader>}
-                <TextInput
-                    autoCapitalize={"none"}
-                    autoCorrect={false}
-                    maxLength={15}
-                    style={[CommonStyle.txtInput, {
-                        borderColor: (passError) ? "red" : appColor.grey,
-                        backgroundColor: "#FFF", borderRadius: 26
-                    }]}
-                    onChangeText={(value) => {
-                        setPassword(value);
-                        setPassError("");
-                    }}
-                    placeholder={"Password*"}
-                    value={password}>
-                </TextInput>
-
+                <View style={{ width: "100%" }}>
+                    <TextInput
+                        secureTextEntry={isVisible}
+                        autoCapitalize={"none"}
+                        autoCorrect={false}
+                        maxLength={15}
+                        style={[CommonStyle.txtInput, {
+                            borderColor: (passError) ? "red" : appColor.grey,
+                            backgroundColor: "#FFF", borderRadius: 26
+                        }]}
+                        onChangeText={(value) => {
+                            setPassword(value);
+                            setPassError("");
+                        }}
+                        placeholder={"Password*"}
+                        value={password}>
+                    </TextInput>
+                    <Pressable onPress={() => setIsVisible(!isVisible)} style={{ position: "absolute", right: 26, top: 26 }}>
+                        {!isVisible && <Ionicons name={"eye"} color={"#000"} size={24}></Ionicons>}
+                        {isVisible && <Ionicons name={"eye-off"} color={"#000"} size={24}></Ionicons>}
+                    </Pressable>
+                </View>
                 {passError && <Text style={[CommonStyle.hintStyle, { marginTop: 10 }]}>{passError}</Text>}
 
-             
+
                 <View style={[styles.vAB3, { flexDirection: "row" }]}>
                     <View style={{ flex: 1 }}>
                         {/* <CustomButton
