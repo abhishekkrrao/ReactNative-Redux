@@ -15,7 +15,7 @@ function SearchPage(props) {
     }, [value]);
 
 
-    return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
+    return (<SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround }}>
         <Header value={value} onChange={(value) => { setValue(value) }} issearch={true} props={props}></Header>
         <View style={{ flex: 1, padding: 20 }}>
             {item.length <= 0 && <NoRecordPage screenTitle={"No Record found..."}></NoRecordPage>}

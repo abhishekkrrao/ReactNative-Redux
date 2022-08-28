@@ -48,7 +48,7 @@ function DetailPage(props) {
 
     const onClick = () => { props.navigation.pop(); }
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9", marginTop: -46 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround, marginTop: -46 }}>
             <ScrollView
                 style={{ flex: 1 }}>
 

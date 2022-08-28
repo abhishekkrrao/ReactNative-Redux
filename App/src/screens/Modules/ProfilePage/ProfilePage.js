@@ -40,7 +40,7 @@ function ProfilePage(props) {
     }, []);
 
     const onClick = () => { props.navigation.navigate("Home") }
-    return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
+    return (<SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround }}>
 
         <View style={{ width: "100%", flexDirection: "row", padding: 16 }}>
 

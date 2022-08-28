@@ -12,7 +12,7 @@ function CartPage(props) {
     useEffect(() => { }, []);
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround }}>
             <Header screenTitle={"Cart"} issearch={false} isTrending={true} props={props}></Header>
             <View style={{ flex: 1 }}>
 

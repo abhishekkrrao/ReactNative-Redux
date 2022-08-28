@@ -80,7 +80,7 @@ function WishlistPage(props) {
 
     const onClick = () => { props.navigation.navigate("Home") }
 
-    return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
+    return (<SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround }}>
 
         <View style={{ width: "100%", flexDirection: "row", paddingLeft: 16, paddingTop: 16 }}>
         <BackButton onClick={() => onClick()} screenTitle={"Your Wishlist"} props={props} ></BackButton>

@@ -61,7 +61,7 @@ function TrendingPage(props) {
     }
 
 
-    return (<SafeAreaView style={{ flex: 1, backgroundColor: "#efebe9" }}>
+    return (<SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround }}>
         <Header screenTitle={item?.name} isTrending={false} issearch={false} props={props}></Header>
         <View style={{ flex: 1, padding: 10 }}>
             <FlatList
