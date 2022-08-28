@@ -1,5 +1,6 @@
 import React from "react";
 import { Dimensions, ActivityIndicator, View } from "react-native";
+import { appColor } from '../../../Styles';
 import ContentLoader, { Rect, Circle, Path } from "react-content-loader/native"
 const width = Dimensions.get("screen").width;
 const height = Dimensions.get("screen").height;
@@ -8,7 +9,7 @@ const iWidth = (width / 2) - 9;
 const MyLoader = (props) => (
   <View style={{ position: "absolute", top: "45%", left: "50%" }}>
     <ActivityIndicator
-      size="large" color="#000"
+      size="large" color={appColor.black}
     />
   </View>
   // <ContentLoader

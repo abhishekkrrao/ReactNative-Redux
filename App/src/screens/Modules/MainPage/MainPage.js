@@ -137,28 +137,6 @@ function MainPage(props) {
         setAllCList(result);
     }
 
-
-    const mm = (value) => {
-        {
-            CommonStyle.iosShadow, {
-                opacity: value,
-                transform: [
-                    { scale: value },
-                    {
-                        rotate: value.interpolate({
-                            inputRange: [0, 1],
-                            outputRange: ['50deg', '0deg'],
-                            extrapolate: 'identity',
-                        })
-                    }
-                ]
-
-            }
-        }
-    }
-
-
-
     const _renderItem = ({ item, index }) => {
         return (
             <Pressable
@@ -176,6 +154,10 @@ function MainPage(props) {
         );
     }
 
+    /**
+     * 
+     * @param {*} item 
+     */
 
     const checkedItem = (item) => {
         props.navigation.navigate("TrendingPage", { name: "Categories" });

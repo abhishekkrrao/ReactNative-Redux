@@ -42,7 +42,7 @@ import { mapDispatchToProps, mapStateToProps } from '../../../../Util';
                                 onPress={() => { }}>
                                 <Text
                                     onPress={() => { ref?.current?.scrollTo(0); }}
-                                    style={{ fontSize: 21, color: "#000" }}>{"Click to close"}</Text>
+                                    style={{ fontSize: 21, color: appColor.black }}>{"Click to close"}</Text>
                             </Pressable> */}
                     </View>
                 </BottomSheet>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 25,
         aspectRatio: 1,
-        backgroundColor: '#000',
+        backgroundColor: 'appColor.black',
         opacity: 0.6,
     },
 });

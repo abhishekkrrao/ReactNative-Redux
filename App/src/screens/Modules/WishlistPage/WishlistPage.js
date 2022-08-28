@@ -6,7 +6,7 @@ import {
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps, record } from "../../../../Util";
 import { Header, GridView } from "../../../Component";
-import { CommonStyle } from "../../../../Styles";
+import { CommonStyle,appColor } from "../../../../Styles";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { BackButton } from "../../../Component";
 
@@ -88,9 +88,9 @@ function WishlistPage(props) {
             {/* <Pressable
                 onPress={() => { props.navigation.navigate("Home") }}
                 style={[{
-                    width: 55, height: 55, backgroundColor: "#FFF", borderRadius: 56
+                    width: 55, height: 55, backgroundColor: appColor.white, borderRadius: 56
                 }, { justifyContent: "center", zIndex: 1, alignItems: "center" }]}>
-                <MaterialCommunityIcons name="keyboard-backspace" color={"#000"} size={28} />
+                <MaterialCommunityIcons name="keyboard-backspace" color={appColor.black} size={28} />
             </Pressable>
             <View style={{ flex: 1, justifyContent: "center", padding: 10 }}>
                 <Text style={{ fontSize: 17, fontFamily: "Montserrat-Bold", flex: 1 }}>{"Your Wishlist"}</Text>

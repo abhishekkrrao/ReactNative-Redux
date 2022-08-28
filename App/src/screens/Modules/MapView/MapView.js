@@ -117,12 +117,12 @@ function MapViewPage(props) {
             <View style={styles.searchBox}>
             
                 <TextInput
-                    placeholder="Search here"
-                    placeholderTextColor="#000"
-                    autoCapitalize="none"
+                    placeholder={"Search here"}
+                    placeholderTextColor={appColor.black}
+                    autoCapitalize={"none"}
                     style={{ flex: 1, padding: 0 }}
                 />
-                <Ionicons name="ios-search" size={20} />
+                <Ionicons name={"ios-search"} size={20} />
             </View>
 
 
@@ -241,11 +241,11 @@ const styles = StyleSheet.create({
     card: {
         // padding: 10,
         elevation: 2,
-        backgroundColor: "#FFF",
+        backgroundColor: appColor.white,
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
         marginHorizontal: 10,
-        shadowColor: "#000",
+        shadowColor: appColor.black,
         shadowRadius: 5,
         shadowOpacity: 0.3,
         shadowOffset: { x: 2, y: -2 },

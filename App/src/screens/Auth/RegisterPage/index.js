@@ -65,7 +65,7 @@ function RegisterPage(props) {
                     maxLength={15}
                     placeholder={"UserID*"}
                     style={[CommonStyle.txtInput, { borderColor: (uidError) ? "red" : appColor.grey,
-                    backgroundColor:"#FFF",borderRadius:26 }]}
+                    backgroundColor:appColor.white,borderRadius:26 }]}
                     onChangeText={(value) => {
                         setUID(value);
                         setUIDError("");
@@ -84,7 +84,7 @@ function RegisterPage(props) {
                     autoCorrect={false}
                     maxLength={15}
                     style={[CommonStyle.txtInput, { borderColor: (passError) ? "red" : appColor.grey,
-                    backgroundColor:"#FFF",borderRadius:26 }]}
+                    backgroundColor:appColor.white,borderRadius:26 }]}
                     onChangeText={(value) => {
                         setPassword(value);
                         setPassError("");
@@ -99,9 +99,9 @@ function RegisterPage(props) {
                 <View style={[styles.vAB3, { flexDirection: "row" }]}>
                     <View style={{ flex: 1 }}>
                         <CustomButton
-                            textStyle={[CommonStyle.btnTxt,{color:"#000"}]}
+                            textStyle={[CommonStyle.btnTxt,{color:appColor.black}]}
                             value={"Login here"}
-                            btnStyle={[styles.vABC1,{backgroundColor:"#FFF"}]}
+                            btnStyle={[styles.vABC1,{backgroundColor:appColor.white}]}
                             onPress={() => { props.navigation.pop() }}>
                         </CustomButton>
                     </View>

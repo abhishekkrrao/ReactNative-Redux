@@ -88,7 +88,7 @@ const EditProfilePage = (props) => {
                     placeholder={"UserID*"}
                     style={[CommonStyle.txtInput, {
                         borderColor: (uidError) ? "red" : appColor.grey,
-                        backgroundColor: "#FFF", borderRadius: 26
+                        backgroundColor: appColor.white, borderRadius: 26
                     }]}
                     onChangeText={(value) => {
                         setUID(value);
@@ -111,7 +111,7 @@ const EditProfilePage = (props) => {
                         maxLength={15}
                         style={[CommonStyle.txtInput, {
                             borderColor: (passError) ? "red" : appColor.grey,
-                            backgroundColor: "#FFF", borderRadius: 26
+                            backgroundColor: appColor.white, borderRadius: 26
                         }]}
                         onChangeText={(value) => {
                             setPassword(value);
@@ -121,8 +121,8 @@ const EditProfilePage = (props) => {
                         value={password}>
                     </TextInput>
                     <Pressable onPress={() => setIsVisible(!isVisible)} style={{ position: "absolute", right: 26, top: 26 }}>
-                        {!isVisible && <Ionicons name={"eye"} color={"#000"} size={24}></Ionicons>}
-                        {isVisible && <Ionicons name={"eye-off"} color={"#000"} size={24}></Ionicons>}
+                        {!isVisible && <Ionicons name={"eye"} color={appColor.black} size={24}></Ionicons>}
+                        {isVisible && <Ionicons name={"eye-off"} color={appColor.black} size={24}></Ionicons>}
                     </Pressable>
                 </View>
                 {passError && <Text style={[CommonStyle.hintStyle, { marginTop: 10 }]}>{passError}</Text>}

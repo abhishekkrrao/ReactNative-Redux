@@ -6,6 +6,7 @@ import {
 import MapView, { Marker,PROVIDER_GOOGLE } from "react-native-maps";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { appColor } from '../../../../Styles';
 import { markers, mapStandardStyle } from '../../../../Util/mapData';
 import { CustomButton } from '../../../CustomModules';
 const { width, height } = Dimensions.get("window");
@@ -121,7 +122,7 @@ const ExploreScreen = (props) => {
                 initialRegion={state.region}
                 style={styles.container}
                 // showsScale={true}
-                tintColor={"#000"}
+                tintColor={appColor.black}
                 showsUserLocation={true}
                 showsMyLocationButton={false}
                 customMapStyle={mapStandardStyle}>
@@ -143,16 +144,16 @@ const ExploreScreen = (props) => {
                             <Animated.View
                                 style={[styles.markerWrap, {
                                     padding: 10, width: "auto", height: "auto",
-                                    backgroundColor: (_currentMarker.current == index) ? "#FFF" : "", borderRadius: 26
+                                    backgroundColor: (_currentMarker.current == index) ? appColor.white : "", borderRadius: 26
                                 }]}>
                                 {(_currentMarker.current == index) && <Text style={{
-                                    backgroundColor: "#FFF", color: "#000",
+                                    backgroundColor: appColor.white, color: appColor.black,
                                     fontSize: 11, fontFamily: "Montserrat-Regular", paddingBottom: 5
                                 }}>{marker.title}</Text>}
                                 {/* <Text>{marker.description}</Text> */}
                                 <Animated.Image
                                     source={require('../../../../../assets/map_marker.png')}
-                                    style={[styles.marker, scaleStyle, { tintColor: "#000" }]}
+                                    style={[styles.marker, scaleStyle, { tintColor: appColor.black }]}
                                     resizeMode="cover"
                                 />
                             </Animated.View>
@@ -164,13 +165,13 @@ const ExploreScreen = (props) => {
             <Pressable
                 onPress={() => { props.navigation.pop() }}
                 style={[styles.btn, { justifyContent: "center", alignItems: "center" }]}>
-                <MaterialCommunityIcons name="keyboard-backspace" style={styles.chipsIcon} color={"#FFF"} size={36} />
+                <MaterialCommunityIcons name="keyboard-backspace" style={styles.chipsIcon} color={appColor.white} size={36} />
             </Pressable>
             <View style={styles.searchBox}>
 
                 <TextInput
                     placeholder="Search here"
-                    placeholderTextColor="#000"
+                    placeholderTextColor={appColor.black}
                     autoCapitalize="none"
                     style={{ flex: 1, padding: 0 }}
                 />
@@ -244,8 +245,8 @@ const ExploreScreen = (props) => {
 
                             <CustomButton
                                 value={"Buy Now"}
-                                btnStyle={{ width: 120, height: "auto", backgroundColor: "#000" }}
-                                textStyle={{ fontSize: 14, padding: 5, color: "#FFF", fontFamily: "Montserrat-Bold" }}></CustomButton>
+                                btnStyle={{ width: 120, height: "auto", backgroundColor: appColor.black }}
+                                textStyle={{ fontSize: 14, padding: 5, color: appColor.white, fontFamily: "Montserrat-Bold" }}></CustomButton>
                         </View>
                     </View>
                 </View>
@@ -262,7 +263,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     btn: {
-        width: 56, height: 56, backgroundColor: "#000",
+        width: 56, height: 56, backgroundColor: appColor.black,
         borderRadius: 56, position: "absolute", top: 46, left: 26
     },
     searchBox: {
@@ -317,10 +318,10 @@ const styles = StyleSheet.create({
     card: {
         // padding: 10,
         elevation: 2,
-        backgroundColor: "#FFF",
+        backgroundColor: appColor.white,
         borderRadius: 25,
         marginHorizontal: 10,
-        shadowColor: "#000",
+        shadowColor: appColor.black,
         shadowRadius: 25,
         shadowOpacity: 0.3,
         shadowOffset: { x: 2, y: -2 },
@@ -354,7 +355,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         width: 50,
         height: 50,
-        // backgroundColor: "#FFF"
+        // backgroundColor: appColor.white
     },
     marker: {
         width: 30,

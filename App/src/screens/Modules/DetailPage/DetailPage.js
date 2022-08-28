@@ -4,7 +4,7 @@ import {
     Text, TouchableOpacity, ScrollView, Image, Platform
 } from "react-native";
 import { connect } from "react-redux";
-import { CommonStyle } from '../../../../Styles';
+import { CommonStyle, appColor } from '../../../../Styles';
 import { mapDispatchToProps, mapStateToProps } from "../../../../Util";
 import { Header } from "../../../Component";
 import { CustomButton } from '../../../CustomModules';
@@ -63,13 +63,13 @@ function DetailPage(props) {
                         <Pressable
                             onPress={() => { }}
                             style={[{
-                                width: 56, height: 56, borderRadius: 56, backgroundColor: "#FFF"
+                                width: 56, height: 56, borderRadius: 56, backgroundColor: appColor.white
                             }, { justifyContent: "center", alignItems: "center", zIndex: 1 }]}>
-                            <Ionicons name="notifications" color={"#000"} size={28} />
+                            <Ionicons name="notifications" color={appColor.black} size={28} />
                         </Pressable>
                     </View>
                 </View>
- 
+
 
                 <View style={{
                     width: "90%", height: "auto", flexDirection: "column",
@@ -99,7 +99,7 @@ function DetailPage(props) {
                                 <View
                                     style={{
                                         width: 22, height: 5,
-                                        backgroundColor: (_carousel?.current?._activeItem == index) ? "#FFF" : "#000",
+                                        backgroundColor: (_carousel?.current?._activeItem == index) ? appColor.white : appColor.black,
                                         borderRadius: 39,
                                         zIndex: 1, marginLeft: 3
                                     }} />
@@ -110,7 +110,7 @@ function DetailPage(props) {
                 </View>
 
                 <View style={[{
-                    flex: 1, backgroundColor: "#FFF", borderTopEndRadius: 26,
+                    flex: 1, backgroundColor: appColor.white, borderTopEndRadius: 26,
                     borderTopLeftRadius: 26, marginTop: 20,
                     padding: 10, height: 900
                 }]}>
@@ -126,7 +126,7 @@ function DetailPage(props) {
                         <Text
                             style={{
                                 flex: 1, padding: 5, fontSize: 23, fontFamily: "Montserrat-Bold",
-                                color: "#000"
+                                color: appColor.black
                             }}>{"₹499"}</Text>
                     </View>
 
@@ -155,13 +155,13 @@ function DetailPage(props) {
 
                     <View style={{ flex: 1, padding: 5 }}>
                         <CustomButton
-                            btnStyle={{ backgroundColor: "#000", height: 45, width: "100%", alignSelf: "center" }}
+                            btnStyle={{ backgroundColor: appColor.black, height: 45, width: "100%", alignSelf: "center" }}
                             textStyle={{ fontSize: 13, fontFamily: "Montserrat-Bold" }}
                             value='Add to cart'></CustomButton>
                     </View>
                     <View style={{ flex: 1, padding: 5 }}>
                         <CustomButton
-                            btnStyle={{ backgroundColor: "#000", height: 45, width: "100%", alignSelf: "center" }}
+                            btnStyle={{ backgroundColor: appColor.black, height: 45, width: "100%", alignSelf: "center" }}
                             textStyle={{ fontSize: 13, fontFamily: "Montserrat-Bold" }}
                             value='Buy Now'></CustomButton>
                     </View>

@@ -11,6 +11,8 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { ScrollView } from "react-native-gesture-handler";
 import { LocalStorage } from "../../../../Util";
 import { BackButton } from "../../../Component";
+import { appColor } from "../../../../Styles";
+
 
 function ProfilePage(props) {
 
@@ -51,21 +53,21 @@ function ProfilePage(props) {
 
             <View style={{ flex: 2, justifyContent: "center", alignItems: "flex-start" }}>
                 <Text style={{
-                    color: "#000", fontFamily: "Montserrat-Medium",
+                    color: appColor.black, fontFamily: "Montserrat-Medium",
                     fontSize: 16, letterSpacing: 0, lineHeight: 20
                 }}>{"Abhishek Kumar Rao"}</Text>
                 <Text style={{
-                    color: "#000", fontFamily: "Montserrat-Regular", lineHeight: 12, fontSize: 11,
+                    color: appColor.black, fontFamily: "Montserrat-Regular", lineHeight: 12, fontSize: 11,
                     textAlign: "left"
                 }}>{"Balraj Khanna Marg, Patel Nagar, New Delhi, Delhi 110008"}</Text>
                 <Pressable
                     onPress={() => props.navigation.navigate("EditProfilePage")}
                     style={{
-                        width: 126, height: 'auto', backgroundColor: "#FFF",
+                        width: 126, height: 'auto', backgroundColor: appColor.white,
                         justifyContent: "center", alignItems: "center", borderWidth: 1, borderColor: "#CCC", marginTop: 5
                     }}>
                     <Text style={{
-                        color: "#000", fontFamily: "Montserrat-Medium", fontSize: 12,
+                        color: appColor.black, fontFamily: "Montserrat-Medium", fontSize: 12,
                         padding: 10
                     }}>{"Edit Your Profile"}</Text>
                 </Pressable>
@@ -78,7 +80,7 @@ function ProfilePage(props) {
                     style={{ width: 76, height: 76, borderRadius: 96,backgroundColor:"#CCC" }}></Image> */}
                 <Ionicons name="person-circle-sharp" size={96} color="#CCC" />
                 <View style={{ position: "absolute", bottom: 12, right: 30 }}>
-                    <MaterialCommunityIcons name="plus" color={"#FFF"} size={44} />
+                    <MaterialCommunityIcons name="plus" color={appColor.white} size={44} />
                 </View>
             </View>
         </View>
@@ -87,52 +89,52 @@ function ProfilePage(props) {
 
 
             <View style={{
-                width: "90%", backgroundColor: "#FFF", alignSelf: "center", padding: 20, borderRadius: 26,
+                width: "90%", backgroundColor: appColor.white, alignSelf: "center", padding: 20, borderRadius: 26,
                 flexDirection: "row", justifyContent: "center"
             }}>
                 <Text style={{ fontFamily: "Montserrat-Medium", fontSize: 19, flex: 1 }}>{"Referrals"}</Text>
                 <View style={{ flex: 1, alignItems: "flex-end" }}>
-                    <Ionicons name="arrow-forward-sharp" color={"#000"} size={28} />
+                    <Ionicons name="arrow-forward-sharp" color={appColor.black} size={28} />
                 </View>
             </View>
             <View style={{
-                width: "90%", backgroundColor: "#FFF", marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
+                width: "90%", backgroundColor: appColor.white, marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
                 flexDirection: "row", justifyContent: "center"
             }}>
                 <Text style={{ fontFamily: "Montserrat-Medium", fontSize: 19, flex: 1 }}>{"Your Order"}</Text>
                 <View style={{ flex: 1, alignItems: "flex-end" }}>
-                    <Ionicons name="arrow-forward-sharp" color={"#000"} size={28} />
+                    <Ionicons name="arrow-forward-sharp" color={appColor.black} size={28} />
                 </View>
             </View>
 
 
             <View style={{
-                width: "90%", backgroundColor: "#FFF", marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
+                width: "90%", backgroundColor: appColor.white, marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
                 flexDirection: "row", justifyContent: "center"
             }}>
                 <Text style={{ fontFamily: "Montserrat-Medium", fontSize: 19, flex: 2 }}>{"Privacy & Policy"}</Text>
                 <View style={{ flex: 1, alignItems: "flex-end" }}>
-                    <Ionicons name="arrow-forward-sharp" color={"#000"} size={28} />
+                    <Ionicons name="arrow-forward-sharp" color={appColor.black} size={28} />
                 </View>
             </View>
 
 
             <View style={{
-                width: "90%", backgroundColor: "#FFF", marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
+                width: "90%", backgroundColor: appColor.white, marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
                 flexDirection: "row", justifyContent: "center"
             }}>
                 <Text style={{ fontFamily: "Montserrat-Medium", fontSize: 19, flex: 2 }}>{"Contact Support"}</Text>
                 <View style={{ flex: 1, alignItems: "flex-end" }}>
-                    <Ionicons name="arrow-forward-sharp" color={"#000"} size={28} />
+                    <Ionicons name="arrow-forward-sharp" color={appColor.black} size={28} />
                 </View>
             </View>
             <View style={{
-                width: "90%", backgroundColor: "#FFF", marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
+                width: "90%", backgroundColor: appColor.white, marginTop: 20, alignSelf: "center", padding: 20, borderRadius: 26,
                 flexDirection: "row", justifyContent: "center"
             }}>
                 <Text style={{ fontFamily: "Montserrat-Medium", fontSize: 19, flex: 1 }}>{"Address"}</Text>
                 <View style={{ flex: 1, alignItems: "flex-end" }}>
-                    <Ionicons name="arrow-forward-sharp" color={"#000"} size={28} />
+                    <Ionicons name="arrow-forward-sharp" color={appColor.black} size={28} />
                 </View>
             </View>
 

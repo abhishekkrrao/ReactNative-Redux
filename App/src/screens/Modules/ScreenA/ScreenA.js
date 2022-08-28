@@ -41,7 +41,7 @@ function SceenA(props) {
                 key={(index+911)}
                 style={[styles.hIngredients, {
                     flexDirection: "column", borderRadius: 0,
-                    backgroundColor: "#FFF", justifyContent: "center",
+                    backgroundColor: appColor.white, justifyContent: "center",
                     alignItems: "center", marginStart: 10
                 }]}>
                 <Pressable
@@ -133,7 +133,7 @@ function SceenA(props) {
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SceenA);
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: "#FFF" },
+    container: { flex: 1, backgroundColor: appColor.white },
     containerChild: { flex: 1 },
     ingredientsText: {
         fontSize: 14, color: 'black', paddingTop: 5, paddingStart: 5

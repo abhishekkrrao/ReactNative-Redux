@@ -2,13 +2,13 @@ import { Text, View, Image, Pressable, Platform } from "react-native";
 import React from "react";
 import { mapStateToProps, mapDispatchToProps } from '../../../Util';
 import { connect } from 'react-redux';
-
+import { appColor } from '../../../Styles';
 const shadowAndroidStyle = {
     overflow: "hidden", elevation: 4
 }
 const shadowIOSStyle = {
-    shadowColor: "#000", shadowOffset: { height: 1.5, width: 0 },
-    shadowOpacity: 0.15, overflow: "hidden", borderWidth: 1, borderColor: "#FFF"
+    shadowColor: appColor.black, shadowOffset: { height: 1.5, width: 0 },
+    shadowOpacity: 0.15, overflow: "hidden", borderWidth: 1, borderColor: appColor.white
 }
 
 function ListItem({ cStyle, items, props, iStyle, tStyle, screen,key }) {

@@ -20,7 +20,7 @@ function SceenB(props) {
     };
     const letterCount = useMemo(() => computeLetterCount(word), [word, wordIndex]);
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: "#FFF" }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: appColor.white }}>
             <Header style={{ width: "100%" }} props={props} />
             <View style={{ padding: 15, flex: 1 }}>
 

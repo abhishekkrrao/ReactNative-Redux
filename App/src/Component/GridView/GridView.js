@@ -4,7 +4,8 @@ import {
     Text
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { fontStyle } from '../../../Styles';
+import { fontStyle,appColor } from '../../../Styles';
+
 const GridView = ({ item, index, props, removeItem = () => null, addItem = () => null, likeItem = () => null }) => {
 
     useEffect(() => {
@@ -16,7 +17,7 @@ const GridView = ({ item, index, props, removeItem = () => null, addItem = () =>
             // key={((parseInt(index) + (919 * 34)) + "").toString()}
             style={[{
                 width: ((Dimensions.get("screen").width / 2) - 20), height: "auto",
-                backgroundColor: "#FFF",
+                backgroundColor: appColor.white,
                 marginBottom: 5, marginTop: 10, marginLeft: (index % 2 == 0) ? 5 : 10,
                 flexDirection: "column", borderRadius: 16
             }, { elevation: 1 }]}>
@@ -53,7 +54,7 @@ const GridView = ({ item, index, props, removeItem = () => null, addItem = () =>
                             likeItem(item)
                         }}
                         style={{ width:26, alignItems: "center",marginLeft:1 }}>
-                        {item?.like ? <MaterialCommunityIcons color={"#ffab00"} name="heart-circle" size={24}></MaterialCommunityIcons> : <MaterialCommunityIcons name="heart-circle-outline" color={"#000"} size={24}></MaterialCommunityIcons>}
+                        {item?.like ? <MaterialCommunityIcons color={"#ffab00"} name="heart-circle" size={24}></MaterialCommunityIcons> : <MaterialCommunityIcons name="heart-circle-outline" color={appColor.black} size={24}></MaterialCommunityIcons>}
                     </Pressable>
                 </View>
 

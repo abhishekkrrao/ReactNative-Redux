@@ -14,10 +14,10 @@ const styles = StyleSheet.create({
     buttonStyle: {
         width: "100%", height: 48, borderRadius: 25, padding: 5,
         justifyContent: "center", alignItems: "center",
-        backgroundColor: "#000"
+        backgroundColor: appColor.black
     },
     TextStyle: {
-        textAlign: "center", color: "#FFF", fontSize: 21
+        textAlign: "center", color: appColor.white, fontSize: 21
     },
 });
 export default CustomButton;
