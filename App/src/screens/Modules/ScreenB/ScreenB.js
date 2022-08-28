@@ -5,6 +5,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Header } from "../../../Component";
 import { connect } from 'react-redux';
 import { mapDispatchToProps,mapStateToProps } from "../../../../Util";
+import { appColor } from "../../../../Styles";
+
+
 function SceenB(props) {
     // State for our counter
     const [count, setCount] = useState(0);

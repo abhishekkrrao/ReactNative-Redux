@@ -1,5 +1,7 @@
 import { StyleSheet, TouchableOpacity, Text, View, Pressable } from "react-native";
-import React from "react"
+import React from "react";
+import { appColor } from "../../../Styles";
+
 function CustomButton({ btnStyle, textStyle, onPress, value = "Submit" }) {
     return (
         <Pressable

@@ -8,7 +8,7 @@ import { Header } from "../../../Component";
 import { markers, mapList, initialMapState } from "../../../../Util/data";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import { appColor } from "../../../../Styles";
 
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = 220;

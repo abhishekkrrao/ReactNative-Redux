@@ -5,6 +5,7 @@ import { Header } from '../../../Component';
 import BottomSheet, { BottomSheetRefProps } from './BottomSheet';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../../../Util';
+import { appColor } from '../../../../Styles';
 
 
 
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 25,
         aspectRatio: 1,
-        backgroundColor: 'appColor.black',
+        backgroundColor: appColor.black,
         opacity: 0.6,
     },
 });

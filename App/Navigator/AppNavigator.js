@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 import { screenOptionStyle } from './style';
 import TabNavigator from './TabNavigator';
 import { enableLatestRenderer } from 'react-native-maps';
-
+import { appColor } from '../Styles';
 
 /***
  * 

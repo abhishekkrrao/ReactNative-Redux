@@ -6,7 +6,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { Header } from "../../../Component";
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps, data, record } from "../../../../Util";
-
+import { appColor } from "../../../../Styles";
 function SceenA(props) {
     const [allData, setAllRecord] = useState([]);
     useEffect(() => {
