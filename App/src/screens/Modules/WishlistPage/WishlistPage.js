@@ -10,15 +10,17 @@ import { CommonStyle,appColor } from "../../../../Styles";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { BackButton } from "../../../Component";
 
+const wishlistRecord = record.output.category[3].children;
+
 function WishlistPage(props) {
 
 
     const [item, setItem] = useState({});
-    const [clist, setAllCList] = useState([]);
+    const [wishlist, setWishlist] = useState([]);
 
     useEffect(() => {
         setItem(props.route.params);
-        setAllCList(record.output.category);
+        setWishlist(wishlistRecord);
         console.log(item)
     }, []);
 
@@ -28,14 +30,14 @@ function WishlistPage(props) {
      * like item
      */
     const likeItem = (item) => {
-        let index = clist.indexOf(item);
-        const result = clist.map((sObj, position) => {
+        let index = wishlist.indexOf(item);
+        const result = wishlist.map((sObj, position) => {
             if (index == position) {
                 sObj.like = !sObj.like;
             }
             return sObj;
         });
-        setAllCList(result);
+        setWishlist(result);
     }
 
 
@@ -46,14 +48,14 @@ function WishlistPage(props) {
     */
 
     const addItem = (item) => {
-        let index = clist.indexOf(item);
-        const result = clist.map((sObj, position) => {
+        let index = wishlist.indexOf(item);
+        const result = wishlist.map((sObj, position) => {
             if (index == position) {
                 sObj.count ? sObj.count += 1 : sObj.count = 1;
             }
             return sObj;
         });
-        setAllCList(result);
+        setWishlist(result);
     }
 
     /**
@@ -62,8 +64,8 @@ function WishlistPage(props) {
      */
 
     const removeItem = (item) => {
-        let index = clist.indexOf(item);
-        const result = clist.map((sObj, position) => {
+        let index = wishlist.indexOf(item);
+        const result = wishlist.map((sObj, position) => {
             if (sObj.count && sObj.count > 0) {
                 if (index == position) {
                     sObj.count ? sObj.count -= 1 : sObj.count = 1;
@@ -75,7 +77,7 @@ function WishlistPage(props) {
             }
             return sObj;
         });
-        setAllCList(result);
+        setWishlist(result);
     }
 
     const onClick = () => { props.navigation.navigate("Home") }
@@ -103,7 +105,7 @@ function WishlistPage(props) {
                 nestedScrollEnabled={true}
                 numColumns={2}
                 style={{ width: "100%" }}
-                data={clist}
+                data={wishlist}
                 onEndReached={({ distanceFromEnd }) => {
                     console.log(distanceFromEnd)
                 }}

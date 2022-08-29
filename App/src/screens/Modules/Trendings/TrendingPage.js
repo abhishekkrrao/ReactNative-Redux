@@ -5,7 +5,7 @@ import {
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps, record } from "../../../../Util";
 import { Header } from "../../../Component";
-import { CommonStyle } from "../../../../Styles";
+import { CommonStyle,appColor } from "../../../../Styles";
 import { GridView } from "../../../Component";
 
 function TrendingPage(props) {

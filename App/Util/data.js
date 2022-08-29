@@ -7,32 +7,20 @@ import { StyleSheet } from 'react-native';
 const data = [{
     id: 1,
     "description": "Lady with a Teddy",
-    "image_url": "https://images.pexels.com/photos/3348748/pexels-photo-3348748.jpeg"
+    quantity:"2",
+    "image_url": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765796bangles.jpg_250X250.jpg"
 },
 {
     id: 2,
     "description": "Girl with camera",
-    "image_url": "https://images.pexels.com/photos/3812944/pexels-photo-3812944.jpeg"
+    quantity:"1",
+    "image_url": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658766517Bangles.png_250X250.jpg"
 },
 {
     id: 3,
     "description": "Beautiful Girl with Glasses",
-    "image_url": "https://images.pexels.com/photos/2100063/pexels-photo-2100063.jpeg"
-},
-{
-    id: 4,
-    "description": "Redhead with frackles",
-    "image_url": "https://images.pexels.com/photos/3228213/pexels-photo-3228213.jpeg"
-},
-{
-    id: 5,
-    "description": "Girl in black dress",
-    "image_url": "https://images.pexels.com/photos/1385472/pexels-photo-1385472.jpeg"
-},
-{
-    id: 6,
-    "description": "Girl Sitting on Chair",
-    "image_url": "https://images.pexels.com/photos/4725133/pexels-photo-4725133.jpeg"
+    quantity:"1",
+    "image_url": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765796bangles.jpg_250X250.jpg"
 }
 ];
 const appData = [
@@ -1276,6 +1264,7 @@ const record = {
                         "name": "Mangalutra",
                         "short_code": "Mangalsutra",
                         "parent_id": 2,
+                        price:"24",
                         "thumb": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658766603mangalsutra.png_250X250.jpg",
                         "icon": "https://dev-api.joolkart.com/uploads/img/category/default.png",
                         "banner": "https://dev-api.joolkart.com/uploads/img/category/default.png",
@@ -1301,6 +1290,7 @@ const record = {
                         "banner": "https://dev-api.joolkart.com/uploads/img/category/default.png",
                         "description": null,
                         "created_by": 1,
+                        price:"234",
                         "deleted_at": null,
                         "created_at": "2022-07-25T22:01:01.000000Z",
                         "updated_at": "2022-07-25T22:01:01.000000Z",
@@ -1321,6 +1311,7 @@ const record = {
                         "banner": "https://dev-api.joolkart.com/uploads/img/category/default.png",
                         "description": null,
                         "created_by": 1,
+                        price:"64",
                         "deleted_at": null,
                         "created_at": "2022-07-25T22:01:21.000000Z",
                         "updated_at": "2022-07-25T22:01:21.000000Z",
@@ -1395,6 +1386,7 @@ const record = {
                 "children": [
                     {
                         "id": 18,
+                        price: "100",
                         "meta_title": null,
                         "meta_description": "Bangles in joolkart.com",
                         "business_id": 1,
@@ -1415,6 +1407,7 @@ const record = {
                     },
                     {
                         "id": 19,
+                        price: "126",
                         "meta_title": null,
                         "meta_description": "Kadas in joolkart.com",
                         "business_id": 1,
@@ -1439,6 +1432,7 @@ const record = {
                         "meta_description": "Bracelets in joolkart.com",
                         "business_id": 1,
                         "status": 1,
+                        price: "543",
                         "name": "Bracelets",
                         "short_code": "Bracelets",
                         "parent_id": 4,

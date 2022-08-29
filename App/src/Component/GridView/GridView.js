@@ -54,7 +54,7 @@ const GridView = ({ item, index, props, removeItem = () => null, addItem = () =>
                             likeItem(item)
                         }}
                         style={{ width:26, alignItems: "center",marginLeft:1 }}>
-                        {item?.like ? <MaterialCommunityIcons color={"#ffab00"} name="heart-circle" size={24}></MaterialCommunityIcons> : <MaterialCommunityIcons name="heart-circle-outline" color={appColor.black} size={24}></MaterialCommunityIcons>}
+                        {item?.like ? <MaterialCommunityIcons color={appColor.black} name="heart-circle" size={24}></MaterialCommunityIcons> : <MaterialCommunityIcons name="heart-circle-outline" color={appColor.darkGrey} size={24}></MaterialCommunityIcons>}
                     </Pressable>
                 </View>
 

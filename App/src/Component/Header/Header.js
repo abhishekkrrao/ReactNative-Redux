@@ -4,7 +4,7 @@ import { LocalStorage, mapStateToProps, mapDispatchToProps } from '../../../Util
 import { connect } from 'react-redux';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { appColor } from '../../../Styles';
+import { appColor, fontStyle } from '../../../Styles';
 
 function Header({ props, style, home, issearch, onChange = () => null, value="", isTrending, screenTitle = "" }) {
 
@@ -49,8 +49,8 @@ function Header({ props, style, home, issearch, onChange = () => null, value="",
                             paddingLeft: 20
                         }}>
                             <MaterialCommunityIcons name="keyboard-backspace" color={appColor.white} size={28} />
-                            {screenTitle && <Text style={{ color: appColor.white, fontFamily: "Montserrat-Medium", fontSize: 16, paddingLeft: 10,height:28,
-                        textAlign:"center" }}>{screenTitle}</Text>}
+                            {screenTitle && <Text style={{ color: appColor.white, fontFamily: fontStyle.bold, fontSize: 16, paddingLeft: 10,height:28,
+                        textAlign:"center",paddingTop:2 }}>{screenTitle}</Text>}
                         </View>
 
                     </Pressable>

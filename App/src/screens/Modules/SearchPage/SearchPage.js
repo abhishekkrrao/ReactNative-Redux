@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "../../../../Util";
 import { Header, NoRecordPage } from "../../../Component";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
+import { appColor } from "../../../../Styles";
 function SearchPage(props) {
 
 

@@ -7,7 +7,7 @@ export default StyleSheet.create({
         borderWidth: 1, borderColor: appColor.grey, paddingLeft: appDimension.pixel20
     },
     headStyle: { fontSize: appDimension.pixel18, width: "100%", fontFamily: "Montserrat-Bold" },
-    hintStyle: { fontSize: appDimension.pixel11, width: "100%", color: "red", fontFamily: "Montserrat-Medium" },
+    hintStyle: { fontSize: appDimension.pixel11, width: "100%", color: appColor.lightRed, fontFamily: "Montserrat-Medium" },
     container: { flex: 1, backgroundColor: appColor.white },
     btnTxt: { fontSize: appDimension.pixel15, fontFamily: "Montserrat-Bold", letterSpacing: 2 },
     shadowIOSStyle: {

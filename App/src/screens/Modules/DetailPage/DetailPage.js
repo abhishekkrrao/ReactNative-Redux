@@ -50,11 +50,12 @@ function DetailPage(props) {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround, marginTop: -46 }}>
             <ScrollView
+                nestedScrollEnabled={true}
                 style={{ flex: 1 }}>
 
                 <View style={{
                     width: "100%", flexDirection: "row",
-                    marginTop: Platform.OS == "ios" ? 40 : 20, marginLeft: 20
+                    marginTop: Platform.OS == "ios" ? 40 : 66, marginLeft: 20
                 }}>
                     <View style={{ flex: 2 }}>
                         <BackButton onClick={() => onClick()} screenTitle={"Detail"} props={props} ></BackButton>
@@ -149,7 +150,10 @@ function DetailPage(props) {
             </ScrollView>
 
             <View
-                style={{ position: "absolute", bottom: 40, left: 0, width: "100%" }}>
+                style={{
+                    position: "absolute", bottom: 10, left: 0, width: "100%",
+                    backgroundColor: "#f5f5f5",padding:10
+                }}>
 
                 <View style={{ width: "100%", flexDirection: "row" }}>
 

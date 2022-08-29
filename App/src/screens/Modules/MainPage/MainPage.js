@@ -1,24 +1,29 @@
-import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useRef, useCallback, useMemo, useReducer } from "react";
 import {
     SafeAreaView, View, Text, Image, Platform, Pressable, ScrollView,
-    StyleSheet, FlatList, Dimensions, Animated,
+    StyleSheet, FlatList, Dimensions,
     StatusBar,
     Alert
 } from "react-native";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps, record } from "../../../../Util";
-import { appColor, CommonStyle, fontStyle } from "../../../../Styles";
+import { appColor, appDimension, CommonStyle, fontStyle } from "../../../../Styles";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { GridView, MyLoader } from "../../../Component";
 import { Carousel } from 'react-native-snap-carousel-v4';
+import Animated, { Transition } from "react-native-reanimated";
+
 
 
 const MaximumValue = 800;
 const MaximumDuration = 100;
 const sliderWidth = Dimensions.get("window").width;
 function MainPage(props) {
+
+
+
 
     /**
      * initiliaze the state
@@ -29,8 +34,9 @@ function MainPage(props) {
     const [state, setState] = useState({});
     const [loading, setLoading] = useState(false);
     const [allData, setAllRecord] = useState([]);
-    const [clist, setAllCList] = useState([]);
-    const [value, setAnimValue] = useState(new Animated.Value(0))
+    const [trendinglist, setTrending] = useState([]);
+    const [recent, setRecent] = useState([]);
+
 
 
     /**
@@ -41,58 +47,47 @@ function MainPage(props) {
         setState(props);
         console.log(props);
         setAllRecord(record.output.category);
-        setAllCList(record.output.category);
 
-        setTimeout(() => {
-            setLoading(false)
-        }, 1000);
 
-        getMoviesFromApi();
+        setRecent(record.output.category)
+        setTrending(record.output.category[1].children)
+
+
+
+
+
 
     }, []);
 
 
-    const getMoviesFromApi = () => {
-        return fetch('https://reactnative.dev/movies.json')
-            .then((response) => response.json())
-            .then((json) => {
-                console.log(json.movies);
-                return json.movies;
-            })
-            .catch(() => {
-                Alert.alert("Check Your Internet Connections .....")
-
-                console.log("Check Your Internet Connections .....");
-            });
-    };
-
-
-    const startAnimation = () => {
-        Animated.timing(value, {
-            // toValue: 0,
-            duration: MaximumValue,
-            useNativeDriver: true
-        }).start();
-    }
-
-    useEffect(() => {
-        startAnimation();
-    }, []);
 
     /**
      * 
      * like items
      */
 
+
+
     const likeItem = useCallback((item) => {
-        let index = clist.indexOf(item);
-        const result = clist.map((sObj, position) => {
+        let index = trendinglist.indexOf(item);
+        const result = trendinglist.map((sObj, position) => {
             if (index == position) {
                 sObj.like = !sObj.like;
             }
             return sObj;
         });
-        // setAllCList(result);
+        console.log(trendinglist)
+        result.length > 0 ? setTrending(result) : "";
+    }, []);
+    const likeItemInRecent = useCallback((item) => {
+        let index = recent.indexOf(item);
+        const result = recent.map((sObj, position) => {
+            if (index == position) {
+                sObj.like = !sObj.like
+            }
+            return sObj;
+        });
+        result.length > 0 ? setRecent(result) : "";
     }, []);
 
 
@@ -103,14 +98,24 @@ function MainPage(props) {
      */
 
     const addItem = useCallback((item) => {
-        let index = clist.indexOf(item);
-        const result = clist.map((sObj, position) => {
+        let index = trendinglist.indexOf(item);
+        const result = trendinglist.map((sObj, position) => {
             if (index == position) {
                 sObj.count ? sObj.count += 1 : sObj.count = 1;
             }
             return sObj;
         });
-        setAllCList(result);
+        result.length > 0 ? setTrending(result) : "";
+    }, [])
+    const addItemInRecent = useCallback((item) => {
+        let index = recent.indexOf(item);
+        const result = recent.map((sObj, position) => {
+            if (index == position) {
+                sObj.count ? sObj.count += 1 : sObj.count = 1;
+            }
+            return sObj;
+        });
+        result.length > 0 ? setRecent(result) : "";
     }, [])
 
 
@@ -121,8 +126,8 @@ function MainPage(props) {
      */
 
     const removeItem = (item) => {
-        let index = clist.indexOf(item);
-        const result = clist.map((sObj, position) => {
+        let index = trendinglist.indexOf(item);
+        const result = trendinglist.map((sObj, position) => {
             if (sObj.count && sObj.count > 0) {
                 if (index == position) {
                     sObj.count ? sObj.count -= 1 : sObj.count = 1;
@@ -134,7 +139,23 @@ function MainPage(props) {
             }
             return sObj;
         });
-        setAllCList(result);
+        result.length > 0 ? setTrending(result) : "";
+    }
+    const removeItemInRecent = (item) => {
+        let index = recent.indexOf(item);
+        const result = recent.map((sObj, position) => {
+            if (sObj.count && sObj.count > 0) {
+                if (index == position) {
+                    sObj.count ? sObj.count -= 1 : sObj.count = 1;
+                }
+            } else {
+                if (index == position) {
+                    sObj.count = 0;
+                }
+            }
+            return sObj;
+        });
+        result.length > 0 ? setRecent(result) : "";
     }
 
     const _renderItem = ({ item, index }) => {
@@ -142,13 +163,11 @@ function MainPage(props) {
             <Pressable
                 onPress={() => { props.navigation.navigate("DetailPage", item); }}
                 key={(parseInt(index))}
-                style={{ width: "100%" }}>
+                style={[{ width: "100%", marginBottom: 10 }, CommonStyle.iosShadow]}>
                 <Image
                     key={(parseInt(index))}
                     source={{ uri: slides[0].uri }}
-                    style={{
-                        width: "100%", height: 150
-                    }}>
+                    style={[{ width: "100%", height: 150, borderRadius: 26 }]}>
                 </Image>
             </Pressable>
         );
@@ -259,14 +278,16 @@ function MainPage(props) {
                             data={[1, 2, 3, 4, 5, 6, 7, 8]}
                             renderItem={_renderItem}
                             sliderWidth={sliderWidth}
-                            itemWidth={sliderWidth * 0.88}
+                            itemWidth={sliderWidth * .88}
                             autoplay={true}
                             autoplayDelay={1500}
+                            style={[CommonStyle.iosShadow]}
                         />
                         <View style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap", marginTop: 10, justifyContent: "center", alignItems: "center" }}>
                             {entries.map((item, index) => {
                                 return (
-                                    <View style={{ width: 22, height: 5, backgroundColor: (_carousel?.current?._activeItem == index) ? "#FFAB00" : appColor.black, borderRadius: 39, zIndex: 1, marginLeft: 3 }} />
+                                    <View style={[{ width: 22, height: 5, backgroundColor: (_carousel?.current?._activeItem == index) ? appColor.white : appColor.black, borderRadius: 39, zIndex: 1, marginLeft: 3 },
+                                    (_carousel?.current?._activeItem == index) ? {} : styles.nonSelec]} />
                                 );
                             })}
                         </View>
@@ -290,34 +311,36 @@ function MainPage(props) {
                         <Text style={{ fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 10, paddingLeft: 10, marginBottom: 5 }}>{"Trending jewelleries"}</Text>
                         <Text
                             onPress={() => { props.navigation.navigate("TrendingPage", { name: "Trending Categories" }) }}
-                            style={{ fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10, marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10, color: "#524c00" }}>{"Show all"}</Text>
+                            style={{ fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10, marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10, color: appColor.black }}>{"Show all"}</Text>
                     </View>
 
-                    <View style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap" }}>
-                        {clist.map((value, index) => <GridView
+                    <Animated.View
+                        style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap" }}>
+                        {trendinglist.map((value, index) => <GridView
                             item={value}
                             props={props}
                             index={(parseInt(index) + 77)}
                             removeItem={removeItem}
                             likeItem={likeItem}
                             addItem={addItem}></GridView>)}
-                    </View>
+                    </Animated.View>
 
 
                     <View style={{ width: "100%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                         <Text style={{ fontSize: 17, fontFamily: "Montserrat-Bold", marginTop: 10, paddingLeft: 10, marginBottom: 5 }}>{"Your Recent jewelleries"}</Text>
                         <Text
                             onPress={() => { props.navigation.navigate("TrendingPage", { name: "Recent Categories" }) }}
-                            style={{ fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10, marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10, color: "#524c00" }}>{"Show all"}</Text>
+                            style={{ fontSize: 15, fontFamily: "Montserrat-Bold", marginTop: 10, marginBottom: 5, textAlign: "right", flex: 1, paddingEnd: 10, color: appColor.black }}>{"Show all"}</Text>
                     </View>
 
                     <View style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap" }}>
-                        {clist.map((value, index) => <GridView
+                        {recent.map((value, index) => <GridView
                             item={value}
                             props={props}
                             index={(parseInt(index) + 99)}
-                            removeItem={removeItem}
-                            addItem={addItem}></GridView>)}
+                            removeItem={removeItemInRecent}
+                            likeItem={likeItemInRecent}
+                            addItem={addItemInRecent}></GridView>)}
                     </View>
 
                     <View style={{ width: "100%", height: 50 }}></View>
@@ -353,5 +376,9 @@ const styles = StyleSheet.create({
     },
     sContainer: {
         width: "100%"
+    },
+    nonSelec: {
+        width: appDimension.pixel10, height: appDimension.pixel10, borderRadius: appDimension.pixel10,
+        marginLeft: 5
     }
 });

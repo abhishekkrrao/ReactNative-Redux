@@ -82,11 +82,11 @@ function MyTabBar({ state, descriptors, navigation }) {
 }
 const getIcon = (label, isFocused) => {
     if (label === 'HOME') {
-        return (<AntDesign name="home" size={24} color={(isFocused ? appColor.appColor : "#CCC")}></AntDesign>);
+        return (<AntDesign name="home" size={24} color={(isFocused ? appColor.appColor : appColor.darkGrey)}></AntDesign>);
     } else if (label === 'WISHLIST') {
-        return (<Icon name="heart-outline" size={24} color={(isFocused ? appColor.appColor : "#CCC")}></Icon>);
+        return (<Icon name="heart-outline" size={24} color={(isFocused ? appColor.appColor : appColor.darkGrey)}></Icon>);
     } else if (label === 'ME') {
-        return (<Ionicons name="person-outline" size={24} color={(isFocused ? appColor.appColor : "#CCC")}></Ionicons>);
+        return (<Ionicons name="person-outline" size={24} color={(isFocused ? appColor.appColor : appColor.darkGrey)}></Ionicons>);
     }
 };
 
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
         height: 24,
     },
     tabViewStyle: {
-        shadowColor: '#000',
+        shadowColor: appColor.black,
         shadowOffset: {
             width: Platform.OS === 'ios' ? 6 : 0,
             height: Platform.OS === 'ios' ? 0 : 2,

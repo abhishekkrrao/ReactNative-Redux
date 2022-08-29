@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
     SafeAreaView, View, TextInput, Text, StyleSheet, KeyboardAvoidingView, Image,
-    Dimensions
+    Dimensions, Pressable
 } from "react-native";
 import { CustomButton } from '../../../CustomModules/index';
 import { LocalStorage, mapStateToProps, mapDispatchToProps } from "../../../../Util";
@@ -23,6 +23,7 @@ import {
 } from 'react-native-gesture-handler';
 import Weave from "../../../Component/SwipeButton/Weave";
 import Content from "../../../Component/SwipeButton/Content";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 
 const { width } = Dimensions.get('window');
@@ -34,6 +35,8 @@ const LoginPage = (props) => {
     const centerY = useSharedValue(initialWaveCenter);
     const progress = useSharedValue(0);
     const isBack = useSharedValue(0);
+    const [isVisible, setIsVisible] = useState(false);
+
     const maxDist = (width / 2) - initialSideWidth;
     useEffect(() => {
     }, [])
@@ -139,7 +142,7 @@ const LoginPage = (props) => {
                     maxLength={15}
                     placeholder={"UserID*"}
                     style={[CommonStyle.txtInput, {
-                        borderColor: (uidError) ? "red" : appColor.grey,
+                        borderColor: (uidError) ? appColor.lightRed : appColor.grey,
                         backgroundColor: appColor.white, borderRadius: 26
                     }]}
                     onChangeText={(value) => {
@@ -155,36 +158,43 @@ const LoginPage = (props) => {
 
                 <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: fontStyle.medium }]}>{"Password*"}</Text>
 
-                <TextInput
-                    autoCapitalize={"none"}
-                    autoCorrect={false}
-                    maxLength={15}
-                    style={[CommonStyle.txtInput, {
-                        borderColor: (passError) ? "red" : appColor.grey,
-                        backgroundColor: appColor.white, borderRadius: 26
-                    }]}
-                    onChangeText={(value) => {
-                        setPassword(value);
-                        setPassError("");
-                    }}
-                    placeholder={"Password*"}
-                    value={password}>
-                </TextInput>
+                <View style={{ width: "100%" }}>
+                    <TextInput
+                        secureTextEntry={isVisible}
+                        autoCapitalize={"none"}
+                        autoCorrect={false}
+                        maxLength={15}
+                        style={[CommonStyle.txtInput, {
+                            borderColor: (passError) ? appColor.lightRed : appColor.grey,
+                            backgroundColor: appColor.white, borderRadius: 26
+                        }]}
+                        onChangeText={(value) => {
+                            setPassword(value);
+                            setPassError("");
+                        }}
+                        placeholder={"Password*"}
+                        value={password}>
+                    </TextInput>
+                    <Pressable onPress={() => setIsVisible(!isVisible)} style={{ position: "absolute", right: 26, top: 26 }}>
+                        {!isVisible && <Ionicons name={"eye"} color={appColor.black} size={24}></Ionicons>}
+                        {isVisible && <Ionicons name={"eye-off"} color={appColor.black} size={24}></Ionicons>}
+                    </Pressable>
+                </View>
 
                 {passError && <Text style={[CommonStyle.hintStyle, { marginTop: 10, paddingLeft: 10 }]}>{passError}</Text>}
 
 
-                <View style={[styles.vAB3, { flexDirection: "row"}]}>
+                <View style={[styles.vAB3, { flexDirection: "row" }]}>
                     <View style={{ flex: 1 }}>
-                           <CustomButton
+                        <CustomButton
                             textStyle={[CommonStyle.btnTxt, { color: appColor.black }]}
                             value={"Register"}
                             btnStyle={[styles.vABC1, { backgroundColor: appColor.white }]}
                             onPress={() => { props.navigation.navigate("RegisterPage") }}>
-                        </CustomButton> 
-                    </View> 
+                        </CustomButton>
+                    </View>
 
-                 <View style={{ flex: 1, marginLeft: 20 }}>
+                    <View style={{ flex: 1, marginLeft: 20 }}>
                         <CustomButton
                             textStyle={CommonStyle.btnTxt}
                             value={"Login"}
@@ -193,6 +203,34 @@ const LoginPage = (props) => {
                         </CustomButton>
                     </View>
                 </View>
+
+
+                <View style={{ width: "100%", alignItems: "center",marginTop:35 }}>
+                    <Text style={{ color: "#000", fontFamily: fontStyle.medium, fontSize: appDimension.pixel13 }}>{"---- Login with Social Accounts ----"}</Text>
+
+                    <View style={{ flex: 1,flexDirection:"row" }}>
+                        <View style={{ flex: 1,marginEnd:5 }}>
+                            <CustomButton
+                                textStyle={CommonStyle.btnTxt}
+                                value={"FB Login"}
+                                btnStyle={styles.vABC1}
+                                onPress={() => { saveUser(); }}>
+                            </CustomButton>
+                        </View>
+                        <View style={{ flex: 1 }}>
+                            <CustomButton
+                                textStyle={CommonStyle.btnTxt}
+                                value={"Apple"}
+                                btnStyle={styles.vABC1}
+                                onPress={() => { saveUser(); }}>
+                            </CustomButton>
+                        </View>
+
+                    </View>
+
+
+                </View>
+
             </KeyboardAvoidingView>
         </SafeAreaView>
     );

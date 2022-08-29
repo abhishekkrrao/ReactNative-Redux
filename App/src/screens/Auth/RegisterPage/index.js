@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import {
     SafeAreaView, View, TextInput, Text, StyleSheet,
-    KeyboardAvoidingView, Image
+    KeyboardAvoidingView, Image, Pressable
 } from "react-native";
 import { CustomButton } from '../../../CustomModules';
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps, LocalStorage } from '../../../../Util';
 import { appColor, appDimension, CommonStyle } from "../../../../Styles";
 import { BackButton } from "../../../Component";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 function RegisterPage(props) {
     const [uID, setUID] = useState("");
     const [password, setPassword] = useState("");
     const [uidError, setUIDError] = useState("");
     const [passError, setPassError] = useState("");
+    const [isVisible, setIsVisible] = useState(false);
+
+
 
     useEffect(() => { }, []);
     const clearAll = () => {
@@ -64,8 +68,10 @@ function RegisterPage(props) {
                     autoFocus={true}
                     maxLength={15}
                     placeholder={"UserID*"}
-                    style={[CommonStyle.txtInput, { borderColor: (uidError) ? "red" : appColor.grey,
-                    backgroundColor:appColor.white,borderRadius:26 }]}
+                    style={[CommonStyle.txtInput, {
+                        borderColor: (uidError) ? appColor.lightRed : appColor.grey,
+                        backgroundColor: appColor.white, borderRadius: 26
+                    }]}
                     onChangeText={(value) => {
                         setUID(value);
                         setUIDError("");
@@ -73,35 +79,44 @@ function RegisterPage(props) {
                     value={uID}>
                 </TextInput>
 
-                {uidError && <Text style={[CommonStyle.hintStyle, { marginTop: 10,paddingLeft:10 }]}>{uidError}</Text>}
+                {uidError && <Text style={[CommonStyle.hintStyle, { marginTop: 10, paddingLeft: 10 }]}>{uidError}</Text>}
 
 
 
                 <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"Password*"}</Text>
 
-                <TextInput
-                    autoCapitalize={"none"}
-                    autoCorrect={false}
-                    maxLength={15}
-                    style={[CommonStyle.txtInput, { borderColor: (passError) ? "red" : appColor.grey,
-                    backgroundColor:appColor.white,borderRadius:26 }]}
-                    onChangeText={(value) => {
-                        setPassword(value);
-                        setPassError("");
-                    }}
-                    placeholder={"Password*"}
-                    value={password}>
-                </TextInput>
+                <View style={{ width: "100%" }}>
+                    <TextInput
+                        secureTextEntry={isVisible}
+                        autoCapitalize={"none"}
+                        autoCorrect={false}
+                        maxLength={15}
+                        style={[CommonStyle.txtInput, {
+                            borderColor: (passError) ? appColor.lightRed : appColor.grey,
+                            backgroundColor: appColor.white, borderRadius: 26
+                        }]}
+                        onChangeText={(value) => {
+                            setPassword(value);
+                            setPassError("");
+                        }}
+                        placeholder={"Password*"}
+                        value={password}>
+                    </TextInput>
+                    <Pressable onPress={() => setIsVisible(!isVisible)} style={{ position: "absolute", right: 26, top: 26 }}>
+                        {!isVisible && <Ionicons name={"eye"} color={appColor.black} size={24}></Ionicons>}
+                        {isVisible && <Ionicons name={"eye-off"} color={appColor.black} size={24}></Ionicons>}
+                    </Pressable>
+                </View>
 
-                {passError && <Text style={[CommonStyle.hintStyle, { marginTop: 10,paddingLeft:10 }]}>{passError}</Text>}
+                {passError && <Text style={[CommonStyle.hintStyle, { marginTop: 10, paddingLeft: 10 }]}>{passError}</Text>}
 
 
                 <View style={[styles.vAB3, { flexDirection: "row" }]}>
                     <View style={{ flex: 1 }}>
                         <CustomButton
-                            textStyle={[CommonStyle.btnTxt,{color:appColor.black}]}
+                            textStyle={[CommonStyle.btnTxt, { color: appColor.black }]}
                             value={"Login here"}
-                            btnStyle={[styles.vABC1,{backgroundColor:appColor.white}]}
+                            btnStyle={[styles.vABC1, { backgroundColor: appColor.white }]}
                             onPress={() => { props.navigation.pop() }}>
                         </CustomButton>
                     </View>

@@ -53,22 +53,22 @@ function ProfilePage(props) {
 
             <View style={{ flex: 2, justifyContent: "center", alignItems: "flex-start" }}>
                 <Text style={{
-                    color: appColor.black, fontFamily: "Montserrat-Medium",
-                    fontSize: 16, letterSpacing: 0, lineHeight: 20
+                    color: appColor.mBlack, fontFamily: "Montserrat-Medium",
+                    fontSize: 16
                 }}>{"Abhishek Kumar Rao"}</Text>
                 <Text style={{
-                    color: appColor.black, fontFamily: "Montserrat-Regular", lineHeight: 12, fontSize: 11,
+                    color: appColor.mBlack, fontFamily: "Montserrat-Regular", fontSize: 11,
                     textAlign: "left"
                 }}>{"Balraj Khanna Marg, Patel Nagar, New Delhi, Delhi 110008"}</Text>
                 <Pressable
                     onPress={() => props.navigation.navigate("EditProfilePage")}
                     style={{
-                        width: 126, height: 'auto', backgroundColor: appColor.white,
-                        justifyContent: "center", alignItems: "center", borderWidth: 1, borderColor: "#CCC", marginTop: 5
+                        width: 126, height: 'auto',
+                        justifyContent: "center", alignItems: "flex-start", marginTop: 5
                     }}>
                     <Text style={{
                         color: appColor.black, fontFamily: "Montserrat-Medium", fontSize: 12,
-                        padding: 10
+                        padding: 10, paddingLeft: 0
                     }}>{"Edit Your Profile"}</Text>
                 </Pressable>
             </View>
@@ -80,7 +80,7 @@ function ProfilePage(props) {
                     style={{ width: 76, height: 76, borderRadius: 96,backgroundColor:"#CCC" }}></Image> */}
                 <Ionicons name="person-circle-sharp" size={96} color="#CCC" />
                 <View style={{ position: "absolute", bottom: 12, right: 30 }}>
-                    <MaterialCommunityIcons name="plus" color={appColor.white} size={44} />
+                    <MaterialCommunityIcons name="plus" color={appColor.black} size={44} />
                 </View>
             </View>
         </View>
@@ -141,11 +141,8 @@ function ProfilePage(props) {
 
             <Pressable
                 onPress={() => logOut()}
-                style={{
-                    width: "100%", padding: 25, alignItems: "center",
-                    marginBottom: 50
-                }}>
-                <Text style={{ fontSize: 19, fontFamily: "Montserrat-Bold" }}>{"Logout"}</Text>
+                style={{ width: "100%", padding: 25, alignItems: "center", marginBottom: 50 }}>
+                <Text style={{ fontSize: 19, fontFamily: "Montserrat-Bold", color: appColor.black }}>{"Logout"}</Text>
             </Pressable>
 
         </ScrollView>
