@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { appColor, fontStyle, appDimension } from "../../../Styles";
 import { View, Text, Image, Pressable } from "react-native";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Animated, { FadeIn, FadeOut, Layout, RotateInDownLeft, ZoomIn, ZoomOut } from 'react-native-reanimated';
 
-const HorizontalView = ({ item, index }) => {
+
+const HorizontalView = ({ item, index, onDelete = () => null }) => {
+    const initialMode = useRef(true);
+    useEffect(() => {
+        initialMode.current = false;
+    }, []);
     return (
-        <View
+        <Animated.View
+            entering={initialMode.current ? FadeIn.delay(100 * index) : FadeIn}
+            layout={Layout.delay(100)}
+            exiting={FadeOut}
             key={(index * 245 + 87)}
             style={{
                 width: "95%", padding: 10, backgroundColor: "#f5f5f5",
@@ -41,9 +51,22 @@ const HorizontalView = ({ item, index }) => {
                         fontSize: appDimension.pixel16,
                         fontFamily: fontStyle.bold, color: appColor.black, lineHeight: 26
                     }}>{"$200"}</Text>
+
+                    <View style={{ width: "100%", flexDirection: "row", alignSelf: "flex-end" }}>
+                        <View style={{ flex: 3, flexDirection: "row", justifyContent: "center" }}>
+                            <Text style={{ flex: 1, fontSize: appDimension.pixel21, fontFamily: fontStyle.bold }}>{"-"}</Text>
+                            <Text style={{ flex: 1, fontSize: appDimension.pixel19, fontFamily: fontStyle.bold }}>{item?.quantity}</Text>
+                            <Text style={{ flex: 1, fontSize: appDimension.pixel21, fontFamily: fontStyle.bold }}>{"+"}</Text>
+                        </View>
+                        <Pressable
+                            onPress={onDelete}
+                            style={{ flex: 1, alignItems: "flex-end" }}>
+                            <Icon name={"delete-outline"} size={24}></Icon>
+                        </Pressable>
+                    </View>
                 </View>
             </View>
-        </View>
+        </Animated.View>
     );
 }
 export { HorizontalView };

@@ -7,19 +7,31 @@ import { StyleSheet } from 'react-native';
 const data = [{
     id: 1,
     "description": "Lady with a Teddy",
-    quantity:"2",
+    quantity: "2",
     "image_url": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765796bangles.jpg_250X250.jpg"
 },
 {
     id: 2,
     "description": "Girl with camera",
-    quantity:"1",
+    quantity: "1",
     "image_url": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658766517Bangles.png_250X250.jpg"
 },
 {
     id: 3,
     "description": "Beautiful Girl with Glasses",
-    quantity:"1",
+    quantity: "3",
+    "image_url": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765796bangles.jpg_250X250.jpg"
+},
+{
+    id: 4,
+    "description": "Beautiful Girl with Glasses",
+    quantity: "6",
+    "image_url": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765796bangles.jpg_250X250.jpg"
+},
+{
+    id: 5,
+    "description": "Beautiful Girl with Glasses",
+    quantity: "1",
     "image_url": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765796bangles.jpg_250X250.jpg"
 }
 ];
@@ -1125,7 +1137,7 @@ const record = {
                         "slug": "danglers",
                         price: "25",
                         "position": 3
-                        
+
                     },
                     {
                         "id": 13,
@@ -1264,7 +1276,7 @@ const record = {
                         "name": "Mangalutra",
                         "short_code": "Mangalsutra",
                         "parent_id": 2,
-                        price:"24",
+                        price: "24",
                         "thumb": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658766603mangalsutra.png_250X250.jpg",
                         "icon": "https://dev-api.joolkart.com/uploads/img/category/default.png",
                         "banner": "https://dev-api.joolkart.com/uploads/img/category/default.png",
@@ -1290,7 +1302,7 @@ const record = {
                         "banner": "https://dev-api.joolkart.com/uploads/img/category/default.png",
                         "description": null,
                         "created_by": 1,
-                        price:"234",
+                        price: "234",
                         "deleted_at": null,
                         "created_at": "2022-07-25T22:01:01.000000Z",
                         "updated_at": "2022-07-25T22:01:01.000000Z",
@@ -1311,7 +1323,7 @@ const record = {
                         "banner": "https://dev-api.joolkart.com/uploads/img/category/default.png",
                         "description": null,
                         "created_by": 1,
-                        price:"64",
+                        price: "64",
                         "deleted_at": null,
                         "created_at": "2022-07-25T22:01:21.000000Z",
                         "updated_at": "2022-07-25T22:01:21.000000Z",
@@ -2326,7 +2338,7 @@ const record = {
 const Images = [
     { image: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765611earring.jpg_250X250.jpg" },
     { image: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765694necklace.jpg_250X250.jpg" },
-    { image:  "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765752rings.jpg_250X250.jpg" },
+    { image: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765752rings.jpg_250X250.jpg" },
     { image: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765796bangles.jpg_250X250.jpg" }
 ];
 // const Images = [
@@ -2337,7 +2349,7 @@ const Images = [
 // ];
 
 
- const mapList = [
+const mapList = [
     {
         id: '1',
         coordinate: {
@@ -2446,85 +2458,85 @@ const Images = [
 ];
 
 
- const markers = [
+const markers = [
     {
-      coordinate: {
-        latitude: 22.6293867,
-        longitude: 88.4354486,
-      },
-      title: "Amazing Food Place",
-      description: "This is the best food place",
-      image: "",
-      rating: 4,
-      reviews: 99,
-    },
-    {
-      coordinate: {
-        latitude: 22.6345648,
-        longitude: 88.4377279,
-      },
-      title: "Second Amazing Food Place",
-      description: "This is the second best food place",
-      image: "",
-      rating: 5,
-      reviews: 102,
-    },
-    {
-      coordinate: {
-        latitude: 22.6281662,
-        longitude: 88.4410113,
-      },
-      title: "Third Amazing Food Place",
-      description: "This is the third best food place",
-      image: "",
-      rating: 3,
-      reviews: 220,
-    },
-    {
-      coordinate: {
-        latitude: 22.6341137,
-        longitude: 88.4497463,
-      },
-      title: "Fourth Amazing Food Place",
-      description: "This is the fourth best food place",
-      image: "",
-      rating: 4,
-      reviews: 48,
-    },
-    {
-      coordinate: {
-        latitude: 22.6292757,
-        longitude: 88.444781,
-      },
-      title: "Fifth Amazing Food Place",
-      description: "This is the fifth best food place",
-      image: "",
-      rating: 4,
-      reviews: 178,
+        coordinate: {
+            latitude: 22.6293867,
+            longitude: 88.4354486,
+        },
+        title: "Amazing Food Place",
+        description: "This is the best food place",
+        image: "",
+        rating: 4,
+        reviews: 99,
     },
     {
         coordinate: {
-          latitude: 22.6290057,
-          longitude: 88.440081,
+            latitude: 22.6345648,
+            longitude: 88.4377279,
+        },
+        title: "Second Amazing Food Place",
+        description: "This is the second best food place",
+        image: "",
+        rating: 5,
+        reviews: 102,
+    },
+    {
+        coordinate: {
+            latitude: 22.6281662,
+            longitude: 88.4410113,
+        },
+        title: "Third Amazing Food Place",
+        description: "This is the third best food place",
+        image: "",
+        rating: 3,
+        reviews: 220,
+    },
+    {
+        coordinate: {
+            latitude: 22.6341137,
+            longitude: 88.4497463,
+        },
+        title: "Fourth Amazing Food Place",
+        description: "This is the fourth best food place",
+        image: "",
+        rating: 4,
+        reviews: 48,
+    },
+    {
+        coordinate: {
+            latitude: 22.6292757,
+            longitude: 88.444781,
         },
         title: "Fifth Amazing Food Place",
         description: "This is the fifth best food place",
         image: "",
         rating: 4,
         reviews: 178,
-      },
-      ,
+    },
     {
         coordinate: {
-          latitude: 22.6298857,
-          longitude: 88.445381,
+            latitude: 22.6290057,
+            longitude: 88.440081,
         },
         title: "Fifth Amazing Food Place",
         description: "This is the fifth best food place",
         image: "",
         rating: 4,
         reviews: 178,
-      }
+    },
+    ,
+    {
+        coordinate: {
+            latitude: 22.6298857,
+            longitude: 88.445381,
+        },
+        title: "Fifth Amazing Food Place",
+        description: "This is the fifth best food place",
+        image: "",
+        rating: 4,
+        reviews: 178,
+    }
 ];
 
 
@@ -2533,38 +2545,38 @@ const Images = [
 const initialMapState = {
     markers,
     categories: [
-      { 
-        name: 'Fastfood Center', 
-        icon: <MaterialCommunityIcons  name="food-fork-drink" size={18} />,
-      },
-      {
-        name: 'Restaurant',
-        icon: <Ionicons name="ios-restaurant"  size={18} />,
-      },
-      {
-        name: 'Dineouts',
-        icon: <Ionicons name="md-restaurant"  size={18} />,
-      },
-      {
-        name: 'Snacks Corner',
-        icon: <MaterialCommunityIcons name="food"  size={18} />,
-      }
-  ],
+        {
+            name: 'Fastfood Center',
+            icon: <MaterialCommunityIcons name="food-fork-drink" size={18} />,
+        },
+        {
+            name: 'Restaurant',
+            icon: <Ionicons name="ios-restaurant" size={18} />,
+        },
+        {
+            name: 'Dineouts',
+            icon: <Ionicons name="md-restaurant" size={18} />,
+        },
+        {
+            name: 'Snacks Corner',
+            icon: <MaterialCommunityIcons name="food" size={18} />,
+        }
+    ],
     region: {
-      latitude: 22.62938671242907,
-      longitude: 88.4354486029795,
-      latitudeDelta: 0.04864195044303443,
-      longitudeDelta: 0.040142817690068,
+        latitude: 22.62938671242907,
+        longitude: 88.4354486029795,
+        latitudeDelta: 0.04864195044303443,
+        longitudeDelta: 0.040142817690068,
     },
-  };
+};
 
 
 
-export { data, appData, record, mapList,markers,initialMapState };
+export { data, appData, record, mapList, markers, initialMapState };
 
 
 const styles = StyleSheet.create({
     chipsIcon: {
-      marginRight: 5,
+        marginRight: 5,
     }
-  });
+});

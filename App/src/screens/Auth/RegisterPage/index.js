@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
     SafeAreaView, View, TextInput, Text, StyleSheet,
-    KeyboardAvoidingView, Image, Pressable
+    KeyboardAvoidingView, Image, Pressable, Animated
 } from "react-native";
 import { CustomButton } from '../../../CustomModules';
 import { connect } from "react-redux";
@@ -16,10 +16,21 @@ function RegisterPage(props) {
     const [uidError, setUIDError] = useState("");
     const [passError, setPassError] = useState("");
     const [isVisible, setIsVisible] = useState(false);
+    const fadeAnim = useRef(new Animated.Value(0)).current;
 
 
+    useEffect(() => {
+        startAnimation()
+    }, [fadeAnim]);
 
-    useEffect(() => { }, []);
+    const startAnimation = () => {
+        Animated.timing(fadeAnim, {
+            toValue: 1,
+            duration: 1500,
+            useNativeDriver: true,
+        }).start();
+    }
+
     const clearAll = () => {
         setPassword("");
         setUID("")
@@ -54,38 +65,42 @@ function RegisterPage(props) {
             <View style={{ padding: 16 }}>
                 <BackButton onClick={() => onClick()} screenTitle={"Register"} props={props} ></BackButton>
             </View>
-            <KeyboardAvoidingView behavior={"padding"} style={[styles.v1]}>
+            <View behavior={"padding"} style={[styles.v1]}>
                 {/* <View style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
                     <Image
                         style={{ width: 96, height: 96 }}
                         source={require("../../../../../assets/appicon.png")}></Image>
                 </View> */}
-                <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"UserID*"}</Text>
 
-                <TextInput
-                    autoCapitalize={"none"}
-                    autoCorrect={false}
-                    autoFocus={true}
-                    maxLength={15}
-                    placeholder={"UserID*"}
-                    style={[CommonStyle.txtInput, {
-                        borderColor: (uidError) ? appColor.lightRed : appColor.grey,
-                        backgroundColor: appColor.white, borderRadius: 26
-                    }]}
-                    onChangeText={(value) => {
-                        setUID(value);
-                        setUIDError("");
-                    }}
-                    value={uID}>
-                </TextInput>
+                <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
+                    <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"UserID*"}</Text>
+
+                    <TextInput
+                        autoCapitalize={"none"}
+                        autoCorrect={false}
+                        autoFocus={true}
+                        maxLength={15}
+                        placeholder={"UserID*"}
+                        style={[CommonStyle.txtInput, {
+                            borderColor: (uidError) ? appColor.lightRed : appColor.grey,
+                            backgroundColor: appColor.white, borderRadius: 26
+                        }]}
+                        onChangeText={(value) => {
+                            setUID(value);
+                            setUIDError("");
+                        }}
+                        value={uID}>
+                    </TextInput>
+                </Animated.View>
 
                 {uidError && <Text style={[CommonStyle.hintStyle, { marginTop: 10, paddingLeft: 10 }]}>{uidError}</Text>}
 
 
 
-                <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"Password*"}</Text>
 
-                <View style={{ width: "100%" }}>
+
+                <Animated.View style={{ width: "100%", opacity: fadeAnim }}>
+                    <Text style={[{ marginTop: appDimension.pixel10 }, CommonStyle.headStyle, { fontFamily: "Montserrat-Medium" }]}>{"Password*"}</Text>
                     <TextInput
                         secureTextEntry={isVisible}
                         autoCapitalize={"none"}
@@ -106,12 +121,12 @@ function RegisterPage(props) {
                         {!isVisible && <Ionicons name={"eye"} color={appColor.black} size={24}></Ionicons>}
                         {isVisible && <Ionicons name={"eye-off"} color={appColor.black} size={24}></Ionicons>}
                     </Pressable>
-                </View>
+                </Animated.View>
 
                 {passError && <Text style={[CommonStyle.hintStyle, { marginTop: 10, paddingLeft: 10 }]}>{passError}</Text>}
 
 
-                <View style={[styles.vAB3, { flexDirection: "row" }]}>
+                <Animated.View style={[styles.vAB3, { flexDirection: "row", opacity: fadeAnim }]}>
                     <View style={{ flex: 1 }}>
                         <CustomButton
                             textStyle={[CommonStyle.btnTxt, { color: appColor.black }]}
@@ -128,8 +143,8 @@ function RegisterPage(props) {
                             onPress={() => { saveUser(); }}>
                         </CustomButton>
                     </View>
-                </View>
-            </KeyboardAvoidingView>
+                </Animated.View>
+            </View>
         </SafeAreaView>
     )
 }

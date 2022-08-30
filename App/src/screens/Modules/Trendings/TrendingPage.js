@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {
-    SafeAreaView, View, FlatList,  StatusBar
+    SafeAreaView, View, FlatList, StatusBar
 } from "react-native";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps, record } from "../../../../Util";
 import { Header } from "../../../Component";
-import { CommonStyle,appColor } from "../../../../Styles";
+import { CommonStyle, appColor } from "../../../../Styles";
 import { GridView } from "../../../Component";
+import Animated, { FadeIn, FadeOut, Layout } from "react-native-reanimated";
 
 function TrendingPage(props) {
 
@@ -16,7 +17,8 @@ function TrendingPage(props) {
 
     useEffect(() => {
         setItem(props.route.params);
-        setAllCList(record.output.category[0].children);
+        const items = [...record.output.category[0].children];
+        setAllCList(items);
     }, []);
 
 
@@ -61,10 +63,13 @@ function TrendingPage(props) {
     }
 
 
-    return (<SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround }}>
+    return (<SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround, marginBottom: -30 }}>
         <Header screenTitle={item?.name} isTrending={false} issearch={false} props={props}></Header>
         <View style={{ flex: 1, padding: 10 }}>
-            <FlatList
+            <Animated.FlatList
+                entering={FadeIn}
+                exiting={FadeOut}
+                layout={Layout.delay(500)}
                 nestedScrollEnabled={true}
                 numColumns={2}
                 style={{ width: "100%" }}
@@ -78,7 +83,7 @@ function TrendingPage(props) {
                     index={index}
                     removeItem={removeItem}
                     addItem={addItem}></GridView>}>
-            </FlatList>
+            </Animated.FlatList>
         </View>
     </SafeAreaView>)
 }

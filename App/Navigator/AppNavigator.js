@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {
     SceenA, SceenB, HomeScreen, LoginPage, RegisterPage, SplashPage, ScreenTest,
     DetailPage, SearchPage, TrendingPage, ExploreScreen, CartPage,
-    EditProfilePage
+    EditProfilePage,Notification
 } from '../src';
 import { createStackNavigator } from '@react-navigation/stack';
 import { mapDispatchToProps, mapStateToProps, LocalStorage } from "../Util";
@@ -49,6 +49,7 @@ const ModuleRoute = () => (
         <ModuleStack.Screen name="CartPage" component={CartPage} />
         <ModuleStack.Screen name="ExploreScreen" component={ExploreScreen} />
         <ModuleStack.Screen name="EditProfilePage" component={EditProfilePage} />
+        <ModuleStack.Screen name="Notification" component={Notification} />
     </ModuleStack.Navigator>
 );
 

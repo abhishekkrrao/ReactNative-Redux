@@ -12,10 +12,10 @@ import TrendingPage from "./Trendings/TrendingPage";
 import ExploreScreen from "./ExploreScreen/ExploreScreen";
 import CartPage from "./CartPage/CartPage";
 import EditProfilePage from "./EditProfilePage/EditProfilePage";
-
+import Notification from "./Notification/Notification";
 
 export {
     SceenA, SceenB, HomeScreen, SplashPage, ScreenTest, MainPage, DetailPage, SearchPage,
     ProfilePage, WishlistPage, TrendingPage, ExploreScreen, CartPage,
-    EditProfilePage
+    EditProfilePage,Notification
 };

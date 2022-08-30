@@ -1,0 +1,79 @@
+import React from "react";
+import { View, SafeAreaView, ScrollView, Text } from "react-native";
+import { appDimension, fontStyle, appColor } from "../../../Styles";
+import { CustomButton } from "../../CustomModules";
+
+function Footer(props) {
+
+    return (
+        <SafeAreaView style={{ width: "100%", backgroundColor: "#FFF" }}>
+
+            {/* Detail Screen Footer Items */}
+
+            {props.isDetail && <View style={{ flex: 1, flexDirection: "row", marginBottom: 20 }}>
+
+                <View style={{ flex: 1, padding: 5 }}>
+                    <CustomButton
+                        onPress={props.onClickCart}
+                        btnStyle={{ backgroundColor: appColor.black, height: 45, width: "100%", alignSelf: "center" }}
+                        textStyle={{ fontSize: appDimension.pixel13, fontFamily: fontStyle.bold }}
+                        value='Add to cart'></CustomButton>
+                </View>
+                <View style={{ flex: 1, padding: 5 }}>
+                    <CustomButton
+                        onPress={props.onClickBuy}
+                        btnStyle={{ backgroundColor: appColor.black, height: 45, width: "100%", alignSelf: "center" }}
+                        textStyle={{ fontSize: appDimension.pixel13, fontFamily: fontStyle.bold }}
+                        value='Buy Now'></CustomButton>
+                </View>
+            </View>}
+
+            {/* Cart Screen Footer Items */}
+
+            {props.isCart && <View style={{ flex: 1 }}>
+                {props.total && <View style={{ width: "100%", flexDirection: "row" }}>
+                    <Text style={{
+                        flex: 1, color: appColor.mBlack, fontFamily: fontStyle.bold,
+                        textAlign: "left"
+                    }}>{"Total"}</Text>
+                    <Text style={{
+                        flex: 1, color: appColor.mBlack, fontFamily: fontStyle.bold,
+                        textAlign: "center"
+                    }}>{"$" + props.total}</Text>
+                </View>}
+
+                {props.discount && <View style={{ width: "100%", flexDirection: "row" }}>
+                    <Text style={{
+                        flex: 1, color: appColor.black, fontFamily: fontStyle.bold,
+                        textAlign: "left"
+                    }}>{"Discount"}</Text>
+                    <Text style={{
+                        flex: 1, color: appColor.black, fontFamily: fontStyle.bold,
+                        textAlign: "center"
+                    }}>{"-  $" + props.discount}</Text>
+                </View>}
+
+                {props.bagTotal && <View style={{ width: "100%", flexDirection: "row", marginBottom: 20 }}>
+                    <Text style={{
+                        flex: 1, color: appColor.mBlack, fontFamily: fontStyle.bold,
+                        textAlign: "left"
+                    }}>{"Bag Total"}</Text>
+                    <Text style={{
+                        flex: 1, color: appColor.mBlack, fontFamily: fontStyle.bold,
+                        textAlign: "center"
+                    }}>{"$" + props.bagTotal}</Text>
+                </View>}
+
+
+                <CustomButton
+                    onPress={props.checkOutClick}
+                    textStyle={{ fontFamily: fontStyle.bold }}
+                    value={"Checkout"}></CustomButton>
+            </View>}
+
+
+
+        </SafeAreaView>
+    );
+}
+export { Footer };

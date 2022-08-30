@@ -3,18 +3,22 @@ import {
     View, Pressable, Dimensions, Image,
     Text
 } from 'react-native';
+import Animated, { FadeIn, FadeOut, Layout } from 'react-native-reanimated';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { fontStyle,appColor } from '../../../Styles';
 
 const GridView = ({ item, index, props, removeItem = () => null, addItem = () => null, likeItem = () => null }) => {
 
     useEffect(() => {
-        console.log(((parseInt(index) + (919 * 34)) + "").toString())
+        // console.log(((parseInt(index) + (919 * 34)) + "").toString())
     }, [])
 
     return (
-        <View
-            // key={((parseInt(index) + (919 * 34)) + "").toString()}
+        <Animated.View
+            entering={FadeIn}
+            exiting={FadeOut}
+            layout={Layout.delay(300)}
+            key={((parseInt(index) + (919 * 349)) + "").toString()}
             style={[{
                 width: ((Dimensions.get("screen").width / 2) - 20), height: "auto",
                 backgroundColor: appColor.white,
@@ -75,7 +79,7 @@ const GridView = ({ item, index, props, removeItem = () => null, addItem = () =>
                     </View>
                 </View>
             </View>
-        </View>
+        </Animated.View>
     );
 }
 export { GridView };

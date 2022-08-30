@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
     SafeAreaView, View, Dimensions, Pressable,
-    Text, TouchableOpacity, ScrollView, Image, Platform
+    Text, TouchableOpacity, ScrollView, Image, Platform, StyleSheet
 } from "react-native";
 import { connect } from "react-redux";
 import { CommonStyle, appColor } from '../../../../Styles';
 import { mapDispatchToProps, mapStateToProps } from "../../../../Util";
-import { Header } from "../../../Component";
+import { Footer, Header } from "../../../Component";
 import { CustomButton } from '../../../CustomModules';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -149,29 +149,21 @@ function DetailPage(props) {
                 </View>
             </ScrollView>
 
-            <View
-                style={{
-                    position: "absolute", bottom: 10, left: 0, width: "100%",
-                    backgroundColor: "#f5f5f5",padding:10
-                }}>
-
-                <View style={{ width: "100%", flexDirection: "row" }}>
-
-                    <View style={{ flex: 1, padding: 5 }}>
-                        <CustomButton
-                            btnStyle={{ backgroundColor: appColor.black, height: 45, width: "100%", alignSelf: "center" }}
-                            textStyle={{ fontSize: 13, fontFamily: "Montserrat-Bold" }}
-                            value='Add to cart'></CustomButton>
-                    </View>
-                    <View style={{ flex: 1, padding: 5 }}>
-                        <CustomButton
-                            btnStyle={{ backgroundColor: appColor.black, height: 45, width: "100%", alignSelf: "center" }}
-                            textStyle={{ fontSize: 13, fontFamily: "Montserrat-Bold" }}
-                            value='Buy Now'></CustomButton>
-                    </View>
-                </View>
-
+            <View style={[styles.bottom]}>
+                <Footer
+                    onClickCart={() => {
+                        console.log("Cart Click...")
+                    }}
+                    onClickBuy={() => {
+                        console.log("Buy Click...")
+                    }}
+                    isDetail={true}>
+                </Footer>
             </View>
         </SafeAreaView >);
 }
-export default connect(mapStateToProps, mapDispatchToProps)(DetailPage)
+export default connect(mapStateToProps, mapDispatchToProps)(DetailPage);
+
+const styles = StyleSheet.create({
+    bottom: { position: "absolute", bottom: 0, left: 0, width: "100%", padding: 10, backgroundColor: "#FFF" }
+})

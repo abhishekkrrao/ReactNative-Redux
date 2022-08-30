@@ -28,7 +28,7 @@ function MainPage(props) {
     /**
      * initiliaze the state
      */
-    const _carousel = useRef(null);
+    const _carousel = useRef(0);
     const [slides, setSlides] = useState([{ uri: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/products/img_1000/1658773621nT7KC0H.jpeg" }]);
     const [entries, setEntries] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
     const [state, setState] = useState({});
@@ -247,9 +247,9 @@ function MainPage(props) {
                             <Ionicons name="cart" size={28} color={appColor.black}></Ionicons>
                         </Pressable>
                         <Pressable
-                            onPress={() => { props.navigation.navigate("ExploreScreen") }}
+                            onPress={() => { props.navigation.navigate("Notification") }}
                             style={{ padding: 5, borderRadius: 36, backgroundColor: appColor.white, marginLeft: 10, justifyContent: "center", alignItems: "center" }}>
-                            <Ionicons name="person-circle-sharp" size={28} color={appColor.black} />
+                            <Ionicons name="notifications" size={28} color={appColor.black} />
                         </Pressable>
                     </View>
                 </View>
@@ -274,7 +274,9 @@ function MainPage(props) {
 
                     <View style={[{ width: "100%", height: "auto", flexDirection: "column", marginTop: 10 }]}>
                         <Carousel
-                            ref={(c) => { _carousel.current = c; }}
+                            ref={(c) => { 
+                                _carousel.current = c;
+                             }}
                             data={[1, 2, 3, 4, 5, 6, 7, 8]}
                             renderItem={_renderItem}
                             sliderWidth={sliderWidth}
@@ -286,8 +288,7 @@ function MainPage(props) {
                         <View style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap", marginTop: 10, justifyContent: "center", alignItems: "center" }}>
                             {entries.map((item, index) => {
                                 return (
-                                    <View style={[{ width: 22, height: 5, backgroundColor: (_carousel?.current?._activeItem == index) ? appColor.white : appColor.black, borderRadius: 39, zIndex: 1, marginLeft: 3 },
-                                    (_carousel?.current?._activeItem == index) ? {} : styles.nonSelec]} />
+                                    <View style={[{ width: 22, height: 5, backgroundColor: (_carousel?.current?._activeItem == index) ? appColor.white : appColor.black, borderRadius: 39, zIndex: 1, marginLeft: 3 }]} />
                                 );
                             })}
                         </View>
