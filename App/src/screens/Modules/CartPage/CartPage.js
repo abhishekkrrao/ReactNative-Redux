@@ -20,8 +20,10 @@ function CartPage(props) {
     const initialMode = useRef(true);
 
     useEffect(() => {
+
+        const list = data.map((item) => item);
+        setCartItems(list);
         initialMode.current = false;
-        setCartItems(data);
     }, []);
 
     const onDelete = (position) => {
@@ -43,7 +45,7 @@ function CartPage(props) {
 
                 {cartItems.length > 0 && <Animated.FlatList
                     entering={initialMode.current ? FadeIn.delay(100 * index) : FadeIn}
-                    exiting={FadeOut}
+                    exiting={FadeOut.delay(300)}
                     layout={Layout.delay(100)}
                     style={{ width: "100%" }}
                     data={cartItems}

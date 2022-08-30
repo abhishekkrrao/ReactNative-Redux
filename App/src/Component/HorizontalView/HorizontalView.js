@@ -14,8 +14,8 @@ const HorizontalView = ({ item, index, onDelete = () => null }) => {
         <Animated.View
             entering={initialMode.current ? FadeIn.delay(100 * index) : FadeIn}
             layout={Layout.delay(100)}
-            exiting={FadeOut}
-            key={(index * 245 + 87)}
+            exiting={FadeOut.delay(300)}
+            key={(parseInt(item.id) * 245 + 87)}
             style={{
                 width: "95%", padding: 10, backgroundColor: "#f5f5f5",
                 marginBottom: 5, alignSelf: "center", marginTop: 10, borderRadius: 5

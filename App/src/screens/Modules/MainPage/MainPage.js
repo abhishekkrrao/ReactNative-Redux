@@ -69,25 +69,26 @@ function MainPage(props) {
 
 
     const likeItem = useCallback((item) => {
-        let index = trendinglist.indexOf(item);
-        const result = trendinglist.map((sObj, position) => {
-            if (index == position) {
-                sObj.like = !sObj.like;
-            }
-            return sObj;
+        const index = trendinglist.indexOf(item);
+        setTrending((trendinglist) => {
+            return trendinglist.map((sObj, position) => {
+                if (index == position) {
+                    sObj.like = !sObj.like;
+                }
+                return sObj;
+            })
         });
-        console.log(trendinglist)
-        result.length > 0 ? setTrending(result) : "";
     }, []);
     const likeItemInRecent = useCallback((item) => {
-        let index = recent.indexOf(item);
-        const result = recent.map((sObj, position) => {
-            if (index == position) {
-                sObj.like = !sObj.like
-            }
-            return sObj;
+        const index = recent.indexOf(item);
+        setRecent((recent) => {
+            return recent.map((sObj, position) => {
+                if (index == position) {
+                    sObj.like = !sObj.like;
+                }
+                return sObj;
+            })
         });
-        result.length > 0 ? setRecent(result) : "";
     }, []);
 
 
@@ -274,9 +275,9 @@ function MainPage(props) {
 
                     <View style={[{ width: "100%", height: "auto", flexDirection: "column", marginTop: 10 }]}>
                         <Carousel
-                            ref={(c) => { 
+                            ref={(c) => {
                                 _carousel.current = c;
-                             }}
+                            }}
                             data={[1, 2, 3, 4, 5, 6, 7, 8]}
                             renderItem={_renderItem}
                             sliderWidth={sliderWidth}
@@ -288,7 +289,7 @@ function MainPage(props) {
                         <View style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap", marginTop: 10, justifyContent: "center", alignItems: "center" }}>
                             {entries.map((item, index) => {
                                 return (
-                                    <View style={[{ width: 22, height: 5, backgroundColor: (_carousel?.current?._activeItem == index) ? appColor.white : appColor.black, borderRadius: 39, zIndex: 1, marginLeft: 3 }]} />
+                                    <View key={index} style={[{ width: 22, height: 5, backgroundColor: (_carousel?.current?._activeItem == index) ? appColor.white : appColor.black, borderRadius: 39, zIndex: 1, marginLeft: 3 }]} />
                                 );
                             })}
                         </View>

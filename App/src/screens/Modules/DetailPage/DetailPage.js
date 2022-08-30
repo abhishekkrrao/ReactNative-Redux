@@ -98,6 +98,7 @@ function DetailPage(props) {
                         {entries.map((item, index) => {
                             return (
                                 <View
+                                    key={(parseInt(index))}
                                     style={{
                                         width: 22, height: 5,
                                         backgroundColor: (_carousel?.current?._activeItem == index) ? appColor.white : appColor.black,

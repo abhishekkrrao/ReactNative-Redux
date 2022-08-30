@@ -117,7 +117,7 @@ function RegisterPage(props) {
                         placeholder={"Password*"}
                         value={password}>
                     </TextInput>
-                    <Pressable onPress={() => setIsVisible(!isVisible)} style={{ position: "absolute", right: 26, top: 26 }}>
+                    <Pressable onPress={() => setIsVisible(!isVisible)} style={{ position: "absolute", right: 26, top: 56 }}>
                         {!isVisible && <Ionicons name={"eye"} color={appColor.black} size={24}></Ionicons>}
                         {isVisible && <Ionicons name={"eye-off"} color={appColor.black} size={24}></Ionicons>}
                     </Pressable>
