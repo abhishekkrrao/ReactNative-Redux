@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
     SafeAreaView, View, StatusBar, Image, Pressable,
-    Text
+    Text,
+    Platform
 } from "react-native";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "../../../../Util";
@@ -42,7 +43,7 @@ function ProfilePage(props) {
     const onClick = () => { props.navigation.navigate("Home") }
     return (<SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround }}>
 
-        <View style={{ width: "100%", flexDirection: "row", padding: 16 }}>
+        <View style={{ width: "100%", flexDirection: "row", padding: 16, paddingTop: Platform.OS == "android" ? 16: 0 }}>
 
             <BackButton onClick={() => onClick()} screenTitle={"Your Profile"} props={props} ></BackButton>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
     SafeAreaView, View, FlatList, StatusBar
 } from "react-native";
@@ -63,6 +63,20 @@ function TrendingPage(props) {
     }
 
 
+
+    const likeItem = useCallback((item) => {
+        const index = clist.indexOf(item);
+        setAllCList((clist) => {
+            return clist.map((sObj, position) => {
+                if (index == position) {
+                    sObj.like = !sObj.like;
+                }
+                return sObj;
+            })
+        });
+    }, []);
+
+
     return (<SafeAreaView style={{ flex: 1, backgroundColor: appColor.backGround, marginBottom: -30 }}>
         <Header screenTitle={item?.name} isTrending={false} issearch={false} props={props}></Header>
         <View style={{ flex: 1, padding: 10 }}>
@@ -81,6 +95,7 @@ function TrendingPage(props) {
                     item={item}
                     props={props}
                     index={index}
+                    likeItem={likeItem}
                     removeItem={removeItem}
                     addItem={addItem}></GridView>}>
             </Animated.FlatList>

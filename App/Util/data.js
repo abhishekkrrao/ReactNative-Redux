@@ -33,6 +33,12 @@ const data = [{
     "description": "Beautiful Girl with Glasses",
     quantity: "1",
     "image_url": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765796bangles.jpg_250X250.jpg"
+},
+{
+    id: 6,
+    "description": "Beautiful Girl with Glasses",
+    quantity: "1",
+    "image_url": "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/category/thumb/1658765796bangles.jpg_250X250.jpg"
 }
 ];
 const appData = [

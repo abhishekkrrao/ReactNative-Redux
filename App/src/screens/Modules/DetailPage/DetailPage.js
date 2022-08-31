@@ -22,7 +22,7 @@ function DetailPage(props) {
 
     const [item, setItem] = useState({});
     const [entries, setEntries] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
-    const _carousel = useRef(null);
+    const [cIndex, setIndex] = useState(0);
     const [slides, setSlides] = useState([{ uri: "https://joolkart-dev-bucket.s3-ap-south-1.amazonaws.com/uploads/products/img_1000/1658773621nT7KC0H.jpeg" }]);
     useEffect(() => {
         setItem(props.route.params);
@@ -45,6 +45,7 @@ function DetailPage(props) {
             </View>
         );
     }
+
 
     const onClick = () => { props.navigation.pop(); }
     return (
@@ -77,22 +78,20 @@ function DetailPage(props) {
                     marginTop: 20, alignSelf: "center"
                 }}>
                     <Carousel
-                        ref={(c) => {
-                            _carousel.current = c;
-                            // console.log(_carousel?.current?._activeItem);
-                        }}
                         data={[1, 2, 3, 4, 5, 6, 7, 8]}
                         renderItem={_renderItem}
                         sliderWidth={sliderWidth / 1.1}
                         itemWidth={sliderWidth * 1}
                         autoplay={true}
-                        autoplayDelay={1000}
+                        autoplayDelay={1500}
+                        autoplayInterval={1500}
+                        onSnapToItem={(index) => setIndex(index)}
                     />
 
 
                     <View style={{
                         width: "100%", flexDirection: 'row', flexWrap: "wrap",
-                        marginTop: 20,
+                        marginTop: -20,
                         justifyContent: "center", alignItems: "center"
                     }}>
                         {entries.map((item, index) => {
@@ -100,8 +99,8 @@ function DetailPage(props) {
                                 <View
                                     key={(parseInt(index))}
                                     style={{
-                                        width: 22, height: 5,
-                                        backgroundColor: (_carousel?.current?._activeItem == index) ? appColor.white : appColor.black,
+                                        width: 6, height: 5,
+                                        backgroundColor: (cIndex == index) ? appColor.white : appColor.black,
                                         borderRadius: 39,
                                         zIndex: 1, marginLeft: 3
                                     }} />
@@ -113,7 +112,7 @@ function DetailPage(props) {
 
                 <View style={[{
                     flex: 1, backgroundColor: appColor.white, borderTopEndRadius: 26,
-                    borderTopLeftRadius: 26, marginTop: 20,
+                    borderTopLeftRadius: 26, marginTop: 40,
                     padding: 10, height: 900
                 }]}>
 
@@ -166,5 +165,5 @@ function DetailPage(props) {
 export default connect(mapStateToProps, mapDispatchToProps)(DetailPage);
 
 const styles = StyleSheet.create({
-    bottom: { position: "absolute", bottom: 0, left: 0, width: "100%", padding: 10, backgroundColor: "#FFF" }
+    bottom: { position: "absolute", bottom: 0, left: 0, width: "100%", padding: 0, backgroundColor: "#FFF" }
 })

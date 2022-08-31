@@ -36,7 +36,7 @@ function MainPage(props) {
     const [allData, setAllRecord] = useState([]);
     const [trendinglist, setTrending] = useState([]);
     const [recent, setRecent] = useState([]);
-
+    const [cIndex, setIndex] = useState(0);
 
 
     /**
@@ -65,9 +65,6 @@ function MainPage(props) {
      * 
      * like items
      */
-
-
-
     const likeItem = useCallback((item) => {
         const index = trendinglist.indexOf(item);
         setTrending((trendinglist) => {
@@ -87,7 +84,7 @@ function MainPage(props) {
                     sObj.like = !sObj.like;
                 }
                 return sObj;
-            })
+            });
         });
     }, []);
 
@@ -97,26 +94,27 @@ function MainPage(props) {
      * add item into cart
      * @param {*} item 
      */
-
     const addItem = useCallback((item) => {
-        let index = trendinglist.indexOf(item);
-        const result = trendinglist.map((sObj, position) => {
-            if (index == position) {
-                sObj.count ? sObj.count += 1 : sObj.count = 1;
-            }
-            return sObj;
+        const index = trendinglist.indexOf(item);
+        setTrending((trendinglist) => {
+            return trendinglist.map((sObj, position) => {
+                if (index == position) {
+                    sObj.count ? sObj.count += 1 : sObj.count = 1;
+                }
+                return sObj;
+            });
         });
-        result.length > 0 ? setTrending(result) : "";
     }, [])
     const addItemInRecent = useCallback((item) => {
-        let index = recent.indexOf(item);
-        const result = recent.map((sObj, position) => {
-            if (index == position) {
-                sObj.count ? sObj.count += 1 : sObj.count = 1;
-            }
-            return sObj;
+        const index = recent.indexOf(item);
+        setRecent((recent) => {
+            return recent.map((sObj, position) => {
+                if (index == position) {
+                    sObj.count ? sObj.count += 1 : sObj.count = 1;
+                }
+                return sObj;
+            });
         });
-        result.length > 0 ? setRecent(result) : "";
     }, [])
 
 
@@ -125,38 +123,39 @@ function MainPage(props) {
      * Remove Items
      * @param {*} item 
      */
-
     const removeItem = (item) => {
-        let index = trendinglist.indexOf(item);
-        const result = trendinglist.map((sObj, position) => {
-            if (sObj.count && sObj.count > 0) {
-                if (index == position) {
-                    sObj.count ? sObj.count -= 1 : sObj.count = 1;
+        const index = trendinglist.indexOf(item);
+        setTrending((trendinglist) => {
+            return trendinglist.map((sObj, position) => {
+                if (sObj.count && sObj.count > 0) {
+                    if (index == position) {
+                        sObj.count ? sObj.count -= 1 : sObj.count = 1;
+                    }
+                } else {
+                    if (index == position) {
+                        sObj.count = 0;
+                    }
                 }
-            } else {
-                if (index == position) {
-                    sObj.count = 0;
-                }
-            }
-            return sObj;
+                return sObj;
+            });
         });
-        result.length > 0 ? setTrending(result) : "";
     }
     const removeItemInRecent = (item) => {
-        let index = recent.indexOf(item);
-        const result = recent.map((sObj, position) => {
-            if (sObj.count && sObj.count > 0) {
-                if (index == position) {
-                    sObj.count ? sObj.count -= 1 : sObj.count = 1;
+        const index = recent.indexOf(item);
+        setRecent((recent) => {
+            return recent.map((sObj, position) => {
+                if (sObj.count && sObj.count > 0) {
+                    if (index == position) {
+                        sObj.count ? sObj.count -= 1 : sObj.count = 1;
+                    }
+                } else {
+                    if (index == position) {
+                        sObj.count = 0;
+                    }
                 }
-            } else {
-                if (index == position) {
-                    sObj.count = 0;
-                }
-            }
-            return sObj;
+                return sObj;
+            });
         });
-        result.length > 0 ? setRecent(result) : "";
     }
 
     const _renderItem = ({ item, index }) => {
@@ -275,21 +274,20 @@ function MainPage(props) {
 
                     <View style={[{ width: "100%", height: "auto", flexDirection: "column", marginTop: 10 }]}>
                         <Carousel
-                            ref={(c) => {
-                                _carousel.current = c;
-                            }}
+                            onSnapToItem={(index) => setIndex(index)}
                             data={[1, 2, 3, 4, 5, 6, 7, 8]}
                             renderItem={_renderItem}
                             sliderWidth={sliderWidth}
                             itemWidth={sliderWidth * .88}
                             autoplay={true}
                             autoplayDelay={1500}
+                            autoplayInterval={1500}
                             style={[CommonStyle.iosShadow]}
                         />
                         <View style={{ width: "100%", flexDirection: 'row', flexWrap: "wrap", marginTop: 10, justifyContent: "center", alignItems: "center" }}>
                             {entries.map((item, index) => {
                                 return (
-                                    <View key={index} style={[{ width: 22, height: 5, backgroundColor: (_carousel?.current?._activeItem == index) ? appColor.white : appColor.black, borderRadius: 39, zIndex: 1, marginLeft: 3 }]} />
+                                    <View key={index} style={[{ width: 16, height: 5, backgroundColor: (cIndex == index) ? appColor.white : appColor.black, borderRadius: 39, zIndex: 1, marginLeft: 6 }]} />
                                 );
                             })}
                         </View>
